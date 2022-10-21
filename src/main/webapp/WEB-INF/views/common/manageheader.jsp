@@ -16,7 +16,8 @@
             </div>
             <div class="selectList">
                 <ul>
-                    <li><a href="#" class="index">판매자관리</a></li>
+                	<li><a href="#">내정보</a></li> 
+                    <li><a href="#">판매자관리</a></li>
                     <li><a href="#">회원관리</a></li>
                     <li><a href="#">문의관리</a></li>
                 </ul>
@@ -25,7 +26,6 @@
 
         <div class="rightContainer">
             <div class="contentContainer">
-                <p>공간차지 시작</p>
             </div>
         </div>
     </div>
