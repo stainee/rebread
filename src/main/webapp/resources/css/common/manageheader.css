@@ -1,0 +1,74 @@
+*{
+    list-style: none;
+    margin : 0;
+}
+
+ul{
+    padding:0;
+}
+
+/*일반 헤더 따라서 갈듯 */ 
+.totalWrapper{
+    margin-top :40px;
+    margin-left:60px;
+    display:flex;
+}
+
+
+
+/* 왼쪽 공간에 대해서 */
+.leftContainer{
+    width:200px;
+    box-shadow: 2px 2px 2px 2px lightgray;
+    border-radius: 5px;
+    margin-right:20px;
+}
+
+.memberInfo{
+    width:200px;
+    height:160px;
+    margin-top:14px;
+    margin-left:20px;
+}
+
+.memberInfo p{
+    font-size:24px;
+    margin-bottom: 10px;
+    
+}
+
+.selectList{
+    border-top: 3px solid lightgray;
+}
+
+.selectList a{
+    display:block;
+    text-decoration: none;
+    color : black;
+    width:200px;
+    line-height: 60px;
+ 
+    text-align: center;
+    color : gray;
+}
+
+/* 눌렀을시 클래스를 넣어주어야 합니다*/
+
+.selectList .index{
+    background-color: lightgray;
+    color: black;
+}
+
+
+/* 오른쪽 공간에 대해서 */
+
+.rightContainer{
+    width:960px;
+    box-shadow: 2px 2px 2px 2px lightgray;
+    border-radius:5px;
+}
+
+.rightContainer .contentContainer{
+    margin-top:10px;
+    margin-left:10px;
+}
