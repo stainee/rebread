@@ -1,0 +1,10 @@
+@charset "UTF-8";
+
+.membertbl th{
+	background-color:lightgrey;
+	width:200px;
+}
+
+.membertbl th:nth-child(1){
+	width:120px;
+}

@@ -8,6 +8,7 @@
 <title>Insert title here</title>
 </head>
 <link rel="stylesheet" href="/resources/css/common/managetemplate.css">
+<link rel="stylesheet" href="/resources/css/admin/memberList.css">
 <body>
 <div class="totalWrapper">
         <div class="leftContainer">
@@ -17,8 +18,8 @@
             </div>
             <div class="selectList">
                 <ul>
-                	<li><a href="#">내정보</a></li> 
-                    <li><a href="#">판매자관리</a></li>
+                	<li><a href="/adminMain.do">내정보</a></li> 
+                    <li><a href="/sellerList.do">판매자관리</a></li>
                     <li><a href="/memberList.do">회원관리</a></li>
                     <li><a href="#">문의관리</a></li>
                 </ul>
@@ -27,13 +28,22 @@
 
         <div class="rightContainer">
             <div class="contentContainer">
-            
-            </div>
-        </div>
-    </div>
+				<table class="membertbl">
+					<tr>
+						<th>회원번호</th>
+						<th>아이디</th>
+						<th>이름</th>
+						<th>전화번호</th>
+						<th>관리</th>
+					</tr>
+				</table>
+			</div>
+         </div>
+       </div>
+</div>
 </body>
 <script>
-	let index=0;
+	let index=2;
 	$(function(){
 		let total = $(".selectList a").length;
 		for(let i=0; i<total; i++){
