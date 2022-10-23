@@ -7,9 +7,6 @@
 <title>Insert title here</title>
 </head>
 <body>
-	<h2>rebread</h2>
-	<a href="/adminMain.do">이동</a>
-	<a href="/brandIntro.do">브랜드소개</a>
-	<a href="/customerService.do">고객센터</a>
+	<h2>가게정보</h2>
 </body>
 </html>

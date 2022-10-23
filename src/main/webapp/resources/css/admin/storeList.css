@@ -1,16 +1,16 @@
 @charset "UTF-8";
 
-.membertbl th{
+.sellertbl th{
 	background-color:lightgrey;
 	width:200px;
 }
 
-.membertbl th:nth-child(1){
+.sellertbl th:nth-child(1){
 	width:120px;
 }
 
 
-.membertbl tr button{
+.sellertbl tr button{
 	border:none;
 	padding:5px 10px 5px 10px;
 	color: white;
@@ -19,15 +19,15 @@
 	cursor:pointer;
 }
 
-.membertbl tr td:nth-child(5){
+.sellertbl tr td:nth-child(5){
 	margin : 0 auto;
 	text-align:center;
 }
 
-.membertbl .info{
+.sellertbl .info{
 	background-color:orange;
 }
 
-.membertbl .remove{
-	background-color:red;
+.sellertbl .account{
+	background-color:skyblue;
 }

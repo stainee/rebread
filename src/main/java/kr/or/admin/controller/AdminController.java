@@ -12,7 +12,32 @@ public class AdminController {
 	}
 	
 	@RequestMapping(value="/memberList.do")
-	public String sellerList() {
+	public String memberList() {
 		return "/admin/memberList";
+	}
+	
+	@RequestMapping(value="/storeList.do")
+	public String sellerList() {
+		return "/admin/storeList";
+	}
+	
+	@RequestMapping(value="/csList.do")
+	public String csList() {
+		return "/admin/csList";
+	}
+	
+	@RequestMapping(value="/memberDetail.do")
+	public String memberDetail() {
+		return "/admin/memberDetail";
+	}
+	
+	@RequestMapping(value="/memberModify.do")
+	public String memberModify() {
+		return "/admin/memberModify";
+	}
+	
+	@RequestMapping(value="/storeDetail.do")
+	public String storeDetail() {
+		return "/admin/storeDetail";
 	}
 }
