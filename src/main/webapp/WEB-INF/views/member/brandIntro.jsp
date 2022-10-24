@@ -2,13 +2,14 @@
     pageEncoding="UTF-8"%>
 <!DOCTYPE html>
 <html>
+<link rel="stylesheet" href="/resources/css/font/font.css">
 <link rel="stylesheet" href="/resources/css/member/brandIntro.css">
 <head>
 <meta charset="UTF-8">
 <title>Insert title here</title>
 </head>
 <body>
-	
+	<jsp:include page="/WEB-INF/views/common/header.jsp"/>
 	<div class="content-wrap">
 		<div class = "content content1">
 			<div class="title1">
@@ -47,10 +48,10 @@ ReBread 에서는 급속 냉동한 빵을 전국으로 배송해 드립니다.
 			</div>
 		<div class="content content2">
 			<div class="icon_container">
-					<div class="icon_wrap">
-						1
+					<div class="icon_wrap icon1">
+						<img src="resources/img/member/bread.png" width="256" height="256">
 					</div>
-					<div class="wrap">
+					<div class="text_wrap">
 						<p>전국배송</p>
 						<pre>
 전국의 빵집에서 주문할 수 있습니다.
@@ -59,20 +60,20 @@ ReBread 에서는 급속 냉동한 빵을 전국으로 배송해 드립니다.
 					</div>
 			</div>
 			<div class="icon_container">
-					<div class="wrap">
+					<div class="text_wrap">
 						<p>최저가보장</p>
 						<pre>큰 할인 폭으로 댜양하고 많은 빵들을 경험할 수 있습니다.</pre>
 					</div>
 					<div class="icon_wrap">
-						2
+						<img src="resources/img/member/korea.png" width="256" height="256">
 					</div>
 				</div>
 				<div class="icon_container">
 					<div class="icon_wrap">
-						3
+						<img src="resources/img/member/earth.png" width="256" height="256">
 					</div>
 					
-					<div class="wrap">
+					<div class="text_wrap">
 						<p>식품 손실 감소</p>
 						<pre>
 빵의 폐기를 줄이기 위해서 유통기한 직전의 빵을 적극적으로 취급하고 있습니다.
@@ -82,5 +83,6 @@ ReBread 에서는 급속 냉동한 빵을 전국으로 배송해 드립니다.
 			</div>
 		</div>
 	</div>
+		<jsp:include page="/WEB-INF/views/common/footer.jsp"/>
 </body>
 </html>

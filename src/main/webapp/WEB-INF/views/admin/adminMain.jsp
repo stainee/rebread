@@ -4,6 +4,7 @@
 <!DOCTYPE html>
 <html>
 </head>
+<link href="https://hangeul.pstatic.net/hangeul_static/css/nanum-square-round.css" rel="stylesheet">
 <link rel="stylesheet" href="/resources/css/common/managetemplate.css">
 <body>
 <div class="total_wrapper">
