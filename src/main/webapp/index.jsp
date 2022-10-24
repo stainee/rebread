@@ -7,6 +7,12 @@
 <title>Insert title here</title>
 </head>
 <body>
+	<jsp:include page="/WEB-INF/views/common/header.jsp"/>
 	<h2>rebread</h2>
+	<a href="/adminMain.do">이동</a>
+	<a href="/brandIntro.do">브랜드소개</a>
+	<a href="/customerService.do">고객센터</a>
+	
+	<jsp:include page="/WEB-INF/views/common/footer.jsp"/>
 </body>
 </html>
