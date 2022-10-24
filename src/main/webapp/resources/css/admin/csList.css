@@ -1,16 +1,22 @@
 @charset "UTF-8";
 
-.membertbl th{
+.cstbl th{
 	background-color:lightgrey;
 	width:200px;
 }
 
-.membertbl th:nth-child(1){
+.cstbl th:nth-child(1){
 	width:120px;
 }
 
+.cstbl th:nth-child(3){
+	width:400px;
+}
+.cstbl th:nth-child(n+4){
+	width:120px;
+}
 
-.membertbl tr button{
+.cstbl tr button{
 	border:none;
 	padding:5px 10px 5px 10px;
 	color: white;
@@ -19,15 +25,15 @@
 	cursor:pointer;
 }
 
-.membertbl tr td:nth-child(5){
+.cstbl tr td:nth-child(n+3){
 	margin : 0 auto;
 	text-align:center;
 }
 
-.membertbl .info{
+.cstbl .detail{
 	background-color:orange;
 }
 
-.membertbl .remove{
-	background-color:red;
+.cstbl .complete{
+	background-color:skyblue;
 }

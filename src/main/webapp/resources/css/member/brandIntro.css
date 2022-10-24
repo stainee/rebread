@@ -1,0 +1,83 @@
+@charset "UTF-8";
+*{
+	margin:0;
+}
+
+.content1{
+	width:900px;
+	margin:0 auto;
+}
+
+.content .text{
+	font-size:18px;
+	margin-bottom:60px;
+}
+
+
+.content p{
+	font-weight:600;
+}
+.content #title4{
+	font-size:24px;
+	margin-bottom:40px;
+}
+
+.content title2{
+	font-weight:600;
+}
+
+.title1 p{
+	font-size:48px;
+	font-weight:600;
+	margin-bottom:20px;
+}
+
+.title3{
+	margin: 0 auto;
+	text-align:center;
+	padding-top:80px;
+	padding-bottom:80px;
+	background-color:grey;/*임의*/
+	font-size:36px;
+	margin-top:40px;
+	margin-bottom:40px;
+}
+
+.title2 p{
+	margin-bottom:10px;
+}
+
+/* 두번째 단락 */
+
+.content2 {
+	margin:0 auto;
+}
+.content2 p{
+	font-size:32px;
+}
+
+.content2 .icon_wrap{
+	background-color:black;
+	width:256px;
+	height:256px;
+}
+
+.icon_container{
+	display:flex;
+	justify-content:center;
+}
+
+.icon_container:nth-child(2) .icon_wrap{
+	justify-content:flex-end;
+}
+
+.wrap{
+	margin-top:16px;
+	height:240px;
+	width:600px;
+	margin-left:48px;
+}
+
+.wrap p{
+	margin-bottom:20px;
+}

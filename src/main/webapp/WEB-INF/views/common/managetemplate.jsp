@@ -9,8 +9,8 @@
 </head>
 <link rel="stylesheet" href="/resources/css/common/managetemplate.css">
 <body>
-<div class="totalWrapper">
-        <div class="leftContainer">
+<div class="total_wrapper">
+        <div class="left_container">
             <div class="memberInfo">
                 <p>[관리자]</p>
                 <p>박예진님</p>
@@ -25,8 +25,8 @@
             </div>
         </div>
 
-        <div class="rightContainer">
-            <div class="contentContainer">
+        <div class="right_container">
+            <div class="content_container">
             
             </div>
         </div>
