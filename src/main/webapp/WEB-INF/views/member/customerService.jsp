@@ -66,7 +66,7 @@
 			<p>물품에 대한 문제가 생겼거나 판매절차에서 문제가 생겼을시 전화 문의 및 채팅 문의가 가능합니다.<br>
 			영업시간 : 9:30 ~ 18:00 (토,일,공휴일 제외)</p>
 			</div>
-			<button id="btn_chat">채팅상담</button>
+			<div id="btn_chat"><a href="/chatting.do">채팅상담</a></div>
 		</div>
 	</div>
 	
@@ -76,7 +76,7 @@
 $(".qna_wrapper .quest").on("click", function(){
 	$(this).next().slideToggle();
 	console.log($(this));
-	console.log(1);
 })
+
 </script>
 </html>

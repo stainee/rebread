@@ -64,7 +64,7 @@
 	})
 	
 	function viewMemberDetail(){
-		window.open("/memberDetail.do", "회원정보", "width=800px, height=600px, top=100px, left=300px");
+		window.open("/memberDetail.do", "회원정보", "width=800px, height=600px, top=100px, left=250px");
 	}
 </script>
 </html>

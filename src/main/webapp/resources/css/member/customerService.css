@@ -85,3 +85,11 @@ ul{
 	border-radius:10px;
 	cursor:pointer;
 }
+
+#btn_chat a{
+	text-decoration:none;
+	color:#f8f8f8;
+	display:block;
+	text-align:center;
+	line-height:56px;
+}

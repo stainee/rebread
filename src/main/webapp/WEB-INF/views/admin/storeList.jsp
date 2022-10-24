@@ -44,7 +44,7 @@
 						<td></td>
 						<td>
 							<button class="info" onclick="viewStoreInfo()">정보</button>
-							<button class="account">정산</button>
+							<button class="account" onclick="viewAccountInfo()">정산</button>
 						</td>
 					</tr>
 				</table>
@@ -64,7 +64,10 @@
 	})
 	
 	function viewStoreInfo(){
-		window.open("/storeDetail.do", "가게정보", "width=800px, height=600px, top=100px, left=300px");
+		window.open("/storeDetail.do", "가게정보", "width=800px, height=600px, top=100px, left=250px");
+	}
+	function viewAccountInfo(){
+		window.open("/storeAccount.do", "가게정보", "width=800px, height=600px, top=100px, left=250px");
 	}
 </script>
 </html>

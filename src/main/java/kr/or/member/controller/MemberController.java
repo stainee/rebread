@@ -16,4 +16,9 @@ public class MemberController {
 	public String customerService() {
 		return "/member/customerService";
 	}
+	
+	@RequestMapping(value="/chatting.do")
+	public String chatting() {
+		return "/member/csChat";
+	}
 }
