@@ -1,17 +1,17 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
 
-<link rel="stylesheet" href="/css/common/footer.css">
+<link rel="stylesheet" href="/resources/css/common/footer.css">
 <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
 
-<div class="wrap">
+
     <footer>
         <div id="remote">
-            <img src="img/common/up-arrow.png">
+            <img src="/resources/img/common/up-arrow.png">
         </div>
         <div id="social">
-            <a href="#"><img src="img/common/kakaoicon.png"></a>
-            <a href="#"><img src="img/common/instaricon.png"></a>
+            <a href="#"><img src="/resources/img/common/kakaoicon.png"></a>
+            <a href="#"><img src="/resources/img/common/instaricon.png"></a>
         </div>
         <div class="footer-top">
             <div class="foot-left">
@@ -43,20 +43,20 @@
             </div>
             <div class="foot-right">
                 <span
-                    ><a href="www.facebook.com"><img src="img/common/facebook.png" /></a
+                    ><a href="www.facebook.com"><img src="/resources/img/common/facebook.png" /></a
                 ></span>
                 <span
-                    ><a href="wwww.instargram.com"><img src="img/common/instagram.png" /></a
+                    ><a href="wwww.instargram.com"><img src="/resources/img/common/instagram.png" /></a
                 ></span>
                 <span
-                    ><a href="www.twitter.com"><img src="img/common/twitter.png" /></a
+                    ><a href="www.twitter.com"><img src="/resources/img/common/twitter.png" /></a
                 ></span>
                 <span
-                    ><a href="www.naver.blog.com"><img src="img/common/blog.png" /></a
+                    ><a href="www.naver.blog.com"><img src="/resources/img/common/blog.png" /></a
                 ></span>
             </div>
         </div>
     </footer> 
 </div>
 
-<script src="/js/common/footer.js"></script>
+<script src="/resources//js/common/footer.js"></script>

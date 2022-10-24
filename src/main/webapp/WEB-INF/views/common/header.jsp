@@ -1,7 +1,7 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
     
-<link rel="stylesheet" href="/css/common/header.css">
+<link rel="stylesheet" href="/resources/css/common/header.css">
 <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
     
     
@@ -14,7 +14,7 @@
                 </div>
                 <div class="header-mid">
                     <a href="#">
-                        <img src="img/common/logo.png">
+                        <img src="/resources/img/common/logo.png">
                     </a>
                 </div>
                 <div class="header-right">
@@ -31,7 +31,7 @@
     <!-- sticky같은 경우는 부모가 body여야지만 작동한다.-->
     <nav class="header-wrap2">
         <div class="header-bottom">
-            <a href="#"><img src="img/common/logo2.png" class="header-img"></a>       
+            <a href="#"><img src="/resources/img/common/logo2.png" class="header-img"></a>       
             <div class="header-navi deactive">
                 <ul>
                     <li><a href="#">브랜드스토리</a></li>
@@ -44,6 +44,6 @@
             <div class="header-navi-login"><a href="#">로그인</a></div>
         </div>
     </nav>
-</div>
 
-<script src="/js/common/header.js"></script>
+
+<script src="/resources/js/common/header.js"></script>
