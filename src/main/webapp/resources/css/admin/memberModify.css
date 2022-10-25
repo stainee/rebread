@@ -18,6 +18,10 @@
 	margin : 0 auto;
 }
 
+#memberGrade{
+	height:30px;
+	background-color:white;
+}
 /* 테이블*/
 
 .membertbl {

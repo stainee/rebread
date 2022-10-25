@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="store">
+   <select id="selectAllStore" resultType="s">
+   		select
+   			store_no as storeNo,
+   			member_no as memberNo,
+   			store_name as storeName,
+   			store_content as storeContent,
+   			store_addr as storeAddr,
+   			store_regist_num as storeRegistNum,
+   			store_account as storeAccount,
+   			open_time as openTime,
+   			close_time as closeTime,
+   			store_phone as storePhone,
+   			store_img as storeImg
+   		from store
+   </select> 
+</mapper>

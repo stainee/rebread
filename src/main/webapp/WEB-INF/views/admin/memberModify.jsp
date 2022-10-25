@@ -49,16 +49,25 @@
 					<th>회원등급</th>
 					<td>
 						<c:if test="${m.memberGrade eq 0}">
-							<input type="text" value="관리자">
-							<input type="hidden" value=0 id="memberGrade">
+							<select id="memberGrade">
+								<option value=0>관리자</option>
+								<option value=1>일반회원</option>
+								<option value=2>판매자</option>
+							</select>
 						</c:if>
 						<c:if test="${m.memberGrade eq 1 }" >
-							<input type="text" value="일반회원">
-							<input type="hidden" value=1 id="memberGrade">
+							<select id="memberGrade">
+								<option value=1>일반회원</option>
+								<option value=0>관리자</option>
+								<option value=2>판매자</option>
+							</select>
 						</c:if>
 						<c:if test="${m.memberGrade eq 2 }" >
-							<input type="text" value="판매자">
-							<input type="hidden" value=2 id="memberGrade">
+							<select id="memberGrade">
+								<option value=2>판매자</option>	
+								<option value=1>일반회원</option>
+								<option value=0>관리자</option>
+							</select>
 						</c:if>
 					</td>
 				</tr>
@@ -83,16 +92,9 @@
 		const memberPhone = $("#memberPhone").val();
 		const memberMail = $("#memberMail").val();
 		const memberAddr = $("#memberAddr").val();
-		const memberGradeVal = $("#memberGrade").val();
+		const memberGrade = $("#memberGrade").val();
 		const memberMileage = $("#memberMileage").val();
-		let memberGrade;
-		if(memberGradeVal=="관리자"){
-			memberGrade = 0;
-		}else if(memberGradeVal=="일반회원"){
-			memberGrade = 1;
-		}else if(memberGradeVal=="판매자"){
-			memberGrade = 2;
-		}
+		
 		$.ajax({
 			url:"/memberUpdate.do",
 			data:{
@@ -107,7 +109,7 @@
 			},
 			success:function(){
 				opener.location.reload();
-				window.close();
+				//window.close();
 			}
 		})
 	})

@@ -1,8 +1,10 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
      <script src="https://code.jquery.com/jquery-3.6.1.js"></script>
+<%@taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
 <!DOCTYPE html>
 <html>
+
 <head>
 <meta charset="UTF-8">
 <title>Insert title here</title>
@@ -37,16 +39,18 @@
 						<th>계좌번호</th>
 						<th>관리</th>
 					</tr>
-					<tr>
-						<td></td>
-						<td></td>
-						<td></td>
-						<td></td>
-						<td>
-							<button class="info" onclick="viewStoreInfo()">정보</button>
-							<button class="account" onclick="viewAccountInfo()">정산</button>
-						</td>
-					</tr>
+					<c:forEach items="${list}" var="s">
+						<tr>
+							<td>${s.storeNo}</td>
+							<td>${s.storeName}</td>
+							<td>${s.storeRegistNum}</td>
+							<td>${s.storeAccount}</td>
+							<td>
+								<button class="info" onclick="viewStoreInfo()">정보</button>
+								<button class="account" onclick="viewAccountInfo()">정산</button>
+							</td>
+						</tr>
+					</c:forEach>
 				</table>
 			</div>
          </div>

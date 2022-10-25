@@ -8,5 +8,6 @@
 </settings>
 <typeAliases>
 	<typeAlias type="kr.or.member.model.vo.Member" alias="m"></typeAlias>
+	<typeAlias type="kr.or.store.model.vo.Store" alias="s"></typeAlias>
 </typeAliases>
 </configuration>
