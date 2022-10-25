@@ -7,6 +7,7 @@
 <meta charset="UTF-8">
 <title>Insert title here</title>
 </head>
+<link href="https://hangeul.pstatic.net/hangeul_static/css/nanum-square-round.css" rel="stylesheet">
 <link rel="stylesheet" href="/resources/css/common/managetemplate.css">
 <link rel="stylesheet" href="/resources/css/admin/memberList.css">
 <body>
@@ -63,7 +64,7 @@
 	})
 	
 	function viewMemberDetail(){
-		window.open("/memberModify.do", "회원정보", "width=800px, height=600px, top=100px, left=300px");
+		window.open("/memberModify.do", "회원정보", "width=800px, height=600px, top=100px, left=250px");
 	}
 </script>
 </html>

@@ -40,4 +40,9 @@ public class AdminController {
 	public String storeDetail() {
 		return "/admin/storeDetail";
 	}
+	
+	@RequestMapping(value="/storeAccount.do")
+	public String storeAccount() {
+		return "/admin/storeAccount";
+	}
 }

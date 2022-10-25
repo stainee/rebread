@@ -5,25 +5,20 @@
 <head>
 <meta charset="UTF-8">
 <title>Insert title here</title>
-<link rel="stylesheet" href="/resources/css/admin/storeDetail.css">
+<link rel="stylesheet" href="/resources/css/admin/storeAccount.css">
 <link rel="stylesheet" href="/resources/css/font/font.css">
 </head>
 <body>
-	<div class="detail_container">
+	<div class="account_container">
 		<div class="title_wrapper">
 			<p>가게 정보</p>
 		</div>
 		<div class="content_container">
 			<table class="membertbl">
 				<tr>
-				 	<th>사업자이름</th>
+				 	<th>회원번호</th>
 				 	<td><input type="text"></td>
 				</tr>
-				<tr>
-				 	<th>사업자번호</th>
-				 	<td><input type="text"></td>
-				</tr>
-				
 				<tr>
 				 	<th>매장번호</th>
 				 	<td><input type="text"></td>
@@ -35,26 +30,20 @@
 				</tr>
 				
 				<tr>
-				 	<th>영업시간</th>
-				 	<td id="hour"><input type="text"> ~ <input type="text"></td>
-				</tr>
-				
-				<tr>
-				 	<th>매장주소</th>
-				 	<td><input type="text"> <button id="postcode">우편번호</button></td>
+				 	<th>월수익</th>
+				 	<td><input type="text"></td>
 				</tr>
 				<tr>
-					<td></td>
+					<th>플랫폼수익</th>
 					<td><input type="text"></td>
 				</tr>
 				
 				<tr>
-					<td></td>
+					<th>실입금내역</th>
 					<td><input type="text"></td>
 				</tr>
 			</table>
 			<div class="btn_wrap">
-				<button class="modify" onclick="window.close()">수정</button>
  				<button class="complete" onclick="window.close()">확인</button>
 			</div>
 		</div>

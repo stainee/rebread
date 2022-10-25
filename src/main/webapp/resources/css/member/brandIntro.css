@@ -1,16 +1,22 @@
 @charset "UTF-8";
+
 *{
 	margin:0;
+	font-family: 'nsr-r';
 }
 
+.content-wrap{
+	margin-top:50px;
+	margin-bottom:100px;
+}
 .content1{
 	width:900px;
 	margin:0 auto;
 }
 
 .content .text{
-	font-size:18px;
-	margin-bottom:60px;
+	font-size:24px;
+	margin-bottom:40px;
 }
 
 
@@ -29,7 +35,7 @@
 .title1 p{
 	font-size:48px;
 	font-weight:600;
-	margin-bottom:20px;
+	margin-bottom:30px;
 }
 
 .title3{
@@ -37,12 +43,16 @@
 	text-align:center;
 	padding-top:80px;
 	padding-bottom:80px;
-	background-color:grey;/*임의*/
+	background-color:#785c37;
+	color:#f8f8f8;
 	font-size:36px;
-	margin-top:40px;
-	margin-bottom:40px;
+	margin-top:80px;
+	margin-bottom:80px;
 }
 
+.title3 p{
+	font-family:'nsr-eb';
+}
 .title2 p{
 	margin-bottom:10px;
 }
@@ -57,7 +67,6 @@
 }
 
 .content2 .icon_wrap{
-	background-color:black;
 	width:256px;
 	height:256px;
 }
@@ -71,13 +80,14 @@
 	justify-content:flex-end;
 }
 
-.wrap{
+.text_wrap{
 	margin-top:16px;
 	height:240px;
 	width:600px;
 	margin-left:48px;
 }
 
-.wrap p{
+.text_wrap p{
 	margin-bottom:20px;
 }
+

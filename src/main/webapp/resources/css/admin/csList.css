@@ -1,5 +1,7 @@
 @charset "UTF-8";
-
+*{
+	font-family: 'NanumSquareRound';
+}
 .cstbl th{
 	background-color:lightgrey;
 	width:200px;
