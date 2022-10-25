@@ -1,10 +1,21 @@
 package kr.or.admin.controller;
 
+import java.util.ArrayList;
+
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
+import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.ResponseBody;
+
+import kr.or.member.model.service.MemberService;
+import kr.or.member.model.vo.Member;
 
 @Controller
 public class AdminController {
+	
+	@Autowired
+	private MemberService service;
 	
 	@RequestMapping(value="/adminMain.do")
 	public String adminMain(){
@@ -12,7 +23,9 @@ public class AdminController {
 	}
 	
 	@RequestMapping(value="/memberList.do")
-	public String memberList() {
+	public String memberList(Model model) {
+		ArrayList<Member> list = service.selectAllMember();
+		model.addAttribute("list", list);
 		return "/admin/memberList";
 	}
 	
@@ -27,13 +40,8 @@ public class AdminController {
 	}
 	
 	@RequestMapping(value="/memberDetail.do")
-	public String memberDetail() {
+	public String memberDetail(int memberNo,Model model) {
 		return "/admin/memberDetail";
-	}
-	
-	@RequestMapping(value="/memberModify.do")
-	public String memberModify() {
-		return "/admin/memberModify";
 	}
 	
 	@RequestMapping(value="/storeDetail.do")

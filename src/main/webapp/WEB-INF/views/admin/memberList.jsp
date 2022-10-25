@@ -1,6 +1,7 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
      <script src="https://code.jquery.com/jquery-3.6.1.js"></script>
+     <%@taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
 <!DOCTYPE html>
 <html>
 <head>
@@ -36,17 +37,19 @@
 						<th>이름</th>
 						<th>전화번호</th>
 						<th>관리</th>
-					</tr>
-					<tr>
-						<td></td>
-						<td></td>
-						<td></td>
-						<td></td>
-						<td>
-							<button class="info" onclick="viewMemberDetail()">정보</button>
-							<button class="remove">삭제</button>
-						</td>
-					</tr>
+					</tr>				
+					<c:forEach items="${list}" var="m">
+						<tr>
+							<td>${m.memberNo }</td>
+							<td>${m.memberId }</td>
+							<td>${m.memberName}</td>
+							<td>${m.memberPhone}</td>
+							<td>
+								<button class="info" onclick="viewMemberDetail(${m.memberNo})">정보</button>
+								<button class="remove" onclick="deleteMember(${m.memberNo})">삭제</button>
+							</td>
+						</tr>
+					</c:forEach>
 				</table>
 			</div>
          </div>
@@ -63,8 +66,18 @@
 		$(".selectList a").eq(index).addClass("index");
 	})
 	
-	function viewMemberDetail(){
-		window.open("/memberModify.do", "회원정보", "width=800px, height=600px, top=100px, left=250px");
+	function viewMemberDetail(memberNo){
+		window.open("/memberModify.do?memberNo="+memberNo+"", "회원정보", "width=800px, height=600px, top=100px, left=250px");
+	}
+	
+	function deleteMember(memberNo){
+		$.ajax({
+			url:"/memberDelete.do?memberNo="+memberNo+"",
+			success:function(){
+				window.location.reload();
+			}
+			
+		})
 	}
 </script>
 </html>

@@ -52,6 +52,25 @@
 					<td></td>
 					<td><input type="text"></td>
 				</tr>
+				<tr>
+					<td>전화번호</td>
+					<td><input type="text"></td>
+				</tr>
+				
+				<tr>
+					<td>이메일 </td>
+					<td><input type="text"></td>
+				</tr>
+				
+				<tr>
+					<td>회원등급</td>
+					<td><input type="text"></td>
+				</tr>
+				
+				<tr>
+					<td>마일리지</td>
+					<td><input type="text"></td>
+				</tr>
 			</table>
 			<div class="btn_wrap">
 				<button class="complete" onclick="window.close()">확인</button>

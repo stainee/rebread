@@ -33,3 +33,8 @@
 .membertbl .remove{
 	background-color:red;
 }
+
+.membertbl tr td{
+	text-align:center;
+}
+

@@ -28,7 +28,12 @@
 	width:200px;
 }
 
-
+.membertbl #memberNo{
+	background-color:#e2e2e2;
+}
+.membertbl #memberNo:focus{
+	outline:none;
+}
 .membertbl tr button{
 	border:none;
 	padding:5px 10px 5px 10px;
