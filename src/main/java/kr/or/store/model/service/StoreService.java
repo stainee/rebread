@@ -21,4 +21,8 @@ public class StoreService {
 	public StoreDetail selectOneStore(int storeNo) {
 		return dao.selectOneStore(storeNo);
 	}
+	
+	public int updateStoreDetail(Store s) {
+		return dao.updateStoreDetail(s);
+	}
 }

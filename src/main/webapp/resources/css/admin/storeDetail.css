@@ -68,6 +68,14 @@
 .membertbl #storeNo:focus{
 	outline:none;
 }
+
+.membertbl #memberName{
+	background-color:#e2e2e2;
+}
+
+.membertbl #memberName:focus{
+	outline:none;
+}
 .btn_wrap{
 	display:flex;
 	justify-content:center;

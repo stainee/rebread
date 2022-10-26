@@ -19,7 +19,7 @@
 			<table class="membertbl">
 				<tr>
 				 	<th>사업자이름</th>
-				 	<td><input type="text" id="memberName" value="${sd.memberName}"></td>
+				 	<td><input type="text" id="memberName" value="${sd.memberName}" readonly></td>
 				</tr>
 				<tr>
 				 	<th>사업자번호</th>
@@ -59,7 +59,6 @@
 
 <script>
 	$(".modify").on("click",function(){
-		const memberName = $("#memberName").val();
 		const storeRegistNum = $("#storeRegistNum").val();
 		const storeNo = $("#storeNo").val();
 		const storeName = $("#storeName").val();
@@ -71,16 +70,17 @@
 		$.ajax({
 			url:"/storeUpdate.do",
 			data:{
-				memberName : memberName,
 				storeRegistNum : storeRegistNum,
 				storeNo : storeNo,
 				storeName : storeName,
 				storeAccount : storeAccount,
 				openTime : openTime,
+				closeTime : closeTime,
 				storeAddr : storeAddr 
-			}
+			},
 			success:function(){
-				console.log(1);
+				opener.location.reload();
+				window.close();
 			}
 		})
 		

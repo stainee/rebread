@@ -24,4 +24,9 @@ public class StoreDao {
 		StoreDetail sd = sqlSession.selectOne("store.selectOneStore",storeNo);
 		return sd;
 	}
+
+	public int updateStoreDetail(Store s) {
+		int result = sqlSession.update("store.updateStoreDetail", s);
+		return result;
+	}
 }

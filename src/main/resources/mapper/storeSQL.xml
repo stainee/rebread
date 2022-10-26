@@ -32,4 +32,14 @@
    		from store s join member m on s.member_no=m.member_no
    		where s.store_no = #{_parameter}
    </select>
+   <update id="updateStoreDetail" parameterType="s">
+   		update store
+   			set 
+   			store_name = #{storeName},
+   			store_addr = #{storeAddr},
+   			store_regist_num = #{storeRegistNum},
+   			open_time = #{openTime},
+   			close_time = #{closeTime}
+   		where store_no = #{storeNo}
+   </update>
 </mapper>
