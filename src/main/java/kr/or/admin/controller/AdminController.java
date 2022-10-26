@@ -7,6 +7,8 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
 
+import kr.or.cs.model.service.CSService;
+import kr.or.cs.model.vo.CS;
 import kr.or.member.model.service.MemberService;
 import kr.or.member.model.vo.Member;
 import kr.or.store.model.service.StoreService;
@@ -20,6 +22,8 @@ public class AdminController {
 	private MemberService service;
 	@Autowired
 	private StoreService sservice;
+	@Autowired
+	private CSService csservice;
 	
 	@RequestMapping(value="/adminMain.do")
 	public String adminMain(){
@@ -41,12 +45,17 @@ public class AdminController {
 	}
 	
 	@RequestMapping(value="/csList.do")
-	public String csList() {
+	public String csList(Model model) {
+		ArrayList<CS> list = csservice.selectAllCS();
+		model.addAttribute("list",list);
 		return "/admin/csList";
 	}
 	
+
 	@RequestMapping(value="/memberDetail.do")
 	public String memberDetail(int memberNo,Model model) {
+		Member m = service.selectOneMember(memberNo);
+		model.addAttribute("m",m);
 		return "/admin/memberDetail";
 	}
 	

@@ -1,8 +1,9 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
-     <script src="https://code.jquery.com/jquery-3.6.1.js"></script>
+<%@taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
 <!DOCTYPE html>
 <html>
+<script src="https://code.jquery.com/jquery-3.6.1.js"></script>
 <head>
 <meta charset="UTF-8">
 <title>Insert title here</title>
@@ -37,17 +38,25 @@
 						<th>회원정보</th>
 						<th>관리</th>
 					</tr>
-					<tr>
-						<td></td>
-						<td></td>
-						<td></td>
-						<td>
-							<button class="detail" onclick="viewMemberDetail()">정보</button>
-						</td>
-						<td>
-							<button class="complete">완료</button>
-						</td>
-					</tr>
+					
+					<c:forEach items="${list}" var="cs">
+						<tr>
+							<td>${cs.csNo}</td>
+							<td>${cs.csCategory}</td>
+							<td>${cs.csContent}</td>
+							<td>
+								<button class="detail" onclick="viewMemberDetail(${cs.memberNo})">정보</button>
+							</td>
+							<td id="checkTd">
+							<c:if test="${cs.csCheck eq 1}">
+								<button class="check cancel" onclick="csCheck(this, ${cs.csNo},${cs.csCheck})">취소</button>
+							</c:if>
+							<c:if test="${cs.csCheck eq 0}">
+								<button class="check complete" onclick="csCheck(this, ${cs.csNo},${cs.csCheck})">완료</button>
+							</c:if>
+							</td>
+						</tr>
+					</c:forEach>
 				</table>
 			</div>
        </div>
@@ -63,8 +72,32 @@
 		$(".selectList a").eq(index).addClass("index");
 	})
 	
-	function viewMemberDetail(){
-		window.open("/memberDetail.do", "회원정보", "width=800px, height=600px, top=100px, left=250px");
+	function viewMemberDetail(memberNo){
+		window.open("/memberDetail.do?memberNo="+memberNo+"", "회원정보", "width=800px, height=600px, top=100px, left=250px");
+	}
+	
+	function csCheck(obj, csNo, csCheck){
+		$.ajax({
+			url:"/CScheckUpdate.do?csNo="+csNo+"&csCheck="+csCheck+"",
+			success:function(updateCheck){
+				console.log(updateCheck);
+			
+				if(updateCheck==1){
+					let btn = $("<button>").addClass("check").addClass("cancel");
+					btn.html("취소");
+					btn.attr("onclick", "csCheck(this, "+csNo+", 1)");
+					$(obj).parent().append(btn);
+					$(obj).remove();
+				}
+				else if(updateCheck==0){
+					let btn = $("<button>").addClass("check").addClass("complete");
+					btn.html("완료");
+					btn.attr("onclick", "csCheck(this, "+csNo+", 0)");
+					$(obj).parent().append(btn);
+					$(obj).remove();
+				}
+			}
+		})
 	}
 </script>
 </html>

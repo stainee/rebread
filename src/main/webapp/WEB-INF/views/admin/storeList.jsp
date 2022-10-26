@@ -68,7 +68,6 @@
 	})
 	
 	function viewStoreInfo(storeNo){
-		console.log(storeNo);
 		window.open("/storeDetail.do?storeNo="+storeNo+"", "가게정보", "width=800px, height=600px, top=100px, left=250px");
 	}
 	function viewAccountInfo(storeNo){

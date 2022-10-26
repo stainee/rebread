@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="cs">
+	<select id="selectAllCS" resultType="cs">
+		select
+			cs_no as csNo,
+			member_no as memberNo,
+			cs_category as csCategory,
+			cs_content as csContent,
+			cs_check as csCheck
+		from cs
+	</select>
+	<update id="updateCheck" parameterType="map">
+		update cs
+			set cs_check = #{csCheck}
+		where cs_no = #{csNo}
+	</update>
+	<select id="selectOneCheck" parameterType="Integer" resultType="Integer">
+		select 
+			cs_check as csCheck 
+		from cs
+		where cs_no = #{csNo}
+	</select>
+</mapper>

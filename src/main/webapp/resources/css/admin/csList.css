@@ -7,6 +7,14 @@
 	width:200px;
 }
 
+.cstbl tr td{
+	text-align:center;
+}
+
+.cstbl tr td:nth-child(3){
+	text-align:left;
+}
+
 .cstbl th:nth-child(1){
 	width:120px;
 }
@@ -39,3 +47,8 @@
 .cstbl .complete{
 	background-color:skyblue;
 }
+
+.cstbl .cancel{
+	background-color:red;
+}
+
