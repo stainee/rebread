@@ -46,8 +46,8 @@
 							<td>${s.storeRegistNum}</td>
 							<td>${s.storeAccount}</td>
 							<td>
-								<button class="info" onclick="viewStoreInfo()">정보</button>
-								<button class="account" onclick="viewAccountInfo()">정산</button>
+								<button class="info" onclick="viewStoreInfo(${s.storeNo})">정보</button>
+								<button class="account" onclick="viewAccountInfo(${s.storeNo})">정산</button>
 							</td>
 						</tr>
 					</c:forEach>
@@ -67,11 +67,12 @@
 		$(".selectList a").eq(index).addClass("index");
 	})
 	
-	function viewStoreInfo(){
-		window.open("/storeDetail.do", "가게정보", "width=800px, height=600px, top=100px, left=250px");
+	function viewStoreInfo(storeNo){
+		console.log(storeNo);
+		window.open("/storeDetail.do?storeNo="+storeNo+"", "가게정보", "width=800px, height=600px, top=100px, left=250px");
 	}
-	function viewAccountInfo(){
-		window.open("/storeAccount.do", "가게정보", "width=800px, height=600px, top=100px, left=250px");
+	function viewAccountInfo(storeNo){
+		window.open("/storeAccount.do?storeNo="+storeNo+"", "가게정보", "width=800px, height=600px, top=100px, left=250px");
 	}
 </script>
 </html>

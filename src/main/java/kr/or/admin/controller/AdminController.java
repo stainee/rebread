@@ -11,12 +11,14 @@ import kr.or.member.model.service.MemberService;
 import kr.or.member.model.vo.Member;
 import kr.or.store.model.service.StoreService;
 import kr.or.store.model.vo.Store;
+import kr.or.store.model.vo.StoreDetail;
 
 @Controller
 public class AdminController {
 	
 	@Autowired
 	private MemberService service;
+	@Autowired
 	private StoreService sservice;
 	
 	@RequestMapping(value="/adminMain.do")
@@ -49,7 +51,9 @@ public class AdminController {
 	}
 	
 	@RequestMapping(value="/storeDetail.do")
-	public String storeDetail() {
+	public String storeDetail(int storeNo, Model model) {
+		StoreDetail sd = sservice.selectOneStore(storeNo);
+		model.addAttribute("sd", sd);
 		return "/admin/storeDetail";
 	}
 	

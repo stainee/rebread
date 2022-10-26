@@ -53,6 +53,21 @@
 	width:138px;
 }
 
+.membertbl #storeRegistNum{
+	background-color:#e2e2e2;
+}
+
+.membertbl #storeRegistNum:focus{
+	outline:none;
+}
+
+.membertbl #storeNo{
+	background-color:#e2e2e2;
+}
+
+.membertbl #storeNo:focus{
+	outline:none;
+}
 .btn_wrap{
 	display:flex;
 	justify-content:center;

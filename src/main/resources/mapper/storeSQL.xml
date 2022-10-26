@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
 <mapper namespace="store">
-   <select id="selectAllStore" resultType="s">
+    <select id="selectAllStore" resultType="s">
    		select
    			store_no as storeNo,
    			member_no as memberNo,
@@ -15,5 +15,21 @@
    			store_phone as storePhone,
    			store_img as storeImg
    		from store
-   </select> 
+   </select>
+   <select id="selectOneStore" resultType="sd" parameterType="Integer">
+   		select
+   			s.store_no as storeNo,
+   			s.member_no as memberNo,
+   			m.member_name as memberName,
+   			s.store_name as storeName,
+   			s.store_addr as storeAddr,
+   			s.store_regist_num as storeRegistNum,
+   			s.store_account as storeAccount,
+   			s.open_time as openTime,
+   			s.close_time as closeTime,
+   			s.store_phone as storePhone,
+   			s.store_img as storeImg
+   		from store s join member m on s.member_no=m.member_no
+   		where s.store_no = #{_parameter}
+   </select>
 </mapper>

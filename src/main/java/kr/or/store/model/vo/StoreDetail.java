@@ -4,12 +4,13 @@ import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 
-@NoArgsConstructor
 @AllArgsConstructor
+@NoArgsConstructor
 @Data
-public class Store {
+public class StoreDetail {
 	private int storeNo;
 	private int memberNo;
+	private String memberName;
 	private String storeName;
 	private String storeContent;
 	private String storeAddr;
