@@ -1,5 +1,8 @@
 package kr.or.account.model.dao;
 
+import java.util.ArrayList;
+import java.util.List;
+
 import org.mybatis.spring.SqlSessionTemplate;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
@@ -15,6 +18,11 @@ public class AccountDao {
 	public int insertOneAccount(Account a) {
 		int result = sqlSession.insert("account.insertOneAccount",a);
 		return result;
+	}
+
+	public ArrayList<Account> selectAccountList(int storeNo) {
+		List list = sqlSession.selectList("account.selectAccountList", storeNo);
+		return (ArrayList<Account>)list;
 	}
 	
 }

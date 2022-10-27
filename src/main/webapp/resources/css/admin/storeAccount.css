@@ -22,6 +22,9 @@
 
 /* 테이블*/
 
+.content_container p{
+	text-align:center;
+}
 .membertbl {
 	margin : 0 auto;
 }
@@ -30,29 +33,16 @@
 	width:200px;
 }
 
-
-.membertbl tr button{
-	border:none;
-	padding:5px 10px 5px 10px;
-	color: white;
-	font-weight:800;
-	border-radius:5px;
-	background-color:skyblue;
-	cursor:pointer;
+.membertbl th:nth-child(n+2){
+	width:250px;
 }
 
-.membertbl td:nth-child(2){
-	width:400px;
-}
-
-.membertbl td input{
-	width:300px;
-	height:30px;
-	border: 1px solid lightgrey;
-	box-sizing:border;
+.membertbl tr td{
 	background-color:white;
 }
-
+.membertbl tr td p{
+	background-color:white;
+}
 
 .btn_wrap{
 	display:flex;
