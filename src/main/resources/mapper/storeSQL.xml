@@ -42,4 +42,14 @@
    			close_time = #{closeTime}
    		where store_no = #{storeNo}
    </update>
+   <select id="selectAllStoreNo" resultType="Integer">
+   		select store_no as storeNo
+   			from store
+   </select>
+   <select id="selectOneStoreAccount" resultType="string" parameterType="Integer">
+   		select
+   			store_account as storeAccount
+   		from store
+   		where store_no = #{_parameter}
+   </select>
 </mapper>

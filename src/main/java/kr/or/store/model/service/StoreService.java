@@ -25,4 +25,5 @@ public class StoreService {
 	public int updateStoreDetail(Store s) {
 		return dao.updateStoreDetail(s);
 	}
+
 }

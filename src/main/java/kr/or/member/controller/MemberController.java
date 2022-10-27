@@ -74,6 +74,7 @@ public class MemberController {
 	//login
 	
 	//joinSuccess이동
+<<<<<<< HEAD
 	
 	@RequestMapping(value="/ceoMain.do")
 	public String ceoMain() {
@@ -99,6 +100,38 @@ public class MemberController {
 	public String ceoStoreSalesInfo() {
 		return "/member/ceoStoreSalesInfo";
 	}
+=======
+<<<<<<< HEAD
+	
+	
+	@RequestMapping(value="/ceoMain.do")
+	public String ceoMain() {
+		return "/member/ceoMain";
+	}
+	@RequestMapping(value = "/updateCeo.do")
+	public String updateCeo(Member m, HttpSession session) {
+		Member member = service.updateCeo(m);
+		if(member != null) {
+			session.setAttribute("m", member);
+			return "redirect:/ceoMain";
+		}else {
+			return "redirect:/";
+		}
+	}
+	
+	@RequestMapping(value="/ceoStoreInfo.do")
+	public String ceoStoreInfo() {
+		return "/member/ceoStoreInfo";
+	}
+	
+	@RequestMapping(value="/ceoStoreSalesInfo.do")
+	public String ceoStoreSalesInfo() {
+		return "/member/ceoStoreSalesInfo";
+	}
+	
+=======
+>>>>>>> branch 'master' of https://github.com/stainee/rebread.git
+>>>>>>> branch 'master' of https://github.com/stainee/rebread.git
 }
 
 
