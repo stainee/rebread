@@ -7,6 +7,7 @@
 <meta charset="UTF-8">
 <title>Insert title here</title>
 <script src="https://js.tosspayments.com/v1"></script>
+<link rel="stylesheet" href="/resources/css/font/font.css">
 <link rel="stylesheet" href="/resources/css/order/order.css">
 </head>
 <body>
@@ -20,7 +21,7 @@
                 <div class="deliver-product">
                     <table>
                         <tr>
-                            <td rowspan="2"><img src="img/koalaLogo.png" style="margin: 10px;"></td>
+                            <td rowspan="2"><img src="/resources/img/common/blog.png" style="margin: 10px;"></td>
                             <td style="width: 80%;">빵이름길고길고길어</td>
                             <td style="width: 15%;">1개</td>
                         </tr>
@@ -67,8 +68,22 @@
                     </div>
                 </div>
                 <div class="pay-method" style="width: 40%;">
-                    <div>결제수단선택</div>
-                    <button id="pay-card">신용카드</button>
+                    <p>결제수단선택</p>
+                    <div id="pay-card">
+                    	<div class="pay-card-wrap">
+                    		<img src="/resources/img/order/card.svg">
+                    		<div class="pay-card-comment">신용/체크카드</div>
+                    	</div>
+                    </div>
+                    <div id="pay-card">
+                    	<div class="pay-card-wrap">
+                    		<img src="/resources/img/order/card.svg">
+                    		<div class="pay-card-comment">다른 카드</div>
+                    	</div>
+                    </div>
+                    <button id="pay-card">
+                    	<div class="pay-card-comment">결제하기</div>
+                    </button>
                 </div>
 
             </div>
@@ -76,6 +91,9 @@
     </div>
     
 	<script>
+		
+	
+	
     	var clientKey = 'test_ck_YPBal2vxj81njJPnPLe35RQgOAND'
     	var tossPayments = TossPayments(clientKey) // 클라이언트 키로 초기화하기
     	
@@ -83,14 +101,32 @@
     	payCard.on("click", function(){
 	    	tossPayments.requestPayment('카드', { // 결제 수단 파라미터
 	    		  // 결제 정보 파라미터
-	    		  amount: 1000,
-	    		  orderId: 'qAEh-NXsikEBPnZu_ehkn',
+	    		  amount: 100,
+	    		  orderId: 'qAEh-NXsikEBPnZu_ehkb',
 	    		  orderName: '토스 티셔츠 외 2건',
 	    		  customerName: '박토스',
-	    		  successUrl: 'http://localhost:8888/success',
-	    		  failUrl: 'http://localhost:8888/fail',
+	    		  successUrl: 'http://192.168.10.25:8888/success.do',
+	    		  failUrl: 'http://192.168.10.25:8888/fail',
 	    	})
     	});
+    	
+    	
+    	
+    	
+    	
+    	
+    	
+    	
+    	
+    	
+    	
+    	
+    	
+    	
+    	
+    	
+    	
+    	
 	</script>
     
    	<jsp:include page="/WEB-INF/views/common/footer.jsp"/>
