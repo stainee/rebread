@@ -54,4 +54,46 @@ public class MemberController {
 	public String chatting() {
 		return "/member/csChat";
 	}
+	//joinStep이동
+	@RequestMapping(value = "/joinStep.do")
+	public String joinStep() {
+		return "/member/joinStep";
+	};
+	//joinFrm이동
+	@RequestMapping(value = "/joinFrm.do")
+	public String joinFrm() {
+		return "member/joinFrm";
+	}
+	//loginFrm이동
+	
+	//login
+	
+	//joinSuccess이동
 }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
