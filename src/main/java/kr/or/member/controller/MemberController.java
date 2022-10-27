@@ -1,5 +1,7 @@
 package kr.or.member.controller;
 
+import javax.servlet.http.HttpSession;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -65,10 +67,38 @@ public class MemberController {
 		return "member/joinFrm";
 	}
 	//loginFrm이동
-	
+	@RequestMapping(value = "/loginFrm.do")
+	public String loginFrm() {
+		return "member/loginFrm";
+	}
 	//login
 	
 	//joinSuccess이동
+	
+	@RequestMapping(value="/ceoMain.do")
+	public String ceoMain() {
+		return "/member/ceoMain";
+	}
+	@RequestMapping(value = "/updateCeo.do")
+	public String updateCeo(Member m, HttpSession session) {
+		Member member = service.updateCeo(m);
+		if(member != null) {
+			session.setAttribute("m", member);
+			return "redirect:/ceoMain";
+		}else {
+			return "redirect:/";
+		}
+	}
+	
+	@RequestMapping(value="/ceoStoreInfo.do")
+	public String ceoStoreInfo() {
+		return "/member/ceoStoreInfo";
+	}
+	
+	@RequestMapping(value="/ceoStoreSalesInfo.do")
+	public String ceoStoreSalesInfo() {
+		return "/member/ceoStoreSalesInfo";
+	}
 }
 
 

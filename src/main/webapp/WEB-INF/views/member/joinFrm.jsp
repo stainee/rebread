@@ -6,6 +6,8 @@
 <meta charset="UTF-8">
     <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
     <link rel="stylesheet" href="/resources/css/member/joinFrm.css">
+    <link rel="stylesheet" href="/resources/css/common/header.css">
+    <link rel="stylesheet" href="/resources/css/common/footer.css">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -33,7 +35,7 @@
 						</td>
 					</tr>
 					<tr>
-						<th>비빌번호<img src="img/pilsu.gif"></th>
+						<th>비빌번호<img src="/resources/img/member/pilsu.gif"></th>
 						<td><input type="password" name="memberPw" id="pw"> 
 						<span id="eye1" class="eye">SHOW</span> <span id="pwCheck"></span>
 							<div>
@@ -79,7 +81,7 @@
 						</td>
 					</tr>
 					<tr>
-						<th>가입목적<img src="/resources/img/member/pilsu.gif"></th>
+						<th>회원유형<img src="/resources/img/member/pilsu.gif"></th>
 						<td>
 						<select class="select" name="memberGrade">
 								<option selected class="sOpt">선택</option>

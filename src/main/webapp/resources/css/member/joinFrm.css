@@ -1,10 +1,14 @@
 @charset "UTF-8";
+form{
+	margin-bottom: 200px;
+}
 .page-content{
     width: 1030px;
     margin: 0 auto;
     margin-top: 80px;
     height: 2300px;
     font-family: 'Noto Sans KR', sans-serif;
+    padding-bottom: 50px;
 }
 .content-title{
     text-align: center;
@@ -94,6 +98,7 @@ th{
 #joinUs{
     text-align: center;
     margin-top: 70px;
+    margin-bottom: 200px;
 }
 #joinUs>input{
     width: 240px;
