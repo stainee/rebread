@@ -71,9 +71,7 @@ public class MemberController {
 	//login
 	
 	//joinSuccess이동
-<<<<<<< HEAD
-	
-	
+
 	@RequestMapping(value="/ceoMain.do")
 	public String ceoMain() {
 		return "/member/ceoMain";
@@ -98,9 +96,7 @@ public class MemberController {
 	public String ceoStoreSalesInfo() {
 		return "/member/ceoStoreSalesInfo";
 	}
-	
-=======
->>>>>>> branch 'master' of https://github.com/stainee/rebread.git
+
 }
 
 
