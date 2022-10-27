@@ -32,6 +32,15 @@ public class MemberService {
 	public int deleteOneMember(int memberNo) {
 		return dao.deleteOneMember(memberNo);
 	}
+
+	@Transactional
+	public Member updateCeo(Member m) {
+		int result = dao.updateCeo(m);
+		if(result>0) {
+			Member member = dao.selectOneCeo(m);
+		}
+		return null;
+	}
 	
 	
 	
