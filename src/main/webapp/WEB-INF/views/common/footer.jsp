@@ -59,4 +59,4 @@
     </footer> 
 </div>
 
-<script src="/resources//js/common/footer.js"></script>
+<script src="/resources/js/common/footer.js"></script>

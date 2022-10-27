@@ -1,0 +1,45 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="member">
+    <select id="selectAllMember" resultType="m">
+	  	select
+	  		member_no as memberNo,
+	  		member_id as memberId,
+	  		member_pw as memberPw,
+	  		member_name as memberName,
+	  		member_addr as memberAddr,
+	  		member_phone as memberPhone,
+	  		member_mail as memberMail,
+	  		member_grade as memberGrade, 
+	  		member_mileage as memberMileage
+	  	from member
+  </select>
+  <select id="selectOneMember" resultType="m" parameterType="Integer">
+	  	select
+	  		member_no as memberNo,
+	  		member_id as memberId,
+	  		member_name as memberName,
+	  		member_addr as memberAddr,
+	  		member_phone as memberPhone,
+	  		member_mail as memberMail,
+	  		member_grade as memberGrade, 
+	  		member_mileage as memberMileage
+	  	from member where member_no= #{_parameter}
+  </select>
+  <update id="updateOneMember" parameterType="m">
+  		update member
+  			set member_id = #{memberId},
+  			member_name = #{memberName},
+  			member_addr = #{memberAddr},
+  			member_phone= #{memberPhone},
+  			member_mail = #{memberMail},
+  			member_grade = #{memberGrade},
+  			member_mileage= #{memberMileage}
+  		where member_no = #{memberNo}
+  </update>
+  
+  <delete id="deleteOneMember" parameterType="Integer">
+  		delete from member
+  		where member_no = #{_parameter}
+  </delete>
+</mapper>

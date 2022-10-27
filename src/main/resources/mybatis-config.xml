@@ -1,12 +1,15 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE configuration PUBLIC "-//mybatis.org//DTD Config 3.0//EN" "http://mybatis.org/dtd/mybatis-3-config.dtd" >
 <configuration>
-	<settings>
-		<!-- null값이 발생하면 빈칸("")이 아닌 null로 처리 (대소문자 주의) -->
-		<setting name="jdbcTypeForNull" value="NULL"/>
-	</settings>
-	<typeAliases>
-		<!-- 별칭설정 -->
-		<typeAlias type="kr.or.order.model.vo.Order" alias="o" />
-	</typeAliases>
+<settings>
+	<!--  null 값이 발생하면 빈칸이 아닌 null로 처리한다 -->
+	<setting name="jdbcTypeForNull" value="NULL"/>
+</settings>
+<typeAliases>
+	<typeAlias type="kr.or.member.model.vo.Member" alias="m"></typeAlias>
+	<typeAlias type="kr.or.store.model.vo.Store" alias="s"></typeAlias>
+	<typeAlias type="kr.or.store.model.vo.StoreDetail" alias="sd"></typeAlias>
+	<typeAlias type="kr.or.cs.model.vo.CS" alias="cs"></typeAlias>
+	<typeAlias type="kr.or.account.model.vo.Account" alias="a"></typeAlias>
+</typeAliases>
 </configuration>

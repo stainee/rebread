@@ -1,11 +1,39 @@
 package kr.or.member.controller;
 
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
+import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.ResponseBody;
+
+import kr.or.member.model.service.MemberService;
+import kr.or.member.model.vo.Member;
 
 @Controller
 public class MemberController {
 
+	@Autowired
+	private MemberService service;
+	
+	@RequestMapping(value="/memberModify.do")
+	public String memberModify(int memberNo,Model model) {
+		Member m = service.selectOneMember(memberNo);
+		model.addAttribute("m",m);
+		return "/admin/memberModify";
+	}
+	
+	@ResponseBody
+	@RequestMapping(value="/memberUpdate.do", produces = "application/json;charset=utf-8")
+	public void memberUpdate(Member m) {
+		int result = service.updateOneMember(m);
+		
+	}
+	@ResponseBody
+	@RequestMapping(value="/memberDelete.do", produces = "application/json;charset=utf-8")
+	public void memberDelete(int memberNo) {
+		int result = service.deleteOneMember(memberNo);
+		
+	}
 	
 	@RequestMapping(value="/brandIntro.do")
 	public String brandIntro() {
@@ -17,7 +45,6 @@ public class MemberController {
 		return "/member/customerService";
 	}
 	
-
 	@RequestMapping(value="/memberMain.do")
 	public String memberMain() {
 		return "member/memberMain";
@@ -27,4 +54,46 @@ public class MemberController {
 	public String chatting() {
 		return "/member/csChat";
 	}
+	//joinStep이동
+	@RequestMapping(value = "/joinStep.do")
+	public String joinStep() {
+		return "/member/joinStep";
+	};
+	//joinFrm이동
+	@RequestMapping(value = "/joinFrm.do")
+	public String joinFrm() {
+		return "member/joinFrm";
+	}
+	//loginFrm이동
+	
+	//login
+	
+	//joinSuccess이동
 }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

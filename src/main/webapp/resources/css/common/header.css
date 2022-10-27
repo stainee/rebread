@@ -1,5 +1,3 @@
-@charset "UTF-8";
-
 * {
     margin: 0;
     padding: 0;
@@ -38,6 +36,10 @@ header a {
     display: flex;
     justify-content: center;
     min-width: 780px; /* 이 값은 알아서 정하시고 ~*/
+    position: absolute;
+    left: 50%;
+    top:40px;
+    transform: translate(-50%, -50%);
 }
 .header-mid img {
     width: 200px;
@@ -77,8 +79,9 @@ header a {
 }
 .header-wrap2 {
     position: sticky;
+    z-index: 999;
     top: 0;
-    background-color: #fefaeea4;
+    background-color: #fefaeedb;
     width: 100%;
 }
 
