@@ -11,7 +11,9 @@
 	width:120px;
 }
 
-
+.sellertbl tr td{
+	text-align:center;
+}
 .sellertbl tr button{
 	border:none;
 	padding:5px 10px 5px 10px;

@@ -13,6 +13,7 @@ public class Store {
 	private String storeName;
 	private String storeContent;
 	private String storeAddr;
+	private String storeRegistNum;
 	private String storeAccount;
 	private String openTime;
 	private String closeTime;

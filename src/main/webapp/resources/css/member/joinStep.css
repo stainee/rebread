@@ -1,0 +1,124 @@
+@charset "UTF-8";
+.page-content{
+    width: 500px;
+    margin: 0 auto;
+    margin-top: 200px;
+    padding: 55px 45px;
+    box-shadow: rgba(17, 17, 26, 0.1) 0px 1px 0px, rgba(17, 17, 26, 0.1) 0px 8px 24px, rgba(17, 17, 26, 0.1) 0px 16px 48px;
+    border-radius: 20px;
+}
+.content-header>div:first-child{
+    font-family: 'Noto Sans KR', sans-serif;
+    margin-top: 20px;
+    font-size: 30px;
+    color: #785c37;
+    text-align: center;
+    font-weight: 600;
+}
+.content-header>div:last-child{
+    font-family: 'Noto Sans KR', sans-serif;
+    font-size: 32px;
+    font-weight: 600;
+    color: #555555;
+    text-align: center;
+    margin-top: -5px;
+    margin-bottom: 50px;
+}
+.benefit>h3{
+    margin: 10px 0;
+    color: #555555;
+    font-size: 20px;
+}
+.benefit{
+    margin-bottom: 30px;
+}
+.bene-content{
+    width: 500px;
+    margin: 0 auto;
+    margin: 40px 0;
+    display: flex;
+    justify-content: space-between;
+}
+.plus>img{
+    width: 30px;
+    height: 30px;
+}
+.plus{
+    width: 10%;
+    text-align: center;
+    line-height: 156px;
+}
+.pig{
+    width: 225px;
+}
+.pigbox{
+    text-align: center;
+    height: 120px;
+    line-height: 120px;
+}
+.men{
+    width: 225px;
+}
+.memBox{
+    width: 90px;
+    height: 90px;
+    margin: 0 auto;
+    margin-top: 15px;
+    margin-bottom: 15px;
+    border-radius: 20px;
+    border: 3px solid #f4791f;
+}
+.memBox>p{
+    font-family:'Noto Sans KR', sans-serif;
+    color: #f4791f;
+    font-size: 28px;
+    text-align: center;
+    font-weight: 600;
+    margin: 0;
+}
+.pp>p{
+    text-align: center;
+    font-family: 'Noto Sans KR', sans-serif;
+    color: #555555;
+}
+.signBtn button{
+    width: 500px;
+    height: 60px;
+    border-radius: 10px;
+    background-color: #785c37;
+    margin-bottom: 15px;
+    border: none;
+    font-size: 20px;
+    color: #fff;
+    font-family: 'Noto Sans KR', sans-serif;
+    cursor: pointer;
+}
+.signBtn button:hover{
+    background-color: #6d5331;
+    transition: 0.5s;
+}
+.signKaKao{
+    width: 500px;
+    height: 50px;
+    border: 2px solid #fac800;
+    border-radius: 10px;
+    cursor: pointer;
+    text-align: center;
+    line-height: 50px;
+    font-weight: 600;
+    position: relative;
+}
+.signKaKao:hover{
+    background-color:#fac800d0;
+    transition: 0.6s;
+}
+.signKaKao>span{
+    font-size: 18px;
+    color: #555555;
+    height: 30px;
+}
+.signKaKao img{
+    position: absolute;
+    left: 122px;
+    top:8px
+}
