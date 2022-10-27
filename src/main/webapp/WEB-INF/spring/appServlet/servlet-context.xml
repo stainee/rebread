@@ -51,6 +51,9 @@
 	<context:component-scan base-package="kr.or.order"/>
 	<context:component-scan base-package="kr.or.store"/>
 	<context:component-scan base-package="kr.or.cs"/>
+	<context:component-scan base-package="kr.or.payment"/>
+	<context:component-scan base-package="kr.or.account"/>
+	
 	<!--  파일업로드 객체 생성 -->
 	<beans:bean id="multipartResolver" class="org.springframework.web.multipart.commons.CommonsMultipartResolver">
 		<beans:property name="maxUploadSize" value="10485760"/>

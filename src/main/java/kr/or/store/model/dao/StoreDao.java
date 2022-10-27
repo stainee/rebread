@@ -29,4 +29,14 @@ public class StoreDao {
 		int result = sqlSession.update("store.updateStoreDetail", s);
 		return result;
 	}
+
+	public ArrayList<Integer> selectAllStoreNo() {
+		List list = sqlSession.selectList("store.selectAllStoreNo");
+		return (ArrayList<Integer>)list;
+	}
+
+	public String selectOneStoreAccount(int storeNo) {
+		String account = sqlSession.selectOne("store.selectOneStoreAccount", storeNo);
+		return account;
+	}
 }
