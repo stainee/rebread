@@ -31,4 +31,20 @@ public class MemberDao {
 	public int deleteOneMember(int memberNo) {
 		return sqlSession.delete("member.deleteOneMember", memberNo);
 	}
+
+	public Member selectOneCeo(Member member) {
+		Member m = sqlSession.selectOne("member.selectOneCeo",member);
+		return m;
+	}
+
+	public int updateCeo(Member m) {
+		int result = sqlSession.update("member.updateCeo",m);
+		return result;
+	}
+	
+	//로그인
+	public Member loginMember(Member member) {
+		Member m = sqlSession.selectOne("member.loginMember", member);
+		return m;
+	}
 }
