@@ -41,4 +41,10 @@ public class MemberDao {
 		int result = sqlSession.update("member.updateCeo",m);
 		return result;
 	}
+	
+	//로그인
+	public Member loginMember(Member member) {
+		Member m = sqlSession.selectOne("member.loginMember", member);
+		return m;
+	}
 }

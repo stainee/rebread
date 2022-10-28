@@ -1,6 +1,7 @@
 package kr.or.member.controller;
 
 import javax.servlet.http.HttpSession;
+import javax.xml.ws.Response;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -72,8 +73,30 @@ public class MemberController {
 		return "member/loginFrm";
 	}
 	//login
-	
+	@RequestMapping(value = "/login.do")
+	public String login(Member member, HttpSession session) {
+		Member m = service.loginMember(member);
+		if(m!=null) {
+			session.setAttribute("m", m);
+			session.setAttribute("errMsg", "");
+			return "redirect:/";
+		}else {
+			session.setAttribute("errMsg", "아이디 또는 패스워드가 일치하지 않습니다.");
+			return "member/loginFrm";
+		}
+	}
+	//logout
+	@RequestMapping(value = "/logout.do")
+	public String logOut(HttpSession session) {
+		session.invalidate();
+		return "redirect:/";
+	}
 	//joinSuccess이동
+	@RequestMapping(value = "joinSuccess")
+	public String joinSuccess() {
+		return "member/joinSuccess";
+	}
+	
 	@RequestMapping(value="/ceoMain.do")
 	public String ceoMain() {
 		return "/member/ceoMain";
@@ -88,19 +111,16 @@ public class MemberController {
 			return "redirect:/";
 		}
 	}
-	
 	@RequestMapping(value="/ceoStoreInfo.do")
 	public String ceoStoreInfo() {
 		return "/member/ceoStoreInfo";
 	}
-	
 	@RequestMapping(value="/ceoStoreSalesInfo.do")
 	public String ceoStoreSalesInfo() {
 		return "/member/ceoStoreSalesInfo";
 	}
+	
 }
-
-
 
 
 

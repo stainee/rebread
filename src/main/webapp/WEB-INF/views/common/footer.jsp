@@ -11,7 +11,7 @@
         </div>
         <div id="social">
             <a href="#"><img src="/resources/img/common/kakaoicon.png"></a>
-            <a href="#"><img src="/resources/img/common/instaricon.png"></a>
+            <a href="www.instargram.com"><img src="/resources/img/common/instaricon.png"></a>
         </div>
         <div class="footer-top">
             <div class="foot-left">

@@ -42,6 +42,12 @@ public class MemberService {
 		return null;
 	}
 	
+	//로그인
+	public Member loginMember(Member member) {
+		Member m = dao.loginMember(member);
+		return m;
+	}
+	
 	
 	
 }

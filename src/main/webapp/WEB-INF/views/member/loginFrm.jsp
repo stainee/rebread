@@ -1,5 +1,10 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
+<%
+	String errMsg = (String)session.getAttribute("errMsg");
+	if(errMsg == null) errMsg ="";
+	session.invalidate();
+ %>
 <!DOCTYPE html>
 <html>
 <head>
@@ -37,6 +42,7 @@
 				<div>로 그 인</div>
 			</div>
 			<div class="content">
+				<p id="errMsg" style="color:red; text-align:center; font-size: 13px;"><%=errMsg%></p>
 				<form action="/login.do" method="post">
 				<div class="idpw">
 					<div id="id" class="memberIn">
@@ -45,7 +51,7 @@
 					</div>
 					<div id="pw" class="memberIn">
 						<span>PW</span>
-						<input type="password" name="memebrPw">
+						<input type="password" name="memberPw">
 					</div>
 				</div>
 					<div id="search">
@@ -63,7 +69,10 @@
 				<div class="join">
 					<p>아직 회원이 아니신가요?</p>
 					<p>고객님을 위한 다양한 해택이 준비되어 있습니다.</p>
-					<span><a href="/joinStep.do">회원가입</a></span>
+					<span>
+						<a href="/joinStep.do">회원가입</a>
+					</span>
+					
 				</div>
 			</div>
 		</div>

@@ -42,4 +42,37 @@
   		delete from member
   		where member_no = #{_parameter}
   </delete>
+  
+  <!-- 로그인 -->
+  <select id="loginMember" parameterType="m" resultType="m">
+  		select
+	  		member_no as memberNo,
+	  		member_id as memberId,
+	  		member_pw as memberPw,
+	  		member_name as memberName,
+	  		member_addr as memberAddr,
+	  		member_phone as memberPhone,
+	  		member_mail as memberMail,
+	  		member_grade as memberGrade, 
+	  		member_mileage as memberMileage
+	  	from member where member_id = #{memberId} and member_pw =#{memberPw}
+  </select>
+  
 </mapper>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
