@@ -85,6 +85,7 @@ public class MemberController {
 			return "member/loginFrm";
 		}
 	}
+	
 	//logout
 	@RequestMapping(value = "/logout.do")
 	public String logOut(HttpSession session) {
