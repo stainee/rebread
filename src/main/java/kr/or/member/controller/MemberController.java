@@ -49,6 +49,14 @@ public class MemberController {
 	public String memberMain() {
 		return "member/memberMain";
 	}
+	@RequestMapping(value="/memberOrderList.do")
+	public String memberOrderList() {
+		return "member/memberOrderList";
+	}
+	@RequestMapping(value="/memberReview.do")
+	public String memberReview() {
+		return "member/memberReview";
+	}
 	
 	@RequestMapping(value="/chatting.do")
 	public String chatting() {
