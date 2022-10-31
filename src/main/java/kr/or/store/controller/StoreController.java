@@ -19,4 +19,5 @@ public class StoreController {
 	public void storeUpdate(Store s) {
 		int result = sservice.updateStoreDetail(s);
 	}
+		
 }

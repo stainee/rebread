@@ -18,7 +18,7 @@
         <div class="left_container">
             <div class="memberInfo">
                 <p>[사장]</p>
-                <p>최선우님</p>
+                <p>${sessionScope.m.memberName }<p>님</p></p>
             </div>
             <div class="selectList">
                 <ul>
@@ -37,38 +37,39 @@
                     <div class="my_info_title">
                         <div class="title">기본 회원 정보</div>
                         <div class="title_btn_box">
-                            <button type="submit" class="edit_btn">수정</button>
+                            <div class="edit_btn">수정</div>
+                            <button type="submit" class="edit_complete_btn">완료</button>
                         </div>
                     </div>
                     <div class="user_info">
-                    	<input type="hidden" name="memberNo" value="${m.memberNo }">
+                    	<input type="hidden" name="memberNo" value="${sessionScope.m.memberNo }">
                         <div class="user_info_title">이름</div>
                         <div class="user_info_content">
-                            <input type="text" name="memberName" value="${m.memberName }" disabled>
+                            <input type="text" name="memberName" value="${sessionScope.m.memberName }" readonly>
                         </div>
                     </div>
                     <div class="user_info">
                         <div class="user_info_title">이메일</div>
                         <div class="user_info_content">
-                            <input type="text" name="memberMail" value="${m.memberMail }" disabled>
+                            <input type="text" name="memberMail" value="${sessionScope.m.memberMail }" readonly>
                         </div>
                     </div>
                     <div class="user_info">
                         <div class="user_info_title">비밀번호</div>
                         <div class="user_info_content">
-                            <input type="password" name="memberPw" value="${m.memberPw }" disabled>
+                            <input type="password" name="memberPw" value="${sessionScope.m.memberPw }" readonly>
                         </div>
                     </div>
                     <div class="user_info">
                         <div class="user_info_title">휴대폰 번호</div>
                         <div class="user_info_content">
-                            <input type="text" name="memberPhone" value="${m.memberPhone }" disabled>
+                            <input type="text" name="memberPhone" value="${sessionScope.m.memberPhone }" readonly>
                         </div>
                     </div>
                 </div>
                 </form>
                 <div class="footer_box">
-                    <button class="footer_box_btn">회원 탈퇴</button>
+                    <button class="footer_box_btn" onclick="deleteMember(${sessionScope.m.memberNo})">회원 탈퇴</button>
                 </div>
             </div>
         </div>
@@ -88,28 +89,7 @@
 			e.stopPropagation();
 		});
 	selectList.eq(0).click();
-
 	
-	$(".edit_btn").on("click",function(){
-		const memberName = $("#memberName").val();
-		const memberMail = $("#memberMail").val();
-		const memberPw = $("#memberPw").val();
-		const memberPhone = $("#memberPhone").val();
-		
-		$.ajax({
-			url:"/ceoUpdate.do",
-			data:{
-				memberName:memberName,
-				memberMail:memberMail,
-				memberPw:memberPw,
-				memberPhone:memberPhone,
-			},
-			success:function(){
-				opener.location.reload();
-				//window.close();
-			}
-		})
-	})
 </script>
 <script src="resources/js/member/ceoMain.js"></script>
 </html>
