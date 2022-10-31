@@ -41,4 +41,6 @@ public class MemberDao {
 		int result = sqlSession.update("member.updateCeo",m);
 		return result;
 	}
+
+	
 }

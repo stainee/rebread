@@ -83,4 +83,9 @@ public class AdminController {
 		model.addAttribute("list", list);
 		return "/admin/storeAccount";
 	}
+	
+	@RequestMapping(value = "/donateDetail.do")
+	public String donateDetail() {
+		return "/admin/donateDetail";
+	}
 }
