@@ -47,7 +47,6 @@ public class MemberDao {
 		Member m = sqlSession.selectOne("member.loginMember", member);
 		return m;
 	}
-
 	public Member idCheck(Member m) {
 		return sqlSession.selectOne("member.idCheck", m);
 	}
@@ -55,4 +54,5 @@ public class MemberDao {
 	public int insertMember(Member m) {
 		return sqlSession.insert("member.insertMember", m);
 	}
+
 }

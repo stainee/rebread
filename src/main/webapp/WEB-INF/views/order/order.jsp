@@ -17,9 +17,9 @@
             <div class="deliver-wrap" style="width: 40%;">
                 <p>배달내역</p>
                 
-                <!-- for문 시작 -->
                 <div class="deliver-product">
                     <table>
+                		<!-- for문 시작 -->
                         <tr>
                             <td rowspan="2"><img src="/resources/img/common/blog.png" style="margin: 10px;"></td>
                             <td style="width: 80%;">빵이름길고길고길어</td>
@@ -29,9 +29,9 @@
                             <td style="color: #cbcbcb; font-size: 0.9em;">설명설명설명설명설명설명</td>
                             <td style="color: #cbcbcb; font-size: 0.9em;">20000원</td>
                         </tr>
+		                <!-- for문 종료 -->
                     </table>
                 </div>
-                <!-- for문 종료 -->
 
                 <div class="product-total">
                     <div class="one">
@@ -89,24 +89,35 @@
             </div>
         </div>
     </div>
-    
+    <input type="hidden" name="memberId" value="${sessionScope.m.memberId }">
 	<script>
-		
-	
-	
     	var clientKey = 'test_ck_YPBal2vxj81njJPnPLe35RQgOAND'
     	var tossPayments = TossPayments(clientKey) // 클라이언트 키로 초기화하기
     	
+    	// orderId에 들어갈 현재시간
+    	var today = new Date();
+    	
+    	var year = today.getFullYear();
+    	var month = ('0' + (today.getMonth() + 1)).slice(-2);
+    	var day = ('0' + today.getDate()).slice(-2);
+    	
+    	var hours = ('0' + today.getHours()).slice(-2); 
+    	var minutes = ('0' + today.getMinutes()).slice(-2);
+    	var seconds = ('0' + today.getSeconds()).slice(-2); 
+    	
+    	var todayString = year+month+day+hours+minutes+seconds;
+    	
     	const payCard = $("#pay-card");
+    	const memberId = $("[name=memberId]").val();
     	payCard.on("click", function(){
 	    	tossPayments.requestPayment('카드', { // 결제 수단 파라미터
 	    		  // 결제 정보 파라미터
-	    		  amount: 100,
-	    		  orderId: 'qAEh-NXsikEBPnZu_ehkb',
+	    		  amount: price,
+	    		  orderId: memberId+'-'+todayString,
 	    		  orderName: '토스 티셔츠 외 2건',
 	    		  customerName: '박토스',
-	    		  successUrl: 'http://192.168.10.25:8888/success.do',
-	    		  failUrl: 'http://192.168.10.25:8888/fail',
+	    		  successUrl: 'http://localhost:8888/success.do',
+	    		  failUrl: 'http://localhost:8888/fail',
 	    	})
     	});
     	

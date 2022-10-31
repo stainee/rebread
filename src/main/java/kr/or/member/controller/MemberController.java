@@ -52,6 +52,14 @@ public class MemberController {
 	public String memberMain() {
 		return "member/memberMain";
 	}
+	@RequestMapping(value="/memberOrderList.do")
+	public String memberOrderList() {
+		return "member/memberOrderList";
+	}
+	@RequestMapping(value="/memberReview.do")
+	public String memberReview() {
+		return "member/memberReview";
+	}
 	
 	@RequestMapping(value="/chatting.do")
 	public String chatting() {
@@ -127,29 +135,42 @@ public class MemberController {
 	
 	
 	
+	
+	// ceoMain 이동 (판매자 정보)
 	@RequestMapping(value="/ceoMain.do")
-	public String ceoMain() {
-		return "/member/ceoMain";
+	public String ceoMain(Member member,Model model) {
+		Member m = service.selectOneCeo(member);
+		if(m!=null) {
+			model.addAttribute("m",m);
+			return "member/ceoMain";
+		}else {
+			System.out.println(member);
+			return "redirect:/";
+		}
 	}
+	
+	// 판매자 정보 수정
 	@RequestMapping(value = "/updateCeo.do")
-	public String updateCeo(Member m, HttpSession session) {
+	public String updateCeo(Member m) {
 		Member member = service.updateCeo(m);
 		if(member != null) {
-			session.setAttribute("m", member);
-			return "redirect:/ceoMain";
+			return "member/ceoMain";
 		}else {
 			return "redirect:/";
 		}
 	}
+	
+	// ceoStoreInfo 이동 (가게 정보)
 	@RequestMapping(value="/ceoStoreInfo.do")
 	public String ceoStoreInfo() {
 		return "/member/ceoStoreInfo";
 	}
+	
+	// ceoStoreSalesInfo 이동 (판매 정보 관리)
 	@RequestMapping(value="/ceoStoreSalesInfo.do")
 	public String ceoStoreSalesInfo() {
 		return "/member/ceoStoreSalesInfo";
 	}
-	
 }
 
 

@@ -1,5 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
+    <%@taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
 <!DOCTYPE html>
 <html>
 <head>
@@ -31,7 +32,7 @@
         <div class="right_container">
             <div class="content_container">
                 <div class="navi_box">회원 정보 수정</div>
-                <form action="/updateCeo.do" method="post" name="updateCeoFrm">
+                <form action="/updateCeo.do" method="post">
                 <div class="my_info">
                     <div class="my_info_title">
                         <div class="title">기본 회원 정보</div>
@@ -40,28 +41,28 @@
                         </div>
                     </div>
                     <div class="user_info">
-                    	<input type="hidden" name="user_no" value="1">
+                    	<input type="hidden" name="memberNo" value="${m.memberNo }">
                         <div class="user_info_title">이름</div>
                         <div class="user_info_content">
-                            <input type="text" name="user_name" value="최선우" disabled>
+                            <input type="text" name="memberName" value="${m.memberName }" disabled>
                         </div>
                     </div>
                     <div class="user_info">
                         <div class="user_info_title">이메일</div>
                         <div class="user_info_content">
-                            <input type="text" name="user_email" value="choisw1206@naver.com" disabled>
+                            <input type="text" name="memberMail" value="${m.memberMail }" disabled>
                         </div>
                     </div>
                     <div class="user_info">
                         <div class="user_info_title">비밀번호</div>
                         <div class="user_info_content">
-                            <input type="password" name="user_password" value="111222" disabled>
+                            <input type="password" name="memberPw" value="${m.memberPw }" disabled>
                         </div>
                     </div>
                     <div class="user_info">
                         <div class="user_info_title">휴대폰 번호</div>
                         <div class="user_info_content">
-                            <input type="text" name="user_phone" value="010-8318-1206" disabled>
+                            <input type="text" name="memberPhone" value="${m.memberPhone }" disabled>
                         </div>
                     </div>
                 </div>
@@ -75,14 +76,19 @@
     <jsp:include page="/WEB-INF/views/common/footer.jsp"/>
 </body>
 <script>
-	let index=0;
-	$(function(){
-		let total = $(".selectList a").length;
-		for(let i=0; i<total; i++){
-			$(".selectList a").eq(i).removeClass("index");
-		}
-		$(".selectList a").eq(index).addClass("index");
-	})
+	const selectList = $(".selectList li");
+		selectList.on("click",function(e){
+			selectList.css("background-color","#f5f2f3").css("color","gray");
+			$(this).css("background-color","lightgray").css("color","black");
+			
+			const index = selectList.index(this);
+			
+			$(".content_container").hide();
+			$(".content_container").eq(index).fadeIn(0.6*1000);
+			e.stopPropagation();
+		});
+	selectList.eq(0).click();
+
 	
 	$(".edit_btn").on("click",function(){
 		const memberName = $("#memberName").val();

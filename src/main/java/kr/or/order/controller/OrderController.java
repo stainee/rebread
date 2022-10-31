@@ -15,6 +15,7 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.http.client.ClientHttpResponse;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
+import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.client.ResponseErrorHandler;
@@ -24,6 +25,7 @@ import com.fasterxml.jackson.databind.JsonNode;
 import com.fasterxml.jackson.databind.ObjectMapper;
 
 import kr.or.order.model.service.OrderService;
+import kr.or.order.model.vo.Order;
 
 @Controller
 public class OrderController {
@@ -53,6 +55,10 @@ public class OrderController {
 	public String order() {
 		return "order/order";
 	}
+	@RequestMapping("/orderDetail.do")
+	public String orderDetail() {
+		return "order/orderDetail";
+	}
 	
 	
 	@RequestMapping("/success.do")
@@ -74,12 +80,13 @@ public class OrderController {
 			JsonNode successNode = responseEntity.getBody();
 			model.addAttribute("orderId",successNode.get("orderId").asText());
 //			String secret = successNode.get("secret").asText();
+//			int result = service.confirmOrder();
 			return "order/orderSuccess";
 		}else {
 			JsonNode failNode = responseEntity.getBody();
 			model.addAttribute("message",failNode.get("message").asText());
 			model.addAttribute("code",failNode.get("code").asText());
-			return "order/orderFail";
+			return "order/orderFail"; 
 		}
 	}
 	
@@ -89,4 +96,27 @@ public class OrderController {
 		model.addAttribute("code",code);
 		return "fail";
 	}
+	
+	@RequestMapping("/orderCancel.do")
+	public String orderCancel(@ModelAttribute Order order, Model model) {
+		String paymentKey = order.getPaymentKey();
+		
+		
+		
+		return "redirect:/orderDetail.do";
+	}
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
 }

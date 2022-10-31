@@ -22,4 +22,5 @@ public class Order {
 	private String ordererAddr;
 	private String ordererPhone;
 	private int ordererMileage;
+	private String paymentKey;
 }
