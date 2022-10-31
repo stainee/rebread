@@ -47,4 +47,6 @@ public class MemberDao {
 		Member m = sqlSession.selectOne("member.loginMember", member);
 		return m;
 	}
+
+	
 }
