@@ -57,6 +57,8 @@ public class MemberController {
 	public String chatting() {
 		return "/member/csChat";
 	}
+	
+	
 	//joinStep이동
 	@RequestMapping(value = "/joinStep.do")
 	public String joinStep() {
@@ -97,6 +99,33 @@ public class MemberController {
 	public String joinSuccess() {
 		return "member/joinSuccess";
 	}
+	//중복된 아이디체크
+	@ResponseBody
+	@RequestMapping
+	public String idCheck(Member m) {
+		Member member = service.idCheck(m);
+		if(member == null) {
+			return "0";
+		}else {
+			return "1";
+		}
+	}
+	//회원가입
+	@RequestMapping(value = "/join.do")
+	public String join(Member m ) {
+		int result = service.insertMember(m);
+		if(result >0) {
+			return "member/loginFrm";
+		}else {
+			return "redirect:/";
+		}
+	}
+	
+	
+	
+	
+	
+	
 	
 	@RequestMapping(value="/ceoMain.do")
 	public String ceoMain() {

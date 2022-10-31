@@ -47,6 +47,15 @@ public class MemberService {
 		Member m = dao.loginMember(member);
 		return m;
 	}
+	//아이디체크
+	public Member idCheck(Member m) {
+		Member member = dao.idCheck(m);
+		return member;
+	}
+	//회원가입
+	public int insertMember(Member m) {
+		return dao.insertMember(m);
+	}
 	
 	
 	
