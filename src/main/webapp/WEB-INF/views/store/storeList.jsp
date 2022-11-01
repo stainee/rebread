@@ -40,6 +40,7 @@
 								<img src="/resources/upload/store/${s.storeImg }">
 							</div>
 							<div class="store-info">
+								<a href="/detailStore.do?storeNo=${s.storeNo}">
 								<div class="store-name">${s.storeName}</div>
 								<div class="store-star">
 									<span id="star">★ ${s.rating}</span> <span>리뷰 3,800</span>
@@ -47,6 +48,7 @@
 								<div class="store-time">
 									<span>운영시간 ${s.openTime} ~ ${s.closeTime }</span>
 								</div>
+								</a>
 							</div>
 							<div class="store-discount">70%</div>
 						</div>
