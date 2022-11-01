@@ -2,10 +2,8 @@ package kr.or.member.controller;
 
 import java.util.ArrayList;
 
-<<<<<<< HEAD
+
 import javax.mail.Store;
-=======
->>>>>>> branch 'master' of https://github.com/stainee/rebread.git
 import javax.servlet.http.HttpSession;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -19,10 +17,6 @@ import org.springframework.web.bind.annotation.ResponseBody;
 import kr.or.member.model.service.MemberService;
 import kr.or.member.model.vo.Member;
 import kr.or.store.model.service.StoreService;
-<<<<<<< HEAD
-=======
-import kr.or.store.model.vo.Store;
->>>>>>> branch 'master' of https://github.com/stainee/rebread.git
 
 @Controller
 public class MemberController {
@@ -213,21 +207,6 @@ public class MemberController {
 		}else {
 			return "redirect:/";
 		}
-	}
-	
-	// ceoStoreInfo 이동 (가게 정보)
-	@RequestMapping(value="/ceoStoreInfo.do")
-	public String ceoStoreInfo(Model model) {
-		ArrayList<Store> list = storeService.selectAllStore();
-		System.out.println(list);
-		model.addAttribute("list",list);
-		return "member/ceoStoreInfo";
-	}
-	
-	// ceoStoreSalesInfo 이동 (판매 정보 관리)
-	@RequestMapping(value="/ceoStoreSalesInfo.do")
-	public String ceoStoreSalesInfo() {
-		return "/member/ceoStoreSalesInfo";
 	}
 }
 
