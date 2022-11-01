@@ -14,4 +14,5 @@ public class Account {
 	private int accountPayment;
 	private String accountDate;
 	private String storeAccount;
+	private String accountTranId;
 }

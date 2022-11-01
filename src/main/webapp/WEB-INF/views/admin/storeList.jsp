@@ -18,6 +18,7 @@
             <div class="memberInfo">
                 <p>[관리자]</p>
                 <p>박예진님</p>
+                <!-- <button onclick="callAPI()">임시API호출버튼</button> -->
             </div>
             <div class="selectList">
                 <ul>
@@ -72,6 +73,12 @@
 	}
 	function viewAccountInfo(storeNo){
 		window.open("/storeAccount.do?storeNo="+storeNo+"", "가게정보", "width=800px, height=600px, top=100px, left=250px");
+	}
+	//이체 API 테스트 메소드
+	function callAPI(){
+		$.ajax({
+			url:"/testCallAPI.do"
+		})
 	}
 </script>
 </html>
