@@ -1,12 +1,14 @@
 package kr.or.store.model.dao;
 
 import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.List;
 
 import org.mybatis.spring.SqlSessionTemplate;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
 
+import kr.or.member.model.vo.Member;
 import kr.or.store.model.vo.Store;
 import kr.or.store.model.vo.StoreDetail;
 
@@ -24,6 +26,11 @@ public class StoreDao {
 		StoreDetail sd = sqlSession.selectOne("store.selectOneStore",storeNo);
 		return sd;
 	}
+	
+	public ArrayList<Store> selectOneStore1(Member m) {
+		List list = sqlSession.selectList("store.selectOneStore1",m);
+		return (ArrayList<Store>) list;
+	}
 
 	public int updateStoreDetail(Store s) {
 		int result = sqlSession.update("store.updateStoreDetail", s);
@@ -39,4 +46,15 @@ public class StoreDao {
 		String account = sqlSession.selectOne("store.selectOneStoreAccount", storeNo);
 		return account;
 	}
+
+	public ArrayList<Store> selectStoreList(HashMap<String, Object> map) {
+		List list = sqlSession.selectList("store.selectStoreList",map);
+		return (ArrayList<Store>) list;
+	}
+
+	public int selectStoreCount() {
+		int totalCount = sqlSession.selectOne("store.totalCount");
+		return totalCount;
+	}
+
 }

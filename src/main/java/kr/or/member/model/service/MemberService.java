@@ -8,6 +8,7 @@ import org.springframework.transaction.annotation.Transactional;
 
 import kr.or.member.model.dao.MemberDao;
 import kr.or.member.model.vo.Member;
+import kr.or.store.model.vo.StorePageData;
 
 @Service
 public class MemberService {
@@ -62,7 +63,5 @@ public class MemberService {
 	public int insertMember(Member m) {
 		return dao.insertMember(m);
 	}
-	
-	
-	
+
 }

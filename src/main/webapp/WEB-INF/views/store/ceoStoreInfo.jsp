@@ -21,7 +21,7 @@
             </div>
             <div class="selectList">
                 <ul>
-                	<li><a href="/ceoMain.do">내정보</a></li> 
+                	<li><a href="/ceoMain.do">내정보</a></li>
                     <li><a href="/ceoStoreInfo.do">가게 정보</a></li>
                     <li><a href="/ceoStoreSalesInfo.do">상품 판매 정보</a></li>
                 </ul>
@@ -39,7 +39,7 @@
                     <div class="store_info_wrap_box">
                         <div class="store_info_left">
                             <div class="store_img">
-                                <img src="resources/img/member/${s.storeImg }">
+                                <img src="resources/img/member/${sessionScope.s.storeImg }">
                             </div>
                             <div class="store_name">${s.storeName }</div>
                         </div>
@@ -50,31 +50,30 @@
                             </div>
                             <div class="store_info_form">
                                 <div class="store_info_title">사업자 번호</div>
-                                <div class="store_info_content">${s.storeRegistNum }</div>
+                                <div class="store_info_content">${sessionScope.s.storeRegistNum }</div>
                             </div>
                             <div class="store_info_form">
                                 <div class="store_info_title">매장 주소</div>
-                                <div class="store_info_content">${s.storeAddr }</div>
+                                <div class="store_info_content">${sessionScope.s.storeAddr }</div>
                             </div>
                             <div class="store_info_form">
                                 <div class="store_info_title">매장 번호</div>
-                                <div class="store_info_content">${s.storePhone }</div>
+                                <div class="store_info_content">${sessionScope.s.storePhone }</div>
                             </div>
                             <div class="store_info_form">
                                 <div class="store_info_title">계좌 번호</div>
-                                <div class="store_info_content">${s.storeAccount }</div>
+                                <div class="store_info_content">${sessionScope.s.storeAccount }</div>
                                 <button class="store_sale_btn">매출 현황</button>
                             </div>
                             <div class="store_info_form">
                                 <div class="store_info_title">영업 시간</div>
-                                <div class="store_info_content">${s.openTime } ~ ${s.closeTime }</div>
+                                <div class="store_info_content">${sessionScope.s.openTime } ~ ${sessionScope.s.closeTime }</div>
                                 <button class="store_edit_btn">수정</button>
                             </div>
                         </div>
                     </div>
                 </div>
                 </c:forEach>
-             
                 <div class="navi_box_footer">
                     <ul class="pagination">
                         <li class="page-item">
@@ -82,9 +81,7 @@
                                 <span aria-hidden="true">&laquo;</span>
                             </a>
                         </li>
-                        <li class="page-item"><a class="page-link" href="#">1</a></li>
-                        <li class="page-item"><a class="page-link" href="#">2</a></li>
-                        <li class="page-item"><a class="page-link" href="#">3</a></li>
+                        <li class="page-item"><a class="page-link" href="#">${pageNavi }</a></li>
                         <li class="page-item">
                             <a class="page-link" href="#" aria-label="Next">
                                 <span aria-hidden="true">&raquo;</span>
@@ -92,6 +89,12 @@
                         </li>
                     </ul>
                 </div>
+                <!-- 
+                <div class="more_btn_box">
+             		<button class="more_btn">더보기</button>
+             	</div>
+                -->
+              
             </div>
         </div>
     </div>

@@ -32,6 +32,9 @@
    		from store s join member m on s.member_no=m.member_no
    		where s.store_no = #{_parameter}
    </select>
+   <select id="selectOneStore1" resultType="list" parameterType="_int">
+   		select * from store where member_no= #{memberNo}
+   </select>
    <update id="updateStoreDetail" parameterType="s">
    		update store
    			set 
@@ -52,4 +55,26 @@
    		from store
    		where store_no = #{_parameter}
    </select>
+   
+   <select id="selectStoreList" parameterType="map" resultType="spd">
+		select * from
+		(select rownum as rnum, s.* from 
+		(select
+		    store_no as storeNo,
+   			member_no as memberNo,
+   			store_name as storeName,
+   			store_addr as storeAddr,
+   			store_regist_num as storeRegistNum,
+   			store_account as storeAccount,
+   			open_time as openTime,
+   			close_time as closeTime,
+   			store_phone as storePhone,
+   			store_img as storeImg
+		from store order by 1 desc)s)
+		where rnum between #{start} and #{end}
+	</select>
+	
+   <select id="totalCount" resultType="int">
+		select count(*) from board
+	</select>
 </mapper>
