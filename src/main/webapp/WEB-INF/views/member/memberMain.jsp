@@ -22,9 +22,9 @@
 	            </div>
 	            <div class="selectList">
 	                <ul>
-	                	<li>내정보</li> 
-	                    <li>최근 주문 내역</li>
-	                    <li>내 등록 리뷰</li>
+	                	<a href="/memberMain.do"><li>내정보</li></a> 
+	                    <a href="/memberOrderList.do"><li>최근 주문 내역</li></a>
+	                    <a href="/memberReview.do"><li>내 등록 리뷰</li></a>
 	                </ul>
 	            </div>
 	        </div>
@@ -77,83 +77,9 @@
 					<div class="member-withdraw">
 						<a href="#">회원탈퇴</a>
 					</div>
-					
-	            </div>
-	            
-	            <!-- 최근 주문 내역 -->
-	            <div class="content_container" onclick="goToDetailOrder(${o.orderNo})">
-	            	<div class="content-box">
-	            		<div class="content-img"><img src="/resources/img/common/logo.png"></div>
-	            		<div class="content-wrap">
-	            			<div class="content-status-date">
-		            			<div class="deliver-status">배송완료</div>
-		            			<span>ㅣ</span>
-		            			<div class="order-date">2022.22.22</div>
-	            			</div>
-	            			<div class="content-product-name">빵이름상품이름</div>            		
-	            		</div>
-	            	</div>
-	            	<div class="content-box">
-	            		<div class="content-img"><img src="/resources/img/common/logo.png"></div>
-	            		<div class="content-wrap">
-	            			<div class="content-status-date">
-		            			<div class="deliver-status">배송완료</div>
-		            			<span>ㅣ</span>
-		            			<div class="order-date">2022.22.22</div>
-	            			</div>
-	            			<div class="content-product-name">빵이름상품이름</div>            		
-	            		</div>
-	            	</div>
-	            </div>
-	            
-	            <!-- 내 등록 리뷰 -->
-	            <div class="content_container" onclick="goToDetailReview()">
-					<div class="content-box">
-	            		<div class="content-img"><img src="/resources/img/common/logo.png"></div>
-	            		<div class="content-wrap">
-	            			<div class="content-status-date">
-		            			<div class="deliver-status">파리바게뜨 당산점</div>
-		            			<span>ㅣ</span>
-		            			<div class="order-date">2022.22.22</div>
-	            			</div>
-	            			<div class="content-product-name">리뷰제목너무마싯어용</div>            		
-	            		</div>
-	            	</div>
-	            	<div class="content-box">
-	            		<div class="content-img"><img src="/resources/img/common/logo.png"></div>
-	            		<div class="content-wrap">
-	            			<div class="content-status-date">
-		            			<div class="deliver-status">배송완료</div>
-		            			<span>ㅣ</span>
-		            			<div class="order-date">2022.22.22</div>
-	            			</div>
-	            			<div class="content-product-name">빵이름상품이름</div>            		
-	            		</div>
-	            	</div>
 	            </div>
 	        </div>
 	    </div>
 	<jsp:include page="/WEB-INF/views/common/footer.jsp"/>
-</body>
-	<script>
-		const selectList = $(".selectList li");
-		selectList.on("click",function(e){
-			selectList.css("background-color","#f5f2f3").css("color","gray");
-			$(this).css("background-color","lightgray").css("color","black");
-			
-			const index = selectList.index(this);
-			
-			
-			
-			$(".content_container").hide();
-			$(".content_container").eq(index).fadeIn(0.6*1000);
-			e.stopPropagation();
-		});
-		selectList.eq(0).click();
-		
-		function goToDetailOrder(orderNo){
-			loaction.href="/mypageOrderDetail.do?orderNo="+orderNo;
-		}
-	</script>
 </body>
 </html>

@@ -54,22 +54,34 @@ let checkId = false;
 let checkPw = false;
 let checkRePw = false;
 $("#id").on("change",function(){
-    const idReg = /^[a-zA-Z0-9]{4,16}$/;
-    const idVal = $("#id").val();
-    const idmsg = $("#idCheck");
-    if(idReg.test(idVal)){
-        idmsg.text("사용 가능한 아이디입니다.");
-        idmsg.css("color", "blue");
-        checkId = true;
-    }else{
-        idmsg.text("사용 불가능한 아이디입니다.");
-        idmsg.css("color", "red");
-        checkId = false;
-    }
-    if(idVal==""){
-        idmsg.text(" ");
-    }
+	const memberId = $("#id").val();
+	$.ajax({
+		url : "/idCheck.do",
+		data : {memberId : memberId},
+		success : function(data){
+			if(data =="0"){				
+				const idReg = /^[a-zA-Z0-9]{4,12}$/;
+			    const idmsg = $("#idCheck");
+			    if(idReg.test(memberId)){
+			        idmsg.text("사용 가능한 아이디입니다.");
+			        idmsg.css("color", "blue");
+			        checkId = true;
+			    }else{
+			        idmsg.text("사용 불가능한 아이디입니다.");
+			        idmsg.css("color", "red");
+			        checkId = false;
+			    }
+			    if(idVal==""){
+			        idmsg.text(" ");
+			    }
+			}else{
+				$("#idCheck").text("이미 사용중인 아이디입니다.");
+				$("#idCheck").css("color","red");
+			}
+		}
+	});
 });
+
 $("#pw").on("keyup",function(){
     const pwReg = /^[a-zA-Z0-9]{4,16}$/;
     const pwVal = $("#pw").val();
@@ -179,7 +191,7 @@ function startTimer(count, display) {
 }
 
 //비밀번호 보이게
-$("#eye1").on("click",function(){
+$("#eye1").hover(function(){
     $("#pw").toggleClass("eactive");
     if($("#pw").hasClass("eactive")==true){
         $("#pw").attr("type","text");
@@ -189,7 +201,7 @@ $("#eye1").on("click",function(){
         $("#eye1").text("SHOW");
     }
 });
-$("#eye2").on("click",function(){
+$("#eye2").hover(function(){
     $("#rePw").toggleClass("eactive");
     if($("#rePw").hasClass("eactive")==true){
         $("#rePw").attr("type","text");

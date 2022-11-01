@@ -55,6 +55,13 @@ public class AdminController {
 		return "/admin/csList";
 	}
 	
+	@RequestMapping(value="/donateList.do")
+	public String donateList(Model model) {
+//		ArrayList<CS> list = csService.selectAllCS();
+//		model.addAttribute("list",list);
+		return "/admin/donateList";
+	}
+	
 
 	@RequestMapping(value="/memberDetail.do")
 	public String memberDetail(int memberNo,Model model) {
@@ -75,5 +82,10 @@ public class AdminController {
 		ArrayList<Account> list = accountService.selectAccountList(storeNo);
 		model.addAttribute("list", list);
 		return "/admin/storeAccount";
+	}
+	
+	@RequestMapping(value = "/donateDetail.do")
+	public String donateDetail() {
+		return "/admin/donateDetail";
 	}
 }

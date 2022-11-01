@@ -1,5 +1,7 @@
 package kr.or.member.controller;
 
+import java.util.ArrayList;
+
 import javax.servlet.http.HttpSession;
 import javax.xml.ws.Response;
 
@@ -11,12 +13,16 @@ import org.springframework.web.bind.annotation.ResponseBody;
 
 import kr.or.member.model.service.MemberService;
 import kr.or.member.model.vo.Member;
+import kr.or.store.model.service.StoreService;
+import kr.or.store.model.vo.Store;
 
 @Controller
 public class MemberController {
 
 	@Autowired
 	private MemberService service;
+	@Autowired
+	private StoreService storeService;
 	
 	@RequestMapping(value="/memberModify.do")
 	public String memberModify(int memberNo,Model model) {
@@ -52,11 +58,21 @@ public class MemberController {
 	public String memberMain() {
 		return "member/memberMain";
 	}
+	@RequestMapping(value="/memberOrderList.do")
+	public String memberOrderList() {
+		return "member/memberOrderList";
+	}
+	@RequestMapping(value="/memberReview.do")
+	public String memberReview() {
+		return "member/memberReview";
+	}
 	
 	@RequestMapping(value="/chatting.do")
 	public String chatting() {
 		return "/member/csChat";
 	}
+	
+	
 	//joinStep이동
 	@RequestMapping(value = "/joinStep.do")
 	public String joinStep() {
@@ -97,30 +113,68 @@ public class MemberController {
 	public String joinSuccess() {
 		return "member/joinSuccess";
 	}
+	//중복된 아이디체크
+	@ResponseBody
+	@RequestMapping
+	public String idCheck(Member m) {
+		Member member = service.idCheck(m);
+		if(member == null) {
+			return "0";
+		}else {
+			return "1";
+		}
+	}
+	//회원가입
+	@RequestMapping(value = "/join.do")
+	public String join(Member m ) {
+		int result = service.insertMember(m);
+		if(result >0) {
+			return "member/loginFrm";
+		}else {
+			return "redirect:/";
+		}
+	}
 	
+	
+	
+	
+	
+	
+	
+	
+	// ceoMain 이동 (판매자 정보)
 	@RequestMapping(value="/ceoMain.do")
 	public String ceoMain() {
-		return "/member/ceoMain";
+		
+		return "member/ceoMain";
 	}
+	
+	// 판매자 정보 수정
 	@RequestMapping(value = "/updateCeo.do")
 	public String updateCeo(Member m, HttpSession session) {
 		Member member = service.updateCeo(m);
 		if(member != null) {
 			session.setAttribute("m", member);
-			return "redirect:/ceoMain";
+			return "member/ceoMain";
 		}else {
 			return "redirect:/";
 		}
 	}
+	
+	// ceoStoreInfo 이동 (가게 정보)
 	@RequestMapping(value="/ceoStoreInfo.do")
-	public String ceoStoreInfo() {
-		return "/member/ceoStoreInfo";
+	public String ceoStoreInfo(Model model) {
+		ArrayList<Store> list = storeService.selectAllStore();
+		System.out.println(list);
+		model.addAttribute("list",list);
+		return "member/ceoStoreInfo";
 	}
+	
+	// ceoStoreSalesInfo 이동 (판매 정보 관리)
 	@RequestMapping(value="/ceoStoreSalesInfo.do")
 	public String ceoStoreSalesInfo() {
 		return "/member/ceoStoreSalesInfo";
 	}
-	
 }
 
 

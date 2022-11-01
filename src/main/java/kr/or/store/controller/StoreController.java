@@ -33,5 +33,4 @@ public class StoreController {
 		return "store/storeList";
 	}
 	
-	
 }

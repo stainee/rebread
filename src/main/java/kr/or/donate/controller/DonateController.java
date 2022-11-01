@@ -19,4 +19,5 @@ public class DonateController {
 	public String donateResult() {
 		return "/donate/donateResult";
 	}
+	
 }

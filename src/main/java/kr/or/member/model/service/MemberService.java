@@ -33,19 +33,34 @@ public class MemberService {
 		return dao.deleteOneMember(memberNo);
 	}
 
-	@Transactional
+	public Member selectOneCeo(Member member) {
+		return dao.selectOneCeo(member);
+	}
+
 	public Member updateCeo(Member m) {
+		// TODO Auto-generated method stub
 		int result = dao.updateCeo(m);
 		if(result>0) {
 			Member member = dao.selectOneCeo(m);
+			return member;
+		}else {
+			return null;
 		}
-		return null;
 	}
 	
 	//로그인
 	public Member loginMember(Member member) {
 		Member m = dao.loginMember(member);
 		return m;
+	}
+	//아이디체크
+	public Member idCheck(Member m) {
+		Member member = dao.idCheck(m);
+		return member;
+	}
+	//회원가입
+	public int insertMember(Member m) {
+		return dao.insertMember(m);
 	}
 	
 	
