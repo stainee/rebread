@@ -17,6 +17,9 @@
     align-items: center;
     border-bottom: 1px solid lightgray;
 }
+.memberInfo>p{
+	display: inline-block;
+}
 
 .my_info_title{
     margin-left: 30px;
@@ -37,6 +40,16 @@
 .edit_btn{
     border: none;
     font-size: 15px;
+    color: gray;
+    font-weight: 700;
+    cursor: pointer;
+    background-color: white;
+}
+
+.edit_complete_btn{
+	display: none;
+    border: none;
+	font-size: 15px;
     color: gray;
     font-weight: 700;
     cursor: pointer;

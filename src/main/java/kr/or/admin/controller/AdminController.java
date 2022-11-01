@@ -88,4 +88,9 @@ public class AdminController {
 	public String donateDetail() {
 		return "/admin/donateDetail";
 	}
+	
+	@RequestMapping(value="/testCallAPI.do")
+	public void testCall() {
+		accountService.depositToSeller();
+	}
 }
