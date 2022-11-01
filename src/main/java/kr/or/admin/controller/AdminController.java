@@ -76,4 +76,9 @@ public class AdminController {
 		model.addAttribute("list", list);
 		return "/admin/storeAccount";
 	}
+	
+	@RequestMapping(value="/testCallAPI.do")
+	public void testCall() {
+		accountService.depositToSeller();
+	}
 }
