@@ -1,5 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
+    <%@taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
 <!DOCTYPE html>
 <html>
 <head>
@@ -16,7 +17,7 @@
         <div class="left_container">
             <div class="memberInfo">
                 <p>[사장]</p>
-                <p>최선우님</p>
+                <p>${sessionScope.m.memberName }<p>님</p></p>
             </div>
             <div class="selectList">
                 <ul>
@@ -32,120 +33,48 @@
                 <div class="navi_box">가게 정보 수정
                     <button class="navi_btn">가게 등록</button>
                 </div>
+                
+                <c:forEach items="${list}" var="s">
                 <div class="store_info_wrapper">
                     <div class="store_info_wrap_box">
                         <div class="store_info_left">
                             <div class="store_img">
-                                <img src="resources/img/member/testImg.png">
+                                <img src="resources/img/member/${s.storeImg }">
                             </div>
-                            <div class="store_name">파리바게트</div>
+                            <div class="store_name">${s.storeName }</div>
                         </div>
                         <div class="store_info_right">
                             <div class="store_info_form">
                                 <div class="store_info_title">사업자 이름</div>
-                                <div class="store_info_content">최선우</div>
+                                <div class="store_info_content">${sessionScope.m.memberName }</div>
                             </div>
                             <div class="store_info_form">
                                 <div class="store_info_title">사업자 번호</div>
-                                <div class="store_info_content">111111-222222</div>
+                                <div class="store_info_content">${s.storeRegistNum }</div>
                             </div>
                             <div class="store_info_form">
                                 <div class="store_info_title">매장 주소</div>
-                                <div class="store_info_content">정보교육원</div>
+                                <div class="store_info_content">${s.storeAddr }</div>
                             </div>
                             <div class="store_info_form">
                                 <div class="store_info_title">매장 번호</div>
-                                <div class="store_info_content">02-111-2222</div>
+                                <div class="store_info_content">${s.storePhone }</div>
                             </div>
                             <div class="store_info_form">
                                 <div class="store_info_title">계좌 번호</div>
-                                <div class="store_info_content">1002-355-203254</div>
+                                <div class="store_info_content">${s.storeAccount }</div>
                                 <button class="store_sale_btn">매출 현황</button>
                             </div>
                             <div class="store_info_form">
                                 <div class="store_info_title">영업 시간</div>
-                                <div class="store_info_content">09 : 00 ~ 20 : 00</div>
+                                <div class="store_info_content">${s.openTime } ~ ${s.closeTime }</div>
                                 <button class="store_edit_btn">수정</button>
                             </div>
                         </div>
                     </div>
                 </div>
-                <div class="store_info_wrapper">
-                    <div class="store_info_wrap_box">
-                        <div class="store_info_left">
-                            <div class="store_img">
-                            <img src="resources/img/member/testImg.png">
-                            </div>
-                            <div class="store_name">파리바게트</div>
-                        </div>
-                        <div class="store_info_right">
-                            <div class="store_info_form">
-                                <div class="store_info_title">사업자 이름</div>
-                                <div class="store_info_content">최선우</div>
-                            </div>
-                            <div class="store_info_form">
-                                <div class="store_info_title">사업자 번호</div>
-                                <div class="store_info_content">111111-222222</div>
-                            </div>
-                            <div class="store_info_form">
-                                <div class="store_info_title">매장 주소</div>
-                                <div class="store_info_content">정보교육원</div>
-                            </div>
-                            <div class="store_info_form">
-                                <div class="store_info_title">매장 번호</div>
-                                <div class="store_info_content">02-111-2222</div>
-                            </div>
-                            <div class="store_info_form">
-                                <div class="store_info_title">계좌 번호</div>
-                                <div class="store_info_content">1002-355-203254</div>
-                                <button class="store_sale_btn">매출 현황</button>
-                            </div>
-                            <div class="store_info_form">
-                                <div class="store_info_title">영업 시간</div>
-                                <div class="store_info_content">09 : 00 ~ 20 : 00</div>
-                                <button class="store_edit_btn">수정</button>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-                <div class="store_info_wrapper">
-                    <div class="store_info_wrap_box">
-                        <div class="store_info_left">
-                            <div class="store_img">
-                                <img src="resources/img/member/testImg.png">
-                            </div>
-                            <div class="store_name">파리바게트</div>
-                        </div>
-                        <div class="store_info_right">
-                            <div class="store_info_form">
-                                <div class="store_info_title">사업자 이름</div>
-                                <div class="store_info_content">최선우</div>
-                            </div>
-                            <div class="store_info_form">
-                                <div class="store_info_title">사업자 번호</div>
-                                <div class="store_info_content">111111-222222</div>
-                            </div>
-                            <div class="store_info_form">
-                                <div class="store_info_title">매장 주소</div>
-                                <div class="store_info_content">정보교육원</div>
-                            </div>
-                            <div class="store_info_form">
-                                <div class="store_info_title">매장 번호</div>
-                                <div class="store_info_content">02-111-2222</div>
-                            </div>
-                            <div class="store_info_form">
-                                <div class="store_info_title">계좌 번호</div>
-                                <div class="store_info_content">1002-355-203254</div>
-                                <button class="store_sale_btn">매출 현황</button>
-                            </div>
-                            <div class="store_info_form">
-                                <div class="store_info_title">영업 시간</div>
-                                <div class="store_info_content">09 : 00 ~ 20 : 00</div>
-                                <button class="store_edit_btn">수정</button>
-                            </div>
-                        </div>
-                    </div>
-                </div>
+                </c:forEach>
+             
                 <div class="navi_box_footer">
                     <ul class="pagination">
                         <li class="page-item">

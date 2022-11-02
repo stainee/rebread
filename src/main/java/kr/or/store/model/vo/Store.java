@@ -19,4 +19,5 @@ public class Store {
 	private String closeTime;
 	private String storePhone;
 	private String storeImg;
+	private int rating;
 }

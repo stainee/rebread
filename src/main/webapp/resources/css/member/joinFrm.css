@@ -25,6 +25,10 @@ th{
     text-align: left;
     background: #fff;
 }
+#phone::placeholder{
+	color: lightgray;
+	font-size: 13px;
+}
 #joinFrm {
     width: 1000px;
 }
@@ -143,6 +147,19 @@ th{
     width: 40px;
     margin-left: 10px;
 }
+#address{
+	height: 40px;
+    width: 70px;
+    border: 1px solid lightgrey;
+    border-radius: 3px;
+    font-family: 'Noto Sans KR', sans-serif;
+    cursor: pointer;
+}
+
+#address:hover{
+	background-color: #e4e4e4;
+    border-radius: 5px;
+}
 .eye{
     cursor: pointer;
     font-size: 12px;
@@ -161,4 +178,7 @@ th{
 .sOpt:hover{
     background-color: #785c37;
     height: 20px;
+}
+.adr{
+	margin-top: 10px;
 }

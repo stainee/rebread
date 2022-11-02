@@ -2,6 +2,7 @@
 *{
 	margin: 0;
 	padding: 0;
+	text-decoration: none;
 }
 .page-content{
     width: 500px;
@@ -12,7 +13,7 @@
     border-radius: 20px;
     padding-bottom: 20px;
 }
-.content-header>div:first-child{
+.content-header div:first-child{
     font-family: 'Noto Sans KR', sans-serif;
     margin-top: 20px;
     font-size: 30px;
@@ -20,7 +21,7 @@
     text-align: center;
     font-weight: 600;
 }
-.content-header>div:last-child{
+.content-header div:last-child{
     font-family: 'Noto Sans KR', sans-serif;
     font-size: 32px;
     font-weight: 600;
@@ -59,14 +60,27 @@
 	font-size: 18px;
 }
 .memberIn>input:focus{
-	outline: none;	
+	outline: none;
 }
 #search{
 	text-align: center;
+	width: 450px;
+	height : 20px;
+	line-height : 20px;
+	margin: 0 auto;
+}
+#checkId, #labelId{
+	float: left;
+	color: #555555;
+}
+#checkId{
+	margin-top:3px;
+	margin-left:10px; 
 }
 #search>a{
 	text-decoration: none;
 	color: #555555;
+	float: right;
 }
 #search>a:hover{
 	font-weight: 600;
