@@ -30,16 +30,17 @@
 
         <div class="right_container">
             <div class="content_container">
-                <div class="navi_box">가게 정보 수정
+                <div class="navi_box">가게 정보
                     <button class="navi_btn">가게 등록</button>
                 </div>
                 
+                <!-- 가게 리스트를 띄우는 div -->
                 <c:forEach items="${list}" var="s">
                 <div class="store_info_wrapper">
                     <div class="store_info_wrap_box">
                         <div class="store_info_left">
                             <div class="store_img">
-                                <img src="resources/img/member/${sessionScope.s.storeImg }">
+                                <img src="resources/img/store/${s.storeImg }">
                             </div>
                             <div class="store_name">${s.storeName }</div>
                         </div>
@@ -50,30 +51,159 @@
                             </div>
                             <div class="store_info_form">
                                 <div class="store_info_title">사업자 번호</div>
-                                <div class="store_info_content">${sessionScope.s.storeRegistNum }</div>
+                                <div class="store_info_content">${s.storeRegistNum }</div>
                             </div>
                             <div class="store_info_form">
                                 <div class="store_info_title">매장 주소</div>
-                                <div class="store_info_content">${sessionScope.s.storeAddr }</div>
+                                <div class="store_info_content">${s.storeAddr }</div>
                             </div>
                             <div class="store_info_form">
                                 <div class="store_info_title">매장 번호</div>
-                                <div class="store_info_content">${sessionScope.s.storePhone }</div>
+                                <div class="store_info_content">${s.storePhone }</div>
                             </div>
                             <div class="store_info_form">
                                 <div class="store_info_title">계좌 번호</div>
-                                <div class="store_info_content">${sessionScope.s.storeAccount }</div>
+                                <div class="store_info_content">${s.storeAccount }</div>
                                 <button class="store_sale_btn">매출 현황</button>
                             </div>
                             <div class="store_info_form">
                                 <div class="store_info_title">영업 시간</div>
-                                <div class="store_info_content">${sessionScope.s.openTime } ~ ${sessionScope.s.closeTime }</div>
+                                <div class="store_info_content">${s.openTime } ~ ${s.closeTime }</div>
                                 <button class="store_edit_btn">수정</button>
                             </div>
                         </div>
                     </div>
                 </div>
                 </c:forEach>
+                
+                <!-- 가게 등록창을 띄우는 div -->
+                <div class="store_insert_wrapper">
+	                <form action="/storeInsert.do" method="post" enctype="multipart/form-data">
+                	<div class="store_insert_form">
+                		<div class="store_insert_title">매장명</div>
+                		<div class="store_insert_input">
+                			<input type="text" name="storeName" value="">
+                		</div>
+	                <input type="hidden" name="memberNo" value="${sessionScope.m.memberNo }">
+                	</div>
+                	<div class="store_insert_form">
+                		<div class="store_insert_title">매장 주소</div>
+                		<div class="store_insert_input">
+                			<input type="text" name="storeAddr" value="">
+                		</div>
+                	</div>
+                	<div class="store_insert_form">
+                		<div class="store_insert_title">매장 전화번호</div>
+                		<div class="store_insert_input">
+                			<input type="text" name="storePhone" value="">
+                		</div>
+                	</div>
+                	<div class="store_insert_form">
+                		<div class="store_insert_title">매장 이미지</div>
+                		<div class="store_insert_input">
+                			<input type="file" name="storeImg" multiple value="">
+                		</div>
+                	</div>
+                	<div class="store_insert_form">
+                		<div class="store_insert_title">계좌 번호</div>
+                		<div class="store_insert_input">
+                			<input type="text" name="storeRegistNum" value="">
+                		</div>
+                	</div>
+                	<div class="store_insert_form">
+                		<div class="store_insert_title">사업자 번호</div>
+                		<div class="store_insert_input">
+                			<input type="text" name="storeAccount" value="">
+                		</div>
+                	</div>
+                	<div class="store_insert_form">
+                		<div class="store_insert_title">오픈 시간</div>
+                		<div class="store_insert_input">
+                			<input type="text" name="openTime" value="">
+                		</div>
+                	</div>
+                	<div class="store_insert_form">
+                		<div class="store_insert_title">마감 시간</div>
+                		<div class="store_insert_input">
+                			<input type="text" name="closeTime" value="">
+                		</div>
+                	</div>
+                	<div class="store_insert_form">
+                		<div class="store_insert_title">매장 정보</div>
+                		<div class="store_insert_input">
+                			<textarea name="storeContent"></textarea>
+                		</div>
+                	</div>
+                	<div class="store_insert_btn_box">
+                		<button type="submit" class="store_insert_btn" >가게 등록하기</button>
+                	</div>
+                	</form>
+                </div>
+                
+                <!-- 가게 수정창을 띄우는 div -->
+                <div class="store_update_wrapper">
+	                <form action="/storeUpdate.do" method="post" enctype="multipart/form-data">
+                	<div class="store_update_form">
+                		<div class="store_update_title">매장명</div>
+                		<div class="store_update_input">
+                			<input type="text" name="storeName" value="">
+                		</div>
+	                <input type="hidden" name="memberNo" value="${sessionScope.m.memberNo }">
+                	</div>
+                	<div class="store_update_form">
+                		<div class="store_update_title">매장 주소</div>
+                		<div class="store_update_input">
+                			<input type="text" name="storeAddr" value="">
+                		</div>
+                	</div>
+                	<div class="store_update_form">
+                		<div class="store_update_title">매장 전화번호</div>
+                		<div class="store_update_input">
+                			<input type="text" name="storePhone" value="">
+                		</div>
+                	</div>
+                	<div class="store_update_form">
+                		<div class="store_update_title">매장 이미지</div>
+                		<div class="store_update_input">
+                			<input type="file" name="storeImg" multiple value="">
+                		</div>
+                	</div>
+                	<div class="store_update_form">
+                		<div class="store_update_title">계좌 번호</div>
+                		<div class="store_update_input">
+                			<input type="text" name="storeRegistNum" value="">
+                		</div>
+                	</div>
+                	<div class="store_update_form">
+                		<div class="store_update_title">사업자 번호</div>
+                		<div class="store_update_input">
+                			<input type="text" name="storeAccount" value="">
+                		</div>
+                	</div>
+                	<div class="store_update_form">
+                		<div class="store_update_title">오픈 시간</div>
+                		<div class="store_update_input">
+                			<input type="text" name="openTime" value="">
+                		</div>
+                	</div>
+                	<div class="store_update_form">
+                		<div class="store_update_title">마감 시간</div>
+                		<div class="store_update_input">
+                			<input type="text" name="closeTime" value="">
+                		</div>
+                	</div>
+                	<div class="store_update_form">
+                		<div class="store_update_title">매장 정보</div>
+                		<div class="store_update_input">
+                			<textarea name="storeContent"></textarea>
+                		</div>
+                	</div>
+                	<div class="store_update_btn_box">
+                		<button type="submit" class="store_update_btn" >가게 정보 수정</button>
+                	</div>
+                	</form>
+                </div>
+                
                 <div class="navi_box_footer">
                     <ul class="pagination">
                         <li class="page-item">
@@ -81,7 +211,7 @@
                                 <span aria-hidden="true">&laquo;</span>
                             </a>
                         </li>
-                        <li class="page-item"><a class="page-link" href="#">${pageNavi }</a></li>
+                        <li class="page-item"><a class="page-link" href="#">1</a></li>
                         <li class="page-item">
                             <a class="page-link" href="#" aria-label="Next">
                                 <span aria-hidden="true">&raquo;</span>
@@ -101,13 +231,31 @@
     <jsp:include page="/WEB-INF/views/common/footer.jsp"/>
 </body>
 <script>
-	let index=1;
-	$(function(){
-		let total = $(".selectList a").length;
-		for(let i=0; i<total; i++){
-			$(".selectList a").eq(i).removeClass("index");
-		}
-		$(".selectList a").eq(index).addClass("index");
-	})
+const selectList = $(".selectList li");
+selectList.on("click",function(e){
+	selectList.css("background-color","#f5f2f3").css("color","gray");
+	$(this).css("background-color","lightgray").css("color","black");
+	
+	const index = selectList.index(this);
+	
+	$(".content_container").hide();
+	$(".content_container").eq(index).fadeIn(0.6*1000);
+});
+selectList.eq(0).click();
+
+$(".navi_btn").on("click",function(){
+	$(".navi_btn").css("display","none");
+	$(".navi_box").text("가게 등록");
+	$(".store_insert_wrapper").css("display","block");
+	$(".store_info_wrapper").css("display","none");
+	$(".navi_box_footer").css("display","none");
+});
+
+$(".store_edit_btn").on("click",function(){
+	$(".navi_box").text("가게 정보 수정");
+	$(".store_update_wrapper").css("display","block");
+	$(".store_info_wrapper").css("display","none");
+	$(".navi_box_footer").css("display","none");
+});
 </script>
 </html>

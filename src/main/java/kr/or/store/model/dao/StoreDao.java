@@ -27,11 +27,6 @@ public class StoreDao {
 		return sd;
 	}
 	
-	public ArrayList<Store> selectOneStore1(Member m) {
-		List list = sqlSession.selectList("store.selectOneStore1",m);
-		return (ArrayList<Store>) list;
-	}
-
 	public int updateStoreDetail(Store s) {
 		int result = sqlSession.update("store.updateStoreDetail", s);
 		return result;
@@ -55,6 +50,16 @@ public class StoreDao {
 	public int selectStoreCount() {
 		int totalCount = sqlSession.selectOne("store.totalCount");
 		return totalCount;
+	}
+
+	public ArrayList<Store> selectMemberStore(Member member) {
+		List list = sqlSession.selectList("store.selectMemberStore", member);
+		return (ArrayList<Store>) list;
+	}
+
+	public int storeInsert(Store s) {
+		int result = sqlSession.insert("store.insertStore",s);
+		return result;
 	}
 
 }
