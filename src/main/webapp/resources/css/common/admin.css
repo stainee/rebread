@@ -3,6 +3,7 @@
 *{
     list-style: none;
     margin : 0;
+    font-family:'nsr-r';
 }
 
 ul{
@@ -11,8 +12,8 @@ ul{
 
 .total_wrapper{
     margin-top :40px;
-    margin-left:60px;
     display:flex;
+    justify-content : center;
 }
 
 
@@ -54,22 +55,32 @@ ul{
 }
 
 
-
+.left_container{
+	height:417px;
+}
 .selectList .index{
     background-color: lightgray;
     color: black;
 }
 
-
-
-
 .right_container{
     width:960px;
+    height: 500px;
     box-shadow: 2px 2px 2px 2px lightgray;
     border-radius:5px;
+    overflow: auto;
 }
 
 .right_container .content_container{
     margin-top:10px;
     margin-left:10px;
 }
+
+
+
+
+
+
+
+
+
