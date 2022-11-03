@@ -6,11 +6,9 @@ import java.io.InputStreamReader;
 import java.io.OutputStream;
 import java.io.Reader;
 import java.net.HttpURLConnection;
-import java.net.MalformedURLException;
 import java.net.URL;
 import java.nio.charset.StandardCharsets;
 import java.util.Base64;
-import java.util.Base64.Encoder;
 import java.util.HashMap;
 import java.util.Map;
 
@@ -21,22 +19,18 @@ import org.json.simple.parser.JSONParser;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpEntity;
 import org.springframework.http.HttpHeaders;
-import org.springframework.http.HttpRequest;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.MediaType;
 import org.springframework.http.ResponseEntity;
 import org.springframework.http.client.ClientHttpResponse;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
-import org.springframework.web.bind.annotation.ModelAttribute;
-import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.client.ResponseErrorHandler;
 import org.springframework.web.client.RestTemplate;
 
-import com.fasterxml.jackson.core.JsonProcessingException;
 import com.fasterxml.jackson.databind.JsonNode;
 import com.fasterxml.jackson.databind.ObjectMapper;
 
@@ -118,11 +112,14 @@ public class OrderController {
 			o.setPaymentKey(paymentKey);
 			int result = service.updatePaymentKey(o);
 			
+			model.addAttribute("orderNo",o.getOrderNo());
+			
 			return "order/orderSuccess";
 		}else {
 			JsonNode failNode = responseEntity.getBody();
 			model.addAttribute("message",failNode.get("message").asText());
 			model.addAttribute("code",failNode.get("code").asText());
+			
 			return "order/orderFail"; 
 		}
 	}
@@ -170,6 +167,7 @@ public class OrderController {
 		JSONObject jsonObject = (JSONObject) parser.parse(reader);
 		responseStream.close();
 		if(isSuccess) {
+			service.updateOrderState(orderNo);
 			return "order/orderSuccess";
 		}
 		else {

@@ -2,6 +2,15 @@
 
 *{
 	font-family: 'nsr-r';
+	box-sizing: border-box;
+}
+a{
+	text-decoration: none;
+	color: black;
+}
+a:hover{
+	color: pink;
+	
 }
 .member-point{
 	padding-top: 35px;
@@ -32,9 +41,7 @@
 	border-bottom: 2px solid rgba(0, 0, 0, 0.1);
 	cursor: pointer;
 }
-.content-box:hover{
-	border: 1px solid rgba(0, 0, 0, 0.1);
-}
+
 .content-img img{
 	width: 70px;
 	height: 70px;

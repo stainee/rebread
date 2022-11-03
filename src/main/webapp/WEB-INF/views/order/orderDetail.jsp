@@ -82,9 +82,18 @@
 	        		</div>
 	        		<div class="content-box5">
 	        			<div class="order-cancel">
-	        				<a href="/orderCancel.do?orderNo=${o.orderNo }">
-	        					<div>주문 취소</div>
-	        				</a>
+        					<c:choose>
+	        					<c:when test="${o.orderState eq '취소완료' }">
+			        				<a class="cancel-confirm">
+		        						<div style="text-decoration: line-through; color: #cbcbcb;">주문 취소</div>
+			        				</a>
+	        					</c:when>
+								<c:otherwise>
+									<a style="cursor: pointer;" onclick="orderCancel(${o.orderNo })">
+		        						<div>주문 취소</div>
+			        				</a>
+								</c:otherwise>        						
+        					</c:choose>
 	        			</div>
 	        		</div>
 	        	</div>
@@ -97,6 +106,12 @@
 			selectList.css("background-color","#f5f2f3").css("color","gray");
 			$(this).css("background-color","lightgray").css("color","black");
 		});
+		
+		function orderCancel(orderNo){
+			if(confirm("주문을 취소하시겠습니까?")){
+				location.href="/orderCancel.do?orderNo="+orderNo;
+			}
+		}
 	</script>
 </body>
 </html>

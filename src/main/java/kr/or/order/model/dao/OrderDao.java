@@ -36,4 +36,9 @@ public class OrderDao {
 		return sqlSession.selectOne("order.selectPaymentKey",orderNo);
 	}
 
+	public void updateOrderState(int orderNo) {
+		sqlSession.update("order.updateOrderState",orderNo);
+		
+	}
+
 }
