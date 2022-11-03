@@ -54,9 +54,11 @@
 						</div>
 					</div>
 				</c:forEach>
-			</div>
+
+				</div>
+	            <div id="pageNavi">${pageNavi }</div>
             </div>
-        </div> 
-	<jsp:include page="/WEB-INF/views/common/footer.jsp"/>
+        </div>  
+	<jsp:include page="/WEB-INF/views/common/footer.jsp"/> 
 </body>
 </html>
