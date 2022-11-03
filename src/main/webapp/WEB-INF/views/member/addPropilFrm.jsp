@@ -1,11 +1,11 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
-	pageEncoding="UTF-8"%>
+    pageEncoding="UTF-8"%>
 <!DOCTYPE html>
 <html>
 <head>
 <meta charset="UTF-8">
     <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
-    <link rel="stylesheet" href="/resources/css/member/joinFrm.css">
+    <link rel="stylesheet" href="/resources/css/member/addProfil.css">
     <link rel="stylesheet" href="/resources/css/common/header.css">
     <link rel="stylesheet" href="/resources/css/common/footer.css">
     <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -15,49 +15,31 @@
     <!--aos라이브러리-->
     <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
     <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
-<title>회원가입</title>
+<title>회원정보 추가기입</title>
 </head>
 <body>
 	<div class="wrap">
 		<div class="page-content">
 			<div class="content-title" data-aos="fade-right"
-				data-aos-duration="2000">회 원 가 입</div>
-			<form action="/join.do" method="post">
+				data-aos-duration="2000">회 원 가 입
+			</div>
+			<form action="/addProfil.do" method="post">
 				<table id="joinFrm">
+					<!-- 모델에서 받아온 데이터 -->
+					<input type="hidden" name="memberId" id="id" value="${m.memberId }">
+					<input type="hidden" name="memberName" value="${m.memberName }">
+					<input type="hidden" name="memberMail" value="${m.memberMail }">
+					<input type="hidden" name="memberPw" value="${m.memberPw }">
 					<tr>
-						<th>아이디<img src="/resources/img/member/pilsu.gif"></th>
+						<th>회원유형<img src="/resources/img/member/pilsu.gif"></th>
 						<td>
-							<input type="text" name="memberId" id="id"> 
-							<span id="zongBok" style="cursor: pointer; color: #555555; font-weight: 600;" >중복체크</span>
-							<span id="idCheck"></span>
-							<div>
-								<span class="joinCheck">(영문 대소문자/숫자 4~12자)</span>
-							</div>
-						</td>	
-					</tr>
-					<tr>
-						<th>비빌번호<img src="/resources/img/member/pilsu.gif"></th>
-						<td><input type="password" name="memberPw" id="pw"> 
-						<span id="eye1" class="eye">SHOW</span> <span id="pwCheck"></span>
-							<div>
-								<span class="joinCheck">(영문 대소문자/숫자 4자~16자)</span>
-							</div>
+						<select class="select" name="memberGrade" id="whos">
+								<option selected class="sOpt" value="0">선택</option>
+								<option value="1" class="sOpt">일반고객</option>
+								<option value="2" class="sOpt">판매자</option>
+						</select>
 						</td>
-					</tr>
-					<tr>
-						<th>비밀번호 확인<img src="/resources/img/member/pilsu.gif"></th>
-						<td><input type="password" name="memberPwRe" id="rePw">
-							<span id="eye2" class="eye">SHOW</span> 
-							<span id="pwReCheck"></span>
-						</td>
-					</tr>
-					<tr>
-						<th>회원 이름<img src="/resources/img/member/pilsu.gif"></th>
-						<td>
-							<input type="text" name="memberName" id="name"> 
-							<span id="nameCheck"></span>
-						</td>
-					</tr>
+					</tr> 
 					<tr>
 						<th>회원 주소<img src="/resources/img/member/pilsu.gif"></th>
 						<td>
@@ -73,38 +55,14 @@
 							>
 							<input type="hidden" name="memberAddr" id="mAddr">
 						</td>
-						
 					</tr>
 					<tr>
 						<th>휴대전화<img src="/resources/img/member/pilsu.gif"></th>
 						<td id="phones">
 							<input type="text" name="memberPhone" id="phone" placeholder="' - '을 제외한 번호를 입력해주세요.">
-							<button id="phoneBtn" type="button">인증하기</button>
-							<span class="successPhoneChk"></span>
-							<div class="phoneIn">
-								<input type="text" id="phoneInput" required="required">
-								<button id="phoneChk" type="button">인증</button>
-								<span id="time" style="font-size: 15px; margin-left: 10px;"></span>
-							</div>
 						</td>
 					</tr>
-					<tr>
-						<th>이메일<img src="/resources/img/member/pilsu.gif"></th>
-						<td>
-							<input type="text" name="memberMail" id="email">
-							<span id="emailCheck"></span>
-						</td>
-					</tr>
-					<tr>
-						<th>회원유형<img src="/resources/img/member/pilsu.gif"></th>
-						<td>
-						<select class="select" name="memberGrade">
-								<option selected class="sOpt">선택</option>
-								<option value="1" class="sOpt">일반고객</option>
-								<option value="2" class="sOpt">판매자</option>
-						</select>
-						</td>
-					</tr>
+					
 				</table>
 				<div class="checkbox_group">
 					<h3 id="allAgree">전체동의</h3>
@@ -388,7 +346,6 @@ AOS.init();
 <div aos="fade-up" data-aos-offset="200" data-aos-easing="ease-out-cubic" data-aos-duration="500">
 <script src="https://t1.daumcdn.net/mapjsapi/bundle/postcode/prod/postcode.v2.js"></script>
 <script>
-/* 다음 주소 연동 */
 function execution_daum_address(){
 	new daum.Postcode({
         oncomplete: function(data) {
@@ -445,93 +402,6 @@ $("#joinme").on("click",function(){
 });
 
 
-//휴대폰 번호 인증
-var code2 = "";
-$("#phoneBtn").click(function(){
-	alert("인증번호 발송이 완료되었습니다.\n휴대폰에서 인증번호 확인을 해주십시오.");
-	var phone = $("#phone").val();
-	$.ajax({
-        type:"GET",
-        url:"/phoneCheck.do?phone=" + phone,
-        cache : false,
-        success:function(data){
-        	if(data == "error"){
-        		alert("휴대폰 번호가 올바르지 않습니다.")
-				$(".successPhoneChk").text("유효한 번호를 입력해주세요.");
-				$(".successPhoneChk").css("color","red");
-				$("#phone").attr("autofocus",true);
-        	}else{	        		
-        		$("#phoneInput").attr("disabled",false);
-        		$(".successPhoneChk").text("인증번호를 입력한 뒤 본인인증을 눌러주십시오.");
-        		$(".successPhoneChk").css("color","green");
-        		$("#phone").attr("readonly",true);
-        		code2 = data;
-        	}
-        }
-    });
-});
-//휴대폰 인증번호 대조
-let injeong = false;
-$("#phoneChk").click(function(){
-	if($("#phoneInput").val() == code2){
-		$(".successPhoneChk").text("인증번호가 일치합니다.");
-		$(".successPhoneChk").css("color","green");
-		$("#phoneInput").attr("disabled",true);
-		$("#time").hide();
-		injeong = true;
-	}else{
-		$(".successPhoneChk").text("인증번호가 일치하지 않습니다. 확인해주시기 바랍니다.");
-		$(".successPhoneChk").css("color","red");
-		$(this).attr("autofocus",true);
-	}
-});
-//휴대폰 번호 인증했을경우 다음페이지
-$("#joinme").on("click",function(){
-	if(injeong == true){
-		return true;
-	}else{
-		alert("인증을 완료해주세요");
-		return false;
-	}
-});
 </script>
-
-
-<script src="/resources/js/member/joinFrm.js">
-</script>
+<script src="/resources/js/member/addProfil.js"></script>
 </html>
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-

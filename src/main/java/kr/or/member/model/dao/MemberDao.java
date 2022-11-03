@@ -64,4 +64,17 @@ public class MemberDao {
 		return sqlSession.selectOne("member.searchPw", m);
 	}
 
+	public int updatePwMember(Member m) {
+		return sqlSession.update("member.updatePw",m);
+	}
+
+	public Member checkPwMember(Member m) {
+		return sqlSession.selectOne("member.pwCheck", m);
+	}
+
+	public Member searchId(String memberId) {
+		return sqlSession.selectOne("member.kakaoSearchId", memberId);
+	}
+
+
 }
