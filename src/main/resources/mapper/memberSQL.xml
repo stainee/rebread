@@ -57,7 +57,58 @@
 	  		member_mileage as memberMileage
 	  	from member where member_id = #{memberId} and member_pw =#{memberPw}
   </select>
+  <select id="selectOneCeo" resultType="m" parameterType="_int">
+	  	select
+	  		member_no as memberNo,
+	  		member_id as memberId,
+	  		member_name as memberName,
+	  		member_pw as memberPw,
+	  		member_addr as memberAddr,
+	  		member_phone as memberPhone,
+	  		member_mail as memberMail,
+	  		member_grade as memberGrade, 
+	  		member_mileage as memberMileage
+	  	from member where member_no = #{memberNo}
+  </select>
+  <update id="updateCeo" parameterType="m">
+  	update member set
+  		member_name = #{memberName},
+  		member_mail = #{memberMail},
+  		member_pw = #{memberPw},
+  		member_phone = #{memberPhone}
+  	where member_no = #{memberNo}
+  </update>
   
+  <!-- 아이디체크 -->
+    <select id="idCheck" parameterType="m" resultType="m">
+  		select
+	  		member_no as memberNo,
+	  		member_id as memberId,
+	  		member_pw as memberPw,
+	  		member_name as memberName,
+	  		member_addr as memberAddr,
+	  		member_phone as memberPhone,
+	  		member_mail as memberMail,
+	  		member_grade as memberGrade, 
+	  		member_mileage as memberMileage
+	  	from member where member_id = #{memberId}
+  </select>
+  
+  <!-- 회원가입 -->
+ 	<insert id="insertMember" parameterType="m">
+ 	 insert into member values (
+	  	member_seq.nextval,
+	  	#{memberId},
+	  	#{memberPw},
+	  	#{memberName},
+	  	#{memberAddr},
+	  	#{memberPhone},
+	  	#{memberMail},
+	  	#{memberGrade},
+	  	0
+	  )
+ 	
+ 	</insert>
 </mapper>
 
 

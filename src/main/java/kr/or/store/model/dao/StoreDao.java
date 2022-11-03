@@ -1,6 +1,7 @@
 package kr.or.store.model.dao;
 
 import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.List;
 
 import org.mybatis.spring.SqlSessionTemplate;
@@ -38,5 +39,14 @@ public class StoreDao {
 	public String selectOneStoreAccount(int storeNo) {
 		String account = sqlSession.selectOne("store.selectOneStoreAccount", storeNo);
 		return account;
+	}
+
+	public ArrayList<Store> selectStoreList(HashMap<String, Object> map) {
+		List list = sqlSession.selectList("store.allStoreList",map);
+		return (ArrayList<Store>)list;
+	}
+
+	public int selectStoreCount() {
+		return sqlSession.selectOne("store.totalCount");
 	}
 }

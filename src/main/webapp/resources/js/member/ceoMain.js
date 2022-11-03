@@ -1,20 +1,34 @@
-const editBtn = $(".edit_btn");
 const userInfoContent = $(".user_info_content input");
-const userInfoName = $("input[name=user_name]");
-const userInfoEmail = $("input[name=user_email]");
-const userInfoPw = $("input[name=user_pw]");
-const userInfoPhone = $("input[name=user_phone]");
 
-editBtn.on("click",function(){
+$(".edit_btn").on("click",function(){
     userInfoContent.css("border-bottom","1px solid black");
-    userInfoContent.attr("disabled",false);
-    editBtn.text("완료");
-    
-    editBtn.on("click",function(){
-    editBtn.text("수정");
-    userInfoName.val();
-    console.log(userInfoContent.val());
-    userInfoContent.css("border-bottom","1px solid white");
-    userInfoContent.attr("disabled",true);
-    });
+    userInfoContent.attr("readonly",false);
+    $(".edit_btn").css("display","none");
+    $(".edit_complete_btn").css("display","inline-block");
 });
+
+$(".edit_complete_btn").on("click",function(){
+	userInfoContent.attr("readonly",true);
+	userInfoContent.css("border-bottom","1px solid white");
+});
+
+function deleteMember(memberNo){
+	$.ajax({
+		url:"/memberDelete.do?memberNo="+memberNo+"",
+	});
+};
+	
+const deleteBtn = $(".footer_box_btn");
+deleteBtn.on("click",function(){
+	if(!confirm("정말 탈퇴하시겠습니까?")){
+		// 아니오 클릭 시 이벤트
+	}else{
+		// 예 클릭시 이벤트
+		function deleteMember(memberNo){
+		};
+		location.href = "/";
+		alert("회원 탈퇴가 완료되었습니다.")
+	}
+});
+
+	
