@@ -32,6 +32,9 @@
 	border-bottom: 2px solid rgba(0, 0, 0, 0.1);
 	cursor: pointer;
 }
+.content-box:hover{
+	border: 1px solid rgba(0, 0, 0, 0.1);
+}
 .content-img img{
 	width: 70px;
 	height: 70px;
@@ -43,4 +46,10 @@
 }
 .content-status-date span{
 	align-items: center;
+}
+
+.order-page-wrap{
+	display: flex;
+	padding-bottom: 40px;
+	justify-content: center;
 }

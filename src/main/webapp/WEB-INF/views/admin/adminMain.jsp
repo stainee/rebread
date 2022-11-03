@@ -1,13 +1,14 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
-<script src="https://code.jquery.com/jquery-3.6.1.js"></script>
 <%@taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
 <!DOCTYPE html>
 <html>
+<script src="https://code.jquery.com/jquery-3.6.1.js"></script>
 </head>
-<link href="https://hangeul.pstatic.net/hangeul_static/css/nanum-square-round.css" rel="stylesheet">
-<link rel="stylesheet" href="/resources/css/common/managetemplate.css">
+<link rel="stylesheet" href="/resources/css/font/font.css">
+<link rel="stylesheet" href="/resources/css/common/admin.css">
 <body>
+<jsp:include page="/WEB-INF/views/common/header.jsp" />
 <div class="total_wrapper">
         <div class="left_container">
             <div class="memberInfo">
@@ -30,6 +31,7 @@
             </div>
         </div>
     </div>
+<jsp:include page="/WEB-INF/views/common/footer.jsp" />	
 </body>
 <script>
 	index=0;

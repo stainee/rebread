@@ -11,6 +11,8 @@ import org.springframework.transaction.annotation.Transactional;
 
 import kr.or.member.model.dao.MemberDao;
 import kr.or.member.model.vo.Member;
+import kr.or.order.model.vo.Order;
+import kr.or.order.model.vo.OrderPageData;
 import net.nurigo.java_sdk.api.Message;
 import net.nurigo.java_sdk.exceptions.CoolsmsException;
 
@@ -67,6 +69,7 @@ public class MemberService {
 	public int insertMember(Member m) {
 		return dao.insertMember(m);
 	}
+	//문자인증
 	public void certifiedPhoneNumber(String userPhoneNumber, int randomNumber) {
 		//String api_key = "NCSYOLUKOEOQOVTE";	
 		//구동시에만 아래의 api-key삭제 후 주석 풀어주시기 바랍니다. (20원씩 날라가요 ㅠㅠ)
@@ -91,7 +94,7 @@ public class MemberService {
 	        System.out.println(e.getCode());
 	      }
 	}
-
+	
 	public ArrayList<Member> searchId(Member m) {
 		return dao.searchId(m);
 	}
@@ -99,4 +102,107 @@ public class MemberService {
 	public Member searchPw(Member m) {
 		return dao.searchPw(m);
 	}
+	
+	// 최근주문내역 페이징
+	public OrderPageData selectOrderList(int reqPage,int memberNo) {
+		// 1. 한 페이지당 보여줄 게시물 수
+		int numPerPage = 5;
+		// reqPage 1 -> 1~5, reqPage 2 -> 6~10
+		int end = reqPage * numPerPage;
+		int start = end - numPerPage + 1;
+		// 계산한 start, end 이용해서 게시물 목록 조회
+		HashMap<String, Object> map = new HashMap<String, Object>();
+		map.put("start", start);
+		map.put("end", end);
+		map.put("memberNo", memberNo);
+		ArrayList<Order> list = dao.selectOrderList(map);
+		// pageNavi 시작
+		// 전체 페이지 수 계산필요 -> 전체 게시물 수 조회
+		int totalCount = dao.selectOrderCount(memberNo);
+		// 전체 페이지 수 계산
+		int totalPage = 0;
+		if(totalCount % numPerPage == 0) {
+			totalPage = totalCount/numPerPage;
+		}else {
+			totalPage = totalCount/numPerPage+1;
+		}
+		
+		// 페이지 네비 길이
+		int pageNaviSize = 5;
+		
+		int pageNo = 1;
+		if(reqPage>3) {
+			pageNo = reqPage-2;
+		}
+		// pageNavi 생성 시작
+		String pageNavi = "";
+		
+		// 이전버튼
+		if(pageNo != 1) {
+			pageNavi += "<a href='/memberOrderList.do?memberNo="+memberNo+"&reqPage="+(pageNo-1)+"'>[이전]</a>";
+		}
+		
+		// 페이지 숫자 생성
+		for(int i=0;i<pageNaviSize;i++) {
+			if(pageNo == reqPage) {
+				pageNavi += "<span>"+pageNo+"</span>";
+			}else {
+				pageNavi += "<a href='/memberOrderList.do?memberNo="+memberNo+"&reqPage="+pageNo+"'>"+pageNo+"</a>";
+			}
+			pageNo++;
+			if(pageNo>totalPage) {
+				break;
+			}
+		}
+		if(pageNo<=totalPage) {
+			pageNavi += "<a href='/memberOrderList.do?memberNo="+memberNo+"&reqPage="+pageNo+"'>[다음]</a>";
+		}
+		OrderPageData opd = new OrderPageData(list, pageNavi, reqPage, numPerPage, memberNo);
+		return opd;
+	}
+
+	public int updatePwMember(Member m) {
+		return dao.updatePwMember(m);
+	}
+
+	public Member checkPwMember(Member m) {
+		return dao.checkPwMember(m);
+	}
+
+	//카카오톡 존재하는 아이디 채크
+	public Member searchId(String memberId) {
+		Member m = dao.searchId(memberId);
+		return m;
+	}
+
+	public int insertProfileMember(Member m) {
+		return dao.insertMember(m);
+	}
+
 }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

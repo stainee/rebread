@@ -23,9 +23,17 @@ public class OrderDao {
 		return orderNo;
 	}
 
-	public int insertPaymentKey(Order o) {
-		int result = sqlSession.insert("order.insertPaymentKey",o);
+	public int updatePaymentKey(Order o) {
+		int result = sqlSession.update("order.updatePaymentKey",o);
 		return result;
+	}
+
+	public Order selectOneOrder(int orderNo) {
+		return sqlSession.selectOne("order.selectOneOrder",orderNo);
+	}
+
+	public String selectPaymentKey(int orderNo) {
+		return sqlSession.selectOne("order.selectPaymentKey",orderNo);
 	}
 
 }

@@ -12,19 +12,32 @@ public class OrderService {
 	@Autowired
 	private OrderDao dao;
 
+	// 결제 전 배송지 정보 DB 저장
 	public int insertOrder(Order o) {
 		int result = dao.insertOrder(o);
 		return result;
 	}
 
+	// paymentKey 저장 위해 orderNo 조회
 	public int searchOrderNo() {
 		int orderNo = dao.searchOrderNo();
 		return orderNo;
 	}
 
-	public int insertPaymentKey(Order o) {
-		int result = dao.insertPaymentKey(o);
+	// paymentKey DB 저장
+	public int updatePaymentKey(Order o) {
+		int result = dao.updatePaymentKey(o);
 		return result;
+	}
+
+	public Order selectOneOrder(int orderNo) {
+		Order o = dao.selectOneOrder(orderNo);
+		return o;
+	}
+
+	public String selectPaymentKey(int orderNo) {
+		String paymentKey = dao.selectPaymentKey(orderNo);
+		return paymentKey;
 	}
 
 	

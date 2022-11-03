@@ -5,6 +5,7 @@
 <head>
 <meta charset="UTF-8">
 <title>Insert title here</title>
+<link rel="icon" href="/resources/img/common/">
 <link rel="stylesheet" href="/resources/css/common/main.css">
 <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
 
@@ -322,4 +323,5 @@
 <!-- //AOS 스크립트 초기화 -->
 <div aos="fade-up" data-aos-offset="200" data-aos-easing="ease-out-cubic" data-aos-duration="500"></div>
 <script src="/resources/js/common/main.js"></script>
+
 </html>

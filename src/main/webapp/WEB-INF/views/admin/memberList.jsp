@@ -9,9 +9,10 @@
 <title>Insert title here</title>
 </head>
 <link href="https://hangeul.pstatic.net/hangeul_static/css/nanum-square-round.css" rel="stylesheet">
-<link rel="stylesheet" href="/resources/css/common/managetemplate.css">
+<link rel="stylesheet" href="/resources/css/common/admin.css">
 <link rel="stylesheet" href="/resources/css/admin/memberList.css">
 <body>
+<jsp:include page="/WEB-INF/views/common/header.jsp" />
 <div class="total_wrapper">
         <div class="left_container">
             <div class="memberInfo">
@@ -55,6 +56,7 @@
          </div>
  
 </div>
+<jsp:include page="/WEB-INF/views/common/footer.jsp" />	
 </body>
 <script>
 	let index=2;
