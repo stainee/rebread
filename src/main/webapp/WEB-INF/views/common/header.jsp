@@ -32,9 +32,9 @@
 					<c:otherwise>
 						<div class="header-right">
 		                    <ul>
-		                        <li><a href="#">마이페이지</a></li>
+		                        <li><a href="/memberMain.do">마이페이지</a></li>
 		                        <li><a href="/logout.do">로그아웃</a></li>
-		                        <li><a href="#">주문내역</a></li>
+		                        <li><a href="/memberOrderList.do?memberNo=${sessionScope.m.memberNo }&reqPage=1">주문내역</a></li>
 		                        <li><a href="#">회원해택</a></li>
 		                    </ul>
 		                </div>
