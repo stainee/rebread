@@ -25,7 +25,7 @@
 			<div class="textArea" data-aos="fade-right" data-aos-delay="300" data-aos-duration="1500">
 				<div>
 					<a href="/"><h1>R E B R E A D</h1></a>
-					<h2>아이디 찾기</h2>	
+					<h2>패스워드 찾기</h2>	
 					<p>가입하신 방법에 따라 비밀번호 찾기가 가능합니다</p>
 				</div>
 			</div>

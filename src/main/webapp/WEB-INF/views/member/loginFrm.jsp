@@ -67,9 +67,12 @@
 						<input type="submit" value="로 그 인">
 					</div>
 				</form>
-				<div class="signKaKao">
-					<span><img src="/resources/img/member/icon-itg-kakao.svg"></span> 
-					<span>카카오톡으로 로그인</span>
+				
+				
+				<div class="kakao">
+					<a href="/kakao_login.do">
+						<img src="/resources/img/common/kakaologin.png">
+					</a>
 				</div>
 				<div class="join">
 					<p>아직 회원이 아니신가요?</p>
@@ -89,6 +92,17 @@
 <!-- //AOS 스크립트 초기화 -->
 <div aos="fade-up" data-aos-offset="200" data-aos-easing="ease-out-cubic" data-aos-duration="500">
 <script>
+//카카오톡 로그인
+
+
+
+
+
+
+
+
+
+
 $(document).ready(function(){
 	// 저장된 쿠키값을 가져와서 ID 칸에 넣어준다. 없으면 공백으로 들어감.
     console.log("11");

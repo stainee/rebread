@@ -29,4 +29,8 @@ public class CSService {
 		// TODO Auto-generated method stub
 		return dao.selectOneCheck(csNo);
 	}
+
+	public int insertCS(CS cs) {
+		return dao.insertCS(cs);
+	}
 }

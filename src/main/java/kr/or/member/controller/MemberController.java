@@ -2,8 +2,6 @@ package kr.or.member.controller;
 
 import java.util.ArrayList;
 
-
-import javax.mail.Store;
 import javax.servlet.http.HttpSession;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -18,8 +16,10 @@ import kr.or.member.model.service.MemberService;
 import kr.or.member.model.vo.Member;
 import kr.or.order.model.vo.OrderPageData;
 import kr.or.store.model.service.StoreService;
+import lombok.AllArgsConstructor;
 
 @Controller
+@AllArgsConstructor
 public class MemberController {
 
 	@Autowired
@@ -103,7 +103,7 @@ public class MemberController {
 		return "member/loginFrm";
 	}
 	//login
-	@RequestMapping(value = "/login.do")
+	@RequestMapping(value = "/loginkakao.do")
 	public String login(Member member, HttpSession session) {
 		Member m = service.loginMember(member);
 		if(m!=null) {
@@ -179,26 +179,51 @@ public class MemberController {
 		return "member/searchPw";
 	}
 	//searchPw1
-	@RequestMapping(value = "/searchPw1.do")
+	@RequestMapping(value = "/searchPw1.do", method = RequestMethod.GET)
 	public String searchPw(Member m, Model model) {
 		Member member = service.searchPw(m);
 		if(member == null) {
 			return "member/searchPw";
 		}else {
+			model.addAttribute("m", member);
 			return "member/searchPwList";
 		}
 	}
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
+	//패스워드변경
+	@ResponseBody
+	@RequestMapping(value = "/changePw.do" , produces = "application/json;charset=utf-8")
+	public String updatePw(Member m ) {
+		int result = service.updatePwMember(m);
+		System.out.println(result);
+		if(result>0) {
+			return "0";
+		}else {
+			return "1";
+		}
+	}
+	//기존 패스워드와 동일 여부
+	@ResponseBody
+	@RequestMapping(value = "/checkPw.do", produces = "application/json;charset=utf-8")
+	public String pwCheck(Member m) {
+		Member member = service.checkPwMember(m);
+		if(member == null) {
+			//사용가능
+			return "0";
+		}else {
+			//사용중임
+			return "1";
+		}
+	}
+	//카카오톡 회원가입 2단계
+		@RequestMapping(value = "/addProfil.do")
+		public String addProfile(Member m, HttpSession session) {
+		int result = service.insertProfileMember(m);
+		if(result > 0) {
+			return "member/loginFrm";
+		}else {
+			return "redirect:/";
+		}
+	}
 	
 	
 	
@@ -220,6 +245,9 @@ public class MemberController {
 			return "redirect:/";
 		}
 	}
+	
+	
+	
 }
 
 

@@ -69,6 +69,7 @@ public class MemberService {
 	public int insertMember(Member m) {
 		return dao.insertMember(m);
 	}
+	//문자인증
 	public void certifiedPhoneNumber(String userPhoneNumber, int randomNumber) {
 		//String api_key = "NCSYOLUKOEOQOVTE";	
 		//구동시에만 아래의 api-key삭제 후 주석 풀어주시기 바랍니다. (20원씩 날라가요 ㅠㅠ)
@@ -93,7 +94,7 @@ public class MemberService {
 	        System.out.println(e.getCode());
 	      }
 	}
-
+	
 	public ArrayList<Member> searchId(Member m) {
 		return dao.searchId(m);
 	}
@@ -160,5 +161,48 @@ public class MemberService {
 		return opd;
 	}
 
+	public int updatePwMember(Member m) {
+		return dao.updatePwMember(m);
+	}
+
+	public Member checkPwMember(Member m) {
+		return dao.checkPwMember(m);
+	}
+
+	//카카오톡 존재하는 아이디 채크
+	public Member searchId(String memberId) {
+		Member m = dao.searchId(memberId);
+		return m;
+	}
+
+	public int insertProfileMember(Member m) {
+		return dao.insertMember(m);
+	}
 
 }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
