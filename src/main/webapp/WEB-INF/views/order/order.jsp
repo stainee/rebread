@@ -92,6 +92,7 @@
             </div>
         </div>
     </div>
+    <input type="hidden" name="memberNo" value="${sessionScope.m.memberNo }">
     <input type="hidden" name="memberId" value="${sessionScope.m.memberId }">
 	<script>
 	
@@ -138,6 +139,7 @@
     	var todayString = year+month+day+hours+minutes+seconds;
     	
     	const payCard = $("#pay-card");
+    	const memberNo = $("[name=memberNo]").val();
     	const memberId = $("[name=memberId]").val();
     	
     	payCard.on("click", function(){
@@ -155,6 +157,7 @@
     			  url: "/insertOrder.do",
     			  data: 
     			  	{
+    				  	memberNo:memberNo,
     					orderName:orderName,
     					orderAddr:orderAddr,
     					orderPhone:orderPhone
@@ -163,7 +166,7 @@
     			  success: function(){
 				    	tossPayments.requestPayment('카드', { // 결제 수단 파라미터
 				    		  // 결제 정보 파라미터
-				    		  amount: 200,
+				    		  amount: 111,
 				    		  orderId: memberId+'-'+todayString,
 				    		  orderName: '토스 티셔츠 외 2건',
 				    		  customerName: '박토스',

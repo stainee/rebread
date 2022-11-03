@@ -16,6 +16,7 @@ import org.springframework.web.bind.annotation.ResponseBody;
 
 import kr.or.member.model.service.MemberService;
 import kr.or.member.model.vo.Member;
+import kr.or.order.model.vo.OrderPageData;
 import kr.or.store.model.service.StoreService;
 
 @Controller
@@ -64,7 +65,13 @@ public class MemberController {
 	
 	// memberOrderList 이동
 	@RequestMapping(value="/memberOrderList.do")
-	public String memberOrderList() {
+	public String memberOrderList(int reqPage, int memberNo, Model model) {
+		OrderPageData opd = service.selectOrderList(reqPage, memberNo);
+		model.addAttribute("list", opd.getList());
+		model.addAttribute("pageNavi",opd.getPageNavi());
+		model.addAttribute("reqPage",opd.getReqPage());
+		model.addAttribute("numPerPage",opd.getNumPerPage());
+		model.addAttribute("memberNo",opd.getMemberNo());
 		return "member/memberOrderList";
 	}
 	
