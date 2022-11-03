@@ -71,10 +71,10 @@ public class MemberService {
 	}
 	//문자인증
 	public void certifiedPhoneNumber(String userPhoneNumber, int randomNumber) {
-		//String api_key = "NCSYOLUKOEOQOVTE";	
+		String api_key = "NCSYOLUKOEOQOVTE";	
 		//구동시에만 아래의 api-key삭제 후 주석 풀어주시기 바랍니다. (20원씩 날라가요 ㅠㅠ)
 		
-		String api_key = "";
+		//String api_key = "";
 	    String api_secret = "XS3HZOGLMQWOUMH1DIPLFUDIREUPD0VR";
 	    Message coolsms = new Message(api_key, api_secret);
 
