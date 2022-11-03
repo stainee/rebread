@@ -2,19 +2,21 @@ package kr.or.member.controller;
 
 import java.util.ArrayList;
 
+
+import javax.mail.Store;
 import javax.servlet.http.HttpSession;
-import javax.xml.ws.Response;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
 
 import kr.or.member.model.service.MemberService;
 import kr.or.member.model.vo.Member;
 import kr.or.store.model.service.StoreService;
-import kr.or.store.model.vo.Store;
 
 @Controller
 public class MemberController {
@@ -54,14 +56,19 @@ public class MemberController {
 		return "/member/customerService";
 	}
 	
+	// memberMain(마이페이지) 이동
 	@RequestMapping(value="/memberMain.do")
 	public String memberMain() {
 		return "member/memberMain";
 	}
+	
+	// memberOrderList 이동
 	@RequestMapping(value="/memberOrderList.do")
 	public String memberOrderList() {
 		return "member/memberOrderList";
 	}
+	
+	// memberReview 이동
 	@RequestMapping(value="/memberReview.do")
 	public String memberReview() {
 		return "member/memberReview";
@@ -101,7 +108,6 @@ public class MemberController {
 			return "member/loginFrm";
 		}
 	}
-	
 	//logout
 	@RequestMapping(value = "/logout.do")
 	public String logOut(HttpSession session) {
@@ -134,6 +140,53 @@ public class MemberController {
 			return "redirect:/";
 		}
 	}
+	//전화번호 문자인증
+	@RequestMapping(value = "/phoneCheck.do", method = RequestMethod.GET)
+	@ResponseBody
+	public String sendSMS(@RequestParam("phone") String userPhoneNumber) { 
+		// 휴대폰 문자보내기
+		int randomNumber = (int)((Math.random()* (9999 - 1000 + 1)) + 1000);
+		//난수 생성
+		service.certifiedPhoneNumber(userPhoneNumber,randomNumber);
+		return Integer.toString(randomNumber);
+	}
+	//searchId이동
+	@RequestMapping(value = "/searchId.do")
+	public String searchIdFrm() {
+		return "member/searchId";
+	}
+	//searchId1
+	@RequestMapping(value = "/seachId1.do")
+	public String searchId(Member m, Model model) {
+		ArrayList<Member> list = service.searchId(m);
+		if(list.isEmpty()) {
+			return "member/searchId";
+		}else {
+			model.addAttribute("list",list);
+			return "member/searchIdList";
+		}
+	}
+	//searchPw이동
+	@RequestMapping(value = "/searchPw.do")
+	public String searchPwFrm() {
+		return "member/searchPw";
+	}
+	//searchPw1
+	@RequestMapping(value = "/searchPw1.do")
+	public String searchPw(Member m, Model model) {
+		Member member = service.searchPw(m);
+		if(member == null) {
+			return "member/searchPw";
+		}else {
+			return "member/searchPwList";
+		}
+	}
+	
+	
+	
+	
+	
+	
 	
 	
 	
@@ -159,21 +212,6 @@ public class MemberController {
 		}else {
 			return "redirect:/";
 		}
-	}
-	
-	// ceoStoreInfo 이동 (가게 정보)
-	@RequestMapping(value="/ceoStoreInfo.do")
-	public String ceoStoreInfo(Model model) {
-		ArrayList<Store> list = storeService.selectAllStore();
-		System.out.println(list);
-		model.addAttribute("list",list);
-		return "member/ceoStoreInfo";
-	}
-	
-	// ceoStoreSalesInfo 이동 (판매 정보 관리)
-	@RequestMapping(value="/ceoStoreSalesInfo.do")
-	public String ceoStoreSalesInfo() {
-		return "/member/ceoStoreSalesInfo";
 	}
 }
 

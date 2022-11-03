@@ -107,8 +107,43 @@
 	  	#{memberGrade},
 	  	0
 	  )
- 	
  	</insert>
+ 	
+ 	<!-- 아이디 검색 -->
+ 	<select id="searchId" parameterType="m" resultType="m">
+ 		select
+	  		member_no as memberNo,
+	  		member_id as memberId,
+	  		member_pw as memberPw,
+	  		member_name as memberName,
+	  		member_addr as memberAddr,
+	  		member_phone as memberPhone,
+	  		member_mail as memberMail,
+	  		member_grade as memberGrade, 
+	  		member_mileage as memberMileage
+	  	from member where member_name = #{memberName} and member_grade = #{memberGrade}
+	  	<if test="memberMail != null">
+	  		and member_mail = #{memberMail}
+	  	</if>
+	  	<if test="memberPhone != null">
+	  		and member_phone = #{memberPhone}
+	  	</if>
+ 	</select>
+ 	
+ 	<!-- 비밀번호 검색 -->
+ 	 	<select id="searchPw" parameterType="m" resultType="m">
+ 		select
+	  		member_no as memberNo,
+	  		member_id as memberId,
+	  		member_pw as memberPw,
+	  		member_name as memberName,
+	  		member_addr as memberAddr,
+	  		member_phone as memberPhone,
+	  		member_mail as memberMail,
+	  		member_grade as memberGrade, 
+	  		member_mileage as memberMileage
+	  	from member where member_id = #{memberId} and member_grade = #{memberGrade} and member_phone =#{memberPhone}
+ 	</select>
 </mapper>
 
 

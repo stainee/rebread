@@ -80,8 +80,9 @@
 						<td id="phones">
 							<input type="text" name="memberPhone" id="phone" placeholder="' - '을 제외한 번호를 입력해주세요.">
 							<button id="phoneBtn" type="button">인증하기</button>
+							<span class="successPhoneChk"></span>
 							<div class="phoneIn">
-								<input type="text" id="phoneInput">
+								<input type="text" id="phoneInput" required="required">
 								<button id="phoneChk" type="button">인증</button>
 								<span id="time" style="font-size: 15px; margin-left: 10px;"></span>
 							</div>
@@ -444,6 +445,56 @@ $("#joinme").on("click",function(){
 	console.log(memberAddr);
 });
 
+
+//휴대폰 번호 인증
+var code2 = "";
+$("#phoneBtn").click(function(){
+	alert("인증번호 발송이 완료되었습니다.\n휴대폰에서 인증번호 확인을 해주십시오.");
+	var phone = $("#phone").val();
+	$.ajax({
+        type:"GET",
+        url:"/phoneCheck.do?phone=" + phone,
+        cache : false,
+        success:function(data){
+        	if(data == "error"){
+        		alert("휴대폰 번호가 올바르지 않습니다.")
+				$(".successPhoneChk").text("유효한 번호를 입력해주세요.");
+				$(".successPhoneChk").css("color","red");
+				$("#phone").attr("autofocus",true);
+        	}else{	        		
+        		$("#phoneInput").attr("disabled",false);
+        		$(".successPhoneChk").text("인증번호를 입력한 뒤 본인인증을 눌러주십시오.");
+        		$(".successPhoneChk").css("color","green");
+        		$("#phone").attr("readonly",true);
+        		code2 = data;
+        	}
+        }
+    });
+});
+//휴대폰 인증번호 대조
+let injeong = false;
+$("#phoneChk").click(function(){
+	if($("#phoneInput").val() == code2){
+		$(".successPhoneChk").text("인증번호가 일치합니다.");
+		$(".successPhoneChk").css("color","green");
+		$("#phoneInput").attr("disabled",true);
+		$("#time").hide();
+		injeong = true;
+	}else{
+		$(".successPhoneChk").text("인증번호가 일치하지 않습니다. 확인해주시기 바랍니다.");
+		$(".successPhoneChk").css("color","red");
+		$(this).attr("autofocus",true);
+	}
+});
+//휴대폰 번호 인증했을경우 다음페이지
+$("#joinme").on("click",function(){
+	if(injeong == true){
+		return true;
+	}else{
+		alert("인증을 완료해주세요");
+		return false;
+	}
+});
 </script>
 
 

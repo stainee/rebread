@@ -154,13 +154,14 @@ $("#phoneBtn").on("click",function(){
     $(this).text("재전송");
 });
 
+
+
 var timer = null;
 var isRunning = false;
 $("#phoneBtn").on("click", function() {
     var display = $("#time");
   // 유효시간 설정
     var leftSec = 120;
-
   // 버튼 클릭 시 시간 연장
     if (isRunning){
     clearInterval(timer);

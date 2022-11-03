@@ -7,6 +7,7 @@ import java.util.Map;
 
 import javax.annotation.PostConstruct;
 
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpEntity;
 import org.springframework.http.HttpHeaders;
 import org.springframework.http.HttpStatus;
@@ -18,6 +19,7 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.client.ResponseErrorHandler;
 import org.springframework.web.client.RestTemplate;
 
@@ -29,6 +31,7 @@ import kr.or.order.model.vo.Order;
 
 @Controller
 public class OrderController {
+	@Autowired
 	private OrderService service;
 	
 	private final RestTemplate restTemplate = new RestTemplate();
@@ -60,6 +63,15 @@ public class OrderController {
 		return "order/orderDetail";
 	}
 	
+	// 결제전 정보 DB저장
+	@ResponseBody
+	@RequestMapping("/insertOrder.do")
+	public String insertOrder(Order o) {
+		System.out.println(o);
+		int result = service.insertOrder(o);
+		return "1";
+		
+	}
 	
 	@RequestMapping("/success.do")
 	public String confirmOrder(@RequestParam String paymentKey, @RequestParam String orderId, @RequestParam int amount, Model model) throws Exception {
@@ -80,7 +92,14 @@ public class OrderController {
 			JsonNode successNode = responseEntity.getBody();
 			model.addAttribute("orderId",successNode.get("orderId").asText());
 //			String secret = successNode.get("secret").asText();
-//			int result = service.confirmOrder();
+			
+			// 결제 후 paymentKey를 DB에 저장
+			int orderNo = service.searchOrderNo();
+			Order o = new Order();
+			o.setOrderNo(orderNo);
+			o.setPaymentKey(paymentKey);
+			int result = service.insertPaymentKey(o);
+			
 			return "order/orderSuccess";
 		}else {
 			JsonNode failNode = responseEntity.getBody();
@@ -90,16 +109,16 @@ public class OrderController {
 		}
 	}
 	
-	@RequestMapping("/fail")
+	@RequestMapping("/fail.do")
 	public String failOrder(@RequestParam String message, @RequestParam String code, Model model) {
 		model.addAttribute("message",message);
 		model.addAttribute("code",code);
-		return "fail";
+		return "order/orderFail";
 	}
 	
 	@RequestMapping("/orderCancel.do")
-	public String orderCancel(@ModelAttribute Order order, Model model) {
-		String paymentKey = order.getPaymentKey();
+	public String orderCancel(@ModelAttribute Order o, Model model) {
+		String paymentKey = o.getPaymentKey();
 		
 		
 		

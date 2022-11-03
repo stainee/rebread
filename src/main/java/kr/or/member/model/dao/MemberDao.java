@@ -55,4 +55,13 @@ public class MemberDao {
 		return sqlSession.insert("member.insertMember", m);
 	}
 
+	public ArrayList<Member> searchId(Member m) {
+		List list = sqlSession.selectList("member.searchId", m);
+		return (ArrayList<Member>)list;
+	}
+
+	public Member searchPw(Member m) {
+		return sqlSession.selectOne("member.searchPw", m);
+	}
+
 }
