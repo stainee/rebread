@@ -17,4 +17,5 @@ public class Member {
 	private String memberMail;
 	private int memberGrade;
 	private int memberMileage;
+	private int kakao;
 }

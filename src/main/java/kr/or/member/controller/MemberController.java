@@ -96,7 +96,7 @@ public class MemberController {
 		return "member/loginFrm";
 	}
 	//login
-	@RequestMapping(value = "/loginkakao.do")
+	@RequestMapping(value = "/login.do")
 	public String login(Member member, HttpSession session) {
 		Member m = service.loginMember(member);
 		if(m!=null) {
@@ -121,7 +121,7 @@ public class MemberController {
 	}
 	//중복된 아이디체크
 	@ResponseBody
-	@RequestMapping
+	@RequestMapping(value = "/idCheck.do")
 	public String idCheck(Member m) {
 		Member member = service.idCheck(m);
 		if(member == null) {
@@ -219,7 +219,6 @@ public class MemberController {
 	}
 	
 	
-	
 	// ceoMain 이동 (판매자 정보)
 	@RequestMapping(value="/ceoMain.do")
 	public String ceoMain() {
@@ -238,7 +237,6 @@ public class MemberController {
 			return "redirect:/";
 		}
 	}
-	
 	
 	
 }
