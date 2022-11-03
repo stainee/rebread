@@ -11,5 +11,6 @@
 	<typeAlias type="kr.or.store.model.vo.StoreDetail" alias="sd"></typeAlias>
 	<typeAlias type="kr.or.cs.model.vo.CS" alias="cs"></typeAlias>
 	<typeAlias type="kr.or.account.model.vo.Account" alias="a"></typeAlias>
+	<typeAlias type="kr.or.order.model.vo.Order" alias="o"></typeAlias>
 </typeAliases>
 </configuration>

@@ -21,4 +21,7 @@
 		from cs
 		where cs_no = #{csNo}
 	</select>
+	<insert id="insertCS" parameterType="cs">
+		insert into CS values(cs_seq.nextval, #{memberNo}, #{csCategory}, #{csContent}, 0)
+	</insert>
 </mapper>

@@ -68,9 +68,12 @@
 	<tx:annotation-driven/>
 	
 	<!-- 웹소켓 객체 생성 -->
-
+	<beans:bean id="chatting" class="kr.or.common.chatting"/>
 	<!-- 웹소켓 매핑 -->
-
+	<websocket:handlers>
+		<websocket:mapping handler="chatting" path="/chat.do"/>
+	</websocket:handlers>
+	
 	
 	 <!-- AOP 어노테이션 활성화 -->
 	 <aop:aspectj-autoproxy/>

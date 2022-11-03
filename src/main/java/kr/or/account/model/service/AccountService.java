@@ -37,7 +37,7 @@ public class AccountService {
 	
 	//테스트 코드
 	//@Scheduled(fixedDelay=10000)
-	//@Scheduled(cron ="0 0 0 27 10 ?")
+	//@Scheduled(cron ="0 0 0 10 * ?")
 	@Transactional
 	public void accountSchedule() {
 		//<상점번호, 총매출>을 담는 HashMap 가져오기

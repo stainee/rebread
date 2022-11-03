@@ -56,14 +56,19 @@ public class MemberController {
 		return "/member/customerService";
 	}
 	
+	// memberMain(마이페이지) 이동
 	@RequestMapping(value="/memberMain.do")
 	public String memberMain() {
 		return "member/memberMain";
 	}
+	
+	// memberOrderList 이동
 	@RequestMapping(value="/memberOrderList.do")
 	public String memberOrderList() {
 		return "member/memberOrderList";
 	}
+	
+	// memberReview 이동
 	@RequestMapping(value="/memberReview.do")
 	public String memberReview() {
 		return "member/memberReview";
