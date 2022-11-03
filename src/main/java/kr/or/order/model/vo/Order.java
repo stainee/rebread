@@ -17,7 +17,6 @@ public class Order {
 	private String orderDate;
 	private int orderTotalQuan;
 	private int orderPrice;
-	private String orderId;
 	private String orderName;
 	private String orderAddr;
 	private String orderPhone;

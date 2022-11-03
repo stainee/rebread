@@ -17,13 +17,13 @@
 	        <div class="left_container" style="max-height: 357px;">
 	            <div class="memberInfo">
 	                <p>[고객]</p>
-	                <p>방우현님</p>
+	                <p>${sessionScope.m.memberName }님</p>
 	                <div class="member-point">내 마일리지 : ${sessionScope.m.memberMileage }원</div>
 	            </div>
 	            <div class="selectList">
 	                <ul>
 	                	<a href="/memberMain.do"><li>내정보</li></a> 
-	                    <a href="/memberOrderList.do"><li>최근 주문 내역</li></a>
+	                    <a href="/memberOrderList.do?memberNo=${sessionScope.m.memberNo }&reqPage=1"><li>최근 주문 내역</li></a>
 	                    <a href="/memberReview.do"><li>내 등록 리뷰</li></a>
 	                </ul>
 	            </div>
