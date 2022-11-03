@@ -79,4 +79,25 @@
    		select count(*) from store
    </select>
    
+   <!-- 별점 포함해서 매장 상세정보 불러오기 -->
+   <select id="selectOneStore2" parameterType="_int" resultType="s">
+	select
+	s.store_no as storeNo,
+	s.member_no as memberNo,
+	s.store_name as
+	storeName,
+	s.store_content as storeContent,
+	s.store_addr as storeAddr,
+	s.store_regist_num as storeRegistNum,
+	s.store_account as storeAccount,
+	s.open_time as openTime,
+	s.close_time as closeTime,
+	s.store_phone as
+	storePhone,
+	s.store_img as storeImg,
+	nvl((select avg(rating) from test_review r where r.store_no = s.store_no),0)as rating
+	from store s
+	where store_no = #{_parameter}
+   </select>
+   
 </mapper>

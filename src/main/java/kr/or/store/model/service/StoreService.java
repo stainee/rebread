@@ -6,6 +6,8 @@ import java.util.HashMap;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import kr.or.product.model.dao.ProductDao;
+import kr.or.product.model.vo.Product;
 import kr.or.store.model.dao.StoreDao;
 import kr.or.store.model.vo.Store;
 import kr.or.store.model.vo.StoreDetail;
@@ -15,6 +17,8 @@ import kr.or.store.model.vo.StorePageData;
 public class StoreService {
 	@Autowired
 	private StoreDao dao;
+	@Autowired 
+	private ProductDao pdao;
 
 	public ArrayList<Store> selectAllStore() {
 		return dao.selectAllStore();
@@ -27,7 +31,22 @@ public class StoreService {
 	public int updateStoreDetail(Store s) {
 		return dao.updateStoreDetail(s);
 	}
-
+	
+	//별점포함 가져오는 매장 상세페이지 
+	public StoreDetail selectOneStore2(int storeNo) {
+		Store s = dao.selectOneStore2(storeNo);
+		ArrayList<Product> lossList = pdao.selectLossList(storeNo);
+		ArrayList<Product> nomalList = pdao.selectNomalList(storeNo);
+		StoreDetail sd = new StoreDetail();
+		sd.setS(s);
+		sd.setLossList(lossList);
+		sd.setNomalList(nomalList);
+		System.out.println(s);
+		System.out.println(lossList);
+		System.out.println(nomalList);
+		return sd;
+	}
+	//매장 전체페이지 리스트와 페이지 네비
 	public StorePageData selectStoreList(int reqPage) {
 		int numPerPage = 10;
 		int end = reqPage * numPerPage;
