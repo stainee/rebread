@@ -8,9 +8,9 @@ import org.mybatis.spring.SqlSessionTemplate;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
 
-import kr.or.product.model.vo.Product;
 import kr.or.store.model.vo.Store;
 import kr.or.store.model.vo.StoreDetail;
+import kr.or.store.model.vo.StoreListDetail;
 
 @Repository
 public class StoreDao {
@@ -27,6 +27,10 @@ public class StoreDao {
 		return sd;
 	}
 
+	public StoreListDetail selectOneStoreDetail(int storeNo) {
+		StoreListDetail sld = sqlSession.selectOne("store.selectOneStoreDetail",storeNo);
+		return sld;
+	}
 	public int updateStoreDetail(Store s) {
 		int result = sqlSession.update("store.updateStoreDetail", s);
 		return result;

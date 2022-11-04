@@ -89,4 +89,15 @@ public class MemberDao {
 		return sqlSession.selectOne("member.kakaoSearchId", memberId);
 	}
 
+	public int insertProfileMember(Member m) {
+		return sqlSession.insert("member.addProfile", m);
+	}
+
+	
+	public ArrayList<Member> memberSearch(Member m) {
+		List list = sqlSession.selectList("member.memberSearch", m);
+		ArrayList<Member> mList = (ArrayList<Member>)list;
+		return mList;
+	}
+
 }

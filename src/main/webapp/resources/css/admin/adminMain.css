@@ -20,7 +20,6 @@
     cursor: pointer;
 }
 .content_container{
-	
 	padding: 40px;
 }
 .content_container .member-withdraw{
@@ -36,7 +35,6 @@
 }
 .right_container{
 	width: 700px;
-	height: 520px;
 }
 .content-title{
 	font-size: 1.5em;
