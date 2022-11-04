@@ -48,4 +48,8 @@
 	<select id="selectPaymentKey" parameterType="_int" resultType="string">
 		select paymentKey from orders where order_no=#{orderNo}
 	</select>
+	
+	<update id="updateOrderState" parameterType="_int">
+		update orders set order_state='취소완료' where order_no=#{orderNo}
+	</update>
 </mapper>

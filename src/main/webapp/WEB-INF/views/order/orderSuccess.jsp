@@ -16,10 +16,18 @@
         	<!-- <p>${o.orderId }</p> -->
             <p>주문 완료 완료 완료 축하축하합니당</p>
             <p>빠르게 배송 노력합니당</p>
-            <button class="order-detail">주문 상세보기</button>
-            <button class="order-mypage">마이페이지</button>
+            <button class="order-detail" onclick="goToOrderList(${o.orderNo})">주문 상세보기</button>
+            <button class="order-mypage" onclick="goToMyPage()">마이페이지</button>
         </div>
     </div>
 	<jsp:include page="/WEB-INF/views/common/footer.jsp"/>
+	<script>
+		function goToOrderList(orderNo){
+			location.href="/orderDetail.do?orderNo="+orderNo;
+		}
+		function goToMyPage(){
+			location.href="/memberMain.do";
+		}
+	</script>
 </body>
 </html>

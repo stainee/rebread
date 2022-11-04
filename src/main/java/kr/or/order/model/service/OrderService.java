@@ -40,5 +40,10 @@ public class OrderService {
 		return paymentKey;
 	}
 
+	public void updateOrderState(int orderNo) {
+		dao.updateOrderState(orderNo);
+		
+	}
+
 	
 }

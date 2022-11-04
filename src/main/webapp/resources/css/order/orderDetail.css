@@ -77,10 +77,14 @@
 .content-box5 .order-cancel{
 	display: flex;
 	justify-content: center;
+	padding-top: 40px;
 }
 .content-box5 .order-cancel div{
 	font-size: 1.3em;
-	padding-top: 40px;
+}
+.content-box5 .order-cancel div:hover{
+	text-decoration: underline;	
+	color: red;
 }
 .content-img img{
 	width: 70px;
