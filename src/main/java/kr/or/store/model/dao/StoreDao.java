@@ -62,4 +62,15 @@ public class StoreDao {
 		return result;
 	}
 
+	public Store selectOneStore1(Store store) {
+		Store s = sqlSession.selectOne("store.selectOneStore1", store);
+		return s;
+	}
+
+	public int updateStore(Store s) {
+		int result = sqlSession.update("store.updateStore",s);
+		return result;
+	}
+
+
 }

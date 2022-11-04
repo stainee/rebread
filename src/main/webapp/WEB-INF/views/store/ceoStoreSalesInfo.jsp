@@ -8,8 +8,8 @@
 </head>
 <link rel="stylesheet" href="resources/css/font/font.css">
 <link rel="stylesheet" href="/resources/css/common/managetemplate.css">
-<link rel="stylesheet" href="/resources/css/member/ceoStoreInfo.css">
-<link rel="stylesheet" href="/resources/css/member/ceoStoreSalesInfo.css">
+<link rel="stylesheet" href="/resources/css/store/ceoStoreInfo.css">
+<link rel="stylesheet" href="/resources/css/store/ceoStoreSalesInfo.css">
 
 <script src="https://code.jquery.com/jquery-3.6.0.js"></script>
 <body>

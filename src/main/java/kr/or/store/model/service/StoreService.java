@@ -36,6 +36,16 @@ public class StoreService {
 	public int insertStore(Store s) {
 		return dao.storeInsert(s);
 	}
+
+	public Store selectOneStore1(Store s) {
+		return dao.selectOneStore1(s);
+	}
+
+	public Store updateStore(Store s) {
+		Store store = dao.selectOneStore1(s);
+		return store;
+	}
+	
 	
 //	// 판매자 가게 정보 페이징 처리
 //	public StorePageData selectStoreList(int reqPage) {

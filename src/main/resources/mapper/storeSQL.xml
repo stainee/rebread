@@ -32,6 +32,37 @@
    		from store s join member m on s.member_no=m.member_no
    		where s.store_no = #{_parameter}
    </select>
+   <select id="selectOneStore1" resultType="s" parameterType="s">
+   		select
+   			s.store_no as storeNo,
+   			s.member_no as memberNo,
+   			m.member_name as memberName,
+   			s.store_name as storeName,
+   			s.store_addr as storeAddr,
+   			s.store_content as storeContent,
+   			s.store_regist_num as storeRegistNum,
+   			s.store_account as storeAccount,
+   			s.open_time as openTime,
+   			s.close_time as closeTime,
+   			s.store_phone as storePhone,
+   			s.store_img as storeImg
+   		from store s join member m on s.member_no=m.member_no
+   		where s.store_no = #{storeNo}
+   </select>
+   <update id="updateStore" parameterType="s">
+   		update store
+   			set 
+   			store_name = #{storeName},
+   			store_addr = #{storeAddr},
+   			store_content = #{storeContent},
+   			store_regist_num = #{storeRegistNum},
+   			store_account = #{storeAccount},
+   			open_time = #{openTime},
+   			close_time = #{closeTime},
+   			store_phone = #{storePhone},
+   			store_img = #{storeImg}
+   		where store_no = #{storeNo}
+   </update>
    <update id="updateStoreDetail" parameterType="s">
    		update store
    			set 

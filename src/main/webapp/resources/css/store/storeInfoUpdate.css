@@ -60,12 +60,6 @@
     justify-content: center;
     padding: 20px 0px;
 }
-.store_name input{
-	text-align: center;
-	font-size: 16px;
-	border: none;
-	outline: none;
-}
 
 .store_info_form{
     width: 500px;
@@ -80,14 +74,6 @@
 }
 .store_info_content{
     display: inline-block;
-}
-.store_info_content input{
-	border: none;
-	font-size: 16px;
-	outline: none;
-}
-input[name=openTime],input[name=closeTime]{
-	width: 45px;
 }
 .store_info_wrap_box{
     border-bottom: 2px solid gray;
@@ -206,7 +192,6 @@ textarea[name=storeContent]{
 
 /* 가게 정보 수정창 CSS */
 .store_update_wrapper{
-	display: none;
 }
 .store_update_form{
 	display: flex;

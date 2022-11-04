@@ -136,13 +136,6 @@ public class MemberController {
 		}
 	}
 	
-	
-	
-	
-	
-	
-	
-	
 	// ceoMain 이동 (판매자 정보)
 	@RequestMapping(value="/ceoMain.do")
 	public String ceoMain() {
