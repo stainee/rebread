@@ -175,7 +175,7 @@ public class MemberService {
 	}
 
 	public int insertProfileMember(Member m) {
-		return dao.insertMember(m);
+		return dao.insertProfileMember(m);
 	}
 
 	public ArrayList<Member> memberSearch(String searchValue, String searchOption) {

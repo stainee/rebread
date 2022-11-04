@@ -121,6 +121,22 @@
 	  )
  	</insert>
  	
+ 	<!-- 카카오회원가입 -->
+ 	<insert id="addProfile" parameterType="m">
+ 	insert into member values (
+	  	member_seq.nextval,
+	  	#{memberId},
+	  	#{memberPw},
+	  	#{memberName},
+	  	#{memberAddr},
+	  	#{memberPhone},
+	  	#{memberMail},
+	  	#{memberGrade},
+	  	0,
+	  	2
+	  )
+ 	
+ 	</insert>
  	<!-- 아이디 검색 -->
  	<select id="searchId" parameterType="m" resultType="m">
  		select

@@ -93,6 +93,7 @@ public class MemberDao {
 		return sqlSession.insert("member.addProfile", m);
 	}
 
+<<<<<<< HEAD
 	
 	public ArrayList<Member> memberSearch(Member m) {
 		List list = sqlSession.selectList("member.memberSearch", m);
@@ -100,4 +101,6 @@ public class MemberDao {
 		return mList;
 	}
 
+=======
+>>>>>>> refs/remotes/origin/master
 }

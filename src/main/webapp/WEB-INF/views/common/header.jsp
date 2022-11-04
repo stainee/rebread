@@ -3,6 +3,8 @@
 <%@taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
     
 <link rel="stylesheet" href="/resources/css/common/header.css">
+<link rel="stylesheet" href="/resources/css/common/font.css">
+
 <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
     
 
@@ -33,7 +35,14 @@
 						<div class="header-right">
 		                    <ul>
 		                        <li><a href="/memberMain.do">마이페이지</a></li>
-		                        <li><a href="/logout.do">로그아웃</a></li>
+		                        <c:choose>
+		                        	<c:when test="${sessionScope.m.kakao == 1}">
+		                        		<li><a href="/logout.do">로그아웃</a></li>
+			                        </c:when>
+			                        <c:otherwise>
+			                        	<li><a style="cursor: pointer;" id="klogout">로그아웃</a></li>
+			                        </c:otherwise>
+		                        </c:choose>
 		                        <li><a href="/memberOrderList.do?memberNo=${sessionScope.m.memberNo }&reqPage=1">주문내역</a></li>
 		                        <li><a href="#">회원해택</a></li>
 		                    </ul>
@@ -66,8 +75,38 @@
 			</c:choose>
         </div>
     </nav>
-<script src="/resources/js/common/header.js"></script>
+	<div class="logmodal">
+		<div class="logmodal-wrap">
+			<div class="modal-title">
+				<h2>REBREAD LOGOUT</h2>
+				<span>X</span>
+			</div>
+			<div class="modal-content">
+				<div id="log1">리브레드 로그아웃</div>
+				<div id="log2">카카오톡 로그아웃</div>
+			</div>
+		</div>
+	</div>    
 
+<script src="/resources/js/common/header.js"></script>
+<script>
+$("#klogout").on("click",function(){
+	$(".logmodal").fadeIn(300);
+	$(".logmodal-wrap").fadeIn(300);
+});
+$(".modal-title>span").on("click",function(){
+	$(".logmodal").fadeOut(300);
+	$(".logmodal-wrap").fadeOut(300);
+});
+$("#log1").on("click",function(){
+	alert("로그아웃 되었습니다.");
+	location.href="/logout.do";
+});
+$("#log2").on("click",function(){
+	alert("카카오톡계정에서 로그아웃되었습니다");
+	location.href="/kakaologout.do";
+});
+</script>
 
 
 
