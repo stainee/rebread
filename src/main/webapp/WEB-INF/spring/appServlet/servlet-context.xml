@@ -46,6 +46,7 @@
 		<beans:constructor-arg ref="sqlSession"/>
 	</beans:bean>
 	
+	 
 	<context:component-scan base-package="kr.or.reb" />
 	<context:component-scan base-package="kr.or.admin"/>
 	<context:component-scan base-package="kr.or.member"/>
@@ -54,8 +55,13 @@
 	<context:component-scan base-package="kr.or.donate"/>
 	<context:component-scan base-package="kr.or.cs"/>
 	<context:component-scan base-package="kr.or.payment"/>
+	<context:component-scan base-package="kr.or.product"/>			
 	<context:component-scan base-package="kr.or.account"/>
 	<context:component-scan base-package="kr.or.common"/>
+	<context:component-scan base-package="common"/>
+	<context:component-scan base-package="kr.or.member.model.vo"/>
+	
+	
 	<!--  파일업로드 객체 생성 -->
 	<beans:bean id="multipartResolver" class="org.springframework.web.multipart.commons.CommonsMultipartResolver">
 		<beans:property name="maxUploadSize" value="10485760"/>
@@ -74,6 +80,8 @@
 		<websocket:mapping handler="chatting" path="/chat.do"/>
 	</websocket:handlers>
 	
+	<!-- NaverLogin에 대한 bean추가 -->
+	<beans:bean id="naverLoginBO" class="kr.or.member.model.vo.NaverLoginBO" />
 	
 	 <!-- AOP 어노테이션 활성화 -->
 	 <aop:aspectj-autoproxy/>
