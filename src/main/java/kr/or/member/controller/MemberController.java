@@ -1,9 +1,13 @@
 package kr.or.member.controller;
 
+import java.io.IOException;
 import java.util.ArrayList;
 
 import javax.servlet.http.HttpSession;
 
+import org.json.simple.JSONObject;
+import org.json.simple.parser.JSONParser;
+import org.json.simple.parser.ParseException;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -12,8 +16,11 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
 
+import com.github.scribejava.core.model.OAuth2AccessToken;
+
 import kr.or.member.model.service.MemberService;
 import kr.or.member.model.vo.Member;
+import kr.or.member.model.vo.NaverLoginBO;
 import kr.or.order.model.vo.OrderPageData;
 import kr.or.store.model.service.StoreService;
 import lombok.AllArgsConstructor;
@@ -24,8 +31,6 @@ public class MemberController {
 
 	@Autowired
 	private MemberService service;
-	@Autowired
-	private StoreService storeService;
 	
 	@RequestMapping(value="/memberModify.do")
 	public String memberModify(int memberNo,Model model) {
@@ -97,11 +102,17 @@ public class MemberController {
 	public String joinFrm() {
 		return "member/joinFrm";
 	}
-	//loginFrm이동
-	@RequestMapping(value = "/loginFrm.do")
-	public String loginFrm() {
-		return "member/loginFrm";
-	}
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
 	//login
 	@RequestMapping(value = "/login.do")
 	public String login(Member member, HttpSession session) {
@@ -224,15 +235,59 @@ public class MemberController {
 			return "redirect:/";
 		}
 	}
-	
-	
+	//카카오로그아웃 choose
+		@RequestMapping(value = "/logoutChoose.do")
+		public String logoutChoose() {
+			return "member/logoutChoose";
+		}
+		
+		
+		
+		/*
+		//loginFrm이동
+		@RequestMapping(value = "/loginFrm.do")
+		public String loginFrm() {
+			return "member/loginFrm";
+		}
+		*/
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
 	// ceoMain 이동 (판매자 정보)
 	@RequestMapping(value="/ceoMain.do")
 	public String ceoMain() {
 		
 		return "member/ceoMain";
 	}
-	
 	// 판매자 정보 수정
 	@RequestMapping(value = "/updateCeo.do")
 	public String updateCeo(Member m, HttpSession session) {

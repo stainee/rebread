@@ -64,14 +64,20 @@
 						<a href="/searchId.do">아이디 찾기&nbsp;&nbsp;</a>
 					</div>
 					<div id="login">
-						<input type="submit" value="로 그 인">
+						<input type="submit" value="&nbsp&nbsp&nbsp; 리브레드 로그인">
 					</div>
 				</form>
-				
-				
 				<div class="kakao">
 					<a href="/kakao_login.do">
 						<img src="/resources/img/common/kakaologin.png">
+					</a>
+				</div>
+				<div id="naver">
+					<a href="${url }">
+						<div class="naver">
+							<span><img src="/resources/img/common/naverlog.png"></span>
+							<span>네이버로  로그인하기</span>
+						</div>
 					</a>
 				</div>
 				<div class="join">
@@ -85,6 +91,9 @@
 			</div>
 		</div>
 	</div>
+</body>
+</html>
+	
 </body>
 <script>
 	AOS.init();

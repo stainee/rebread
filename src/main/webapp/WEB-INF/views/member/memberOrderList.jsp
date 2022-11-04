@@ -22,27 +22,41 @@
 	            </div>
 	            <div class="selectList">
 	                <ul>
-	                	<a href="/memberMain.do"><li>내정보</li></a> 
-	                    <a href=/memberOrderList.do?memberNo=${sessionScope.m.memberNo }&reqPage=1><li>최근 주문 내역</li></a>
-	                    <a href="/memberReview.do"><li>내 등록 리뷰</li></a>
+	                	<li><a href="/memberMain.do">내정보</a></li>
+	                    <li><a href=/memberOrderList.do?memberNo=${sessionScope.m.memberNo }&reqPage=1>최근 주문 내역</a></li>
+	                    <li><a href="/memberReview.do">내 등록 리뷰</a></li>
 	                </ul>
 	            </div>
 	        </div>
 	
-	        <div class="right_container" style="min-height: 357px;">
+	        <div class="right_container" style="min-height: 260px;">
 	            <div class="content_container">
 	            	<c:forEach items="${list }" var="o">
 	           		<a href="/orderDetail.do?orderNo=${o.orderNo }">
 						<div class="content-box">
 		            		<div class="content-img"><img src="/resources/img/common/logo.png"></div>
-		            		<div class="content-wrap">
-		            			<div class="content-status-date">
-			            			<div class="deliver-status">${o.orderState }</div>
-			            			<span>ㅣ</span>
-			            			<div class="order-date">${o.orderDate }</div>
-		            			</div>
-		            			<div class="content-product-name">빵이름상품이름</div>            		
-		            		</div>
+		            		<c:choose>
+		            			<c:when test="${o.orderState eq '취소완료' }">
+				            		<div class="content-wrap" style="text-decoration: line-through; color: #cbcbcb;">
+				            			<div class="content-status-date">
+					            			<div class="deliver-status">${o.orderState }</div>
+					            			<span>ㅣ</span>
+					            			<div class="order-date">${o.orderDate }</div>
+				            			</div>
+				            			<div class="content-product-name">빵이름상품이름</div>            		
+				            		</div>
+			            		</c:when>
+			            		<c:otherwise>
+				            		<div class="content-wrap">
+				            			<div class="content-status-date">
+					            			<div class="deliver-status">${o.orderState }</div>
+					            			<span>ㅣ</span>
+					            			<div class="order-date">${o.orderDate }</div>
+				            			</div>
+				            			<div class="content-product-name">빵이름상품이름</div>            		
+				            		</div>
+			            		</c:otherwise>
+		            		</c:choose>
 		            	</div>
 	            	</a>
 	            	</c:forEach>

@@ -6,7 +6,7 @@
 }
 .content{
     text-align: center;
-    margin-top: 300px;
+    margin: 200px 0px;
 }
 .content>p:first-child{
     font-size: 2.3em;
@@ -14,7 +14,7 @@
 }
 .content>p:last-of-type{
     font-size: 1.5em;
-    margin-bottom: 100px;
+    margin-bottom: 200px;
 }
 .order-detail, .order-mypage{
     border: 1px solid black;

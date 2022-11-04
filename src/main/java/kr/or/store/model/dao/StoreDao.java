@@ -8,6 +8,7 @@ import org.mybatis.spring.SqlSessionTemplate;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
 
+import kr.or.product.model.vo.Product;
 import kr.or.store.model.vo.Store;
 import kr.or.store.model.vo.StoreDetail;
 
@@ -49,4 +50,11 @@ public class StoreDao {
 	public int selectStoreCount() {
 		return sqlSession.selectOne("store.totalCount");
 	}
+
+	public Store selectOneStore2(int storeNo) {
+		return sqlSession.selectOne("store.selectOneStore2",storeNo);
+	}
+
+
+
 }

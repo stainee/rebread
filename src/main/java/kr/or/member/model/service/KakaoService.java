@@ -39,7 +39,7 @@ public class KakaoService {
              StringBuilder sb = new StringBuilder();
              sb.append("grant_type=authorization_code");
              sb.append("&client_id=e584f1ee2e73e2ce140d7006c3f82405");  //앱 KEY VALUE
-             sb.append("&redirect_uri=http://192.168.10.64/kakao_callback.do"); // 앱 CALLBACK 경로
+             sb.append("&redirect_uri=http://localhost:8888/kakao_callback.do"); // 앱 CALLBACK 경로
              sb.append("&code=" + code);
              bw.write(sb.toString());
              bw.flush();
@@ -55,14 +55,10 @@ public class KakaoService {
 
              JsonParser parser = new JsonParser();
              JsonElement element = parser.parse(result);
-             System.out.println("parser : " +parser);
-             System.out.println("element : " +element);
 
              // 토큰 값 저장 및 리턴
              access_token = element.getAsJsonObject().get("access_token").getAsString();
              refresh_token = element.getAsJsonObject().get("refresh_token").getAsString();
-             System.out.println("access_token : " + access_token);
-             System.out.println("refresh_token : " + refresh_token);
              
              br.close();
              bw.close();
@@ -116,4 +112,31 @@ public class KakaoService {
              }
              return resultMap;
          }
+
+    //카카오톡 로그아웃하기
+ 	public void logout(String access_Token) {
+ 		String reqURL = "https://kapi.kakao.com/v1/user/unlink";
+	    try {
+	        URL url = new URL(reqURL);
+	        HttpURLConnection conn = (HttpURLConnection) url.openConnection();
+	        conn.setRequestMethod("POST");
+	        conn.setRequestProperty("Authorization", "Bearer " + access_Token);
+	        
+	        int responseCode = conn.getResponseCode();
+	        
+	        BufferedReader br = new BufferedReader(new InputStreamReader(conn.getInputStream()));
+	        
+	        String result = "";
+	        String line = "";
+	        while ((line = br.readLine()) != null) {
+	            result += line;
+	        }
+	        System.out.println(result);
+	    } catch (IOException e) {
+	        e.printStackTrace();
+	    }
+	}
+
+
+
 }
