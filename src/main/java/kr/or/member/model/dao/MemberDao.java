@@ -93,4 +93,15 @@ public class MemberDao {
 		return sqlSession.insert("member.addProfile", m);
 	}
 
+	public int insertProfileNaver(Member m) {
+		return sqlSession.insert("member.addProfileNaver",m);
+	}
+	
+	public ArrayList<Member> memberSearch(Member m) {
+		List list = sqlSession.selectList("member.memberSearch", m);
+		ArrayList<Member> mList = (ArrayList<Member>)list;
+		return mList;
+	}
+
+
 }

@@ -3,7 +3,6 @@
 <%
 	String errMsg = (String)session.getAttribute("errMsg");
 	if(errMsg == null) errMsg ="";
-	session.invalidate();
  %>
 <!DOCTYPE html>
 <html>
@@ -76,7 +75,7 @@
 					<a href="${url }">
 						<div class="naver">
 							<span><img src="/resources/img/common/naverlog.png"></span>
-							<span>네이버로  로그인하기</span>
+							<span>네이버 로그인</span>
 						</div>
 					</a>
 				</div>

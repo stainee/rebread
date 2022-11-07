@@ -32,7 +32,6 @@ public class KakaoService {
              //HttpURLConnection 설정 값 셋팅
              conn.setRequestMethod("POST");
              conn.setDoOutput(true);
-             System.out.println("conn : " + conn);
 
              // buffer 스트림 객체 값 셋팅 후 요청
              BufferedWriter bw = new BufferedWriter(new OutputStreamWriter(conn.getOutputStream()));

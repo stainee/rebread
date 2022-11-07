@@ -1,7 +1,12 @@
 package kr.or.member.controller;
 
+import java.io.BufferedReader;
 import java.io.IOException;
+import java.io.InputStreamReader;
+import java.net.HttpURLConnection;
+import java.net.URL;
 
+import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpSession;
 
 import org.json.simple.JSONObject;
@@ -10,6 +15,7 @@ import org.json.simple.parser.ParseException;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
+import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
@@ -25,6 +31,7 @@ public class NaverController {
 			/* NaverLoginBO */
 			@Autowired
 			private NaverLoginBO naverLoginBO;
+			private String apiResult = null;
 			@Autowired
 			private MemberService service;
 			/*
@@ -41,8 +48,6 @@ public class NaverController {
 				/* 네이버아이디로 인증 URL을 생성하기 위하여 naverLoginBO클래스의 getAuthorizationUrl메소드 호출 */
 				String naverAuthUrl = naverLoginBO.getAuthorizationUrl(session);
 				
-				System.out.println("네이버:" + naverAuthUrl);
-				
 				//네이버 
 				model.addAttribute("url", naverAuthUrl);
 		 
@@ -57,7 +62,6 @@ public class NaverController {
 				System.out.println("여기는 callback");
 				OAuth2AccessToken oauthToken;
 		        oauthToken = naverLoginBO.getAccessToken(session, code, state);
-		        System.out.println("oauthToken =" +oauthToken);
 		        
 		        //1. 로그인 사용자 정보를 읽어온다.
 				String apiResult = naverLoginBO.getUserProfile(oauthToken);  //String형식의 json데이터
@@ -77,16 +81,21 @@ public class NaverController {
 				//3. 데이터 파싱 
 				//Top레벨 단계 _response 파싱
 				JSONObject response_obj = (JSONObject)jsonObj.get("response");
+				String access_token = oauthToken.getAccessToken(); //토큰
+				
+				
 				//response의 nickname값 파싱
 				String memberId = (String)response_obj.get("id");
-				System.out.println(memberId);
 				String memberName = (String)response_obj.get("name");
-				System.out.println(memberName);
 				String memberMail = (String)response_obj.get("email");
-				System.out.println(memberMail);
 				String memberPw = memberId;
 				Member user = service.searchId(memberId);
-				System.out.println("user :"+ user);
+				
+				// 세션 생성
+				session.setAttribute("result", response_obj);
+				String str_result = access_token.replaceAll("\\\"","");
+				session.setAttribute("access_token", str_result);
+				System.out.println(session);
 				
 				Member m =new Member();
 				if(user==null) {
@@ -95,15 +104,66 @@ public class NaverController {
 	            	m.setMemberName(memberName);
 	            	m.setMemberMail(memberMail);
 	            	m.setMemberPw(memberPw);
-	            	 /*로그아웃 처리 시, 사용할 토큰 값*/
 	            	model.addAttribute("m", m);
-	            	return "member/addPropilFrm";
+	            	return "member/addPropilFrm2";
 	            }else {
-	            	System.out.println("user :" + user);
 	            	//신규회원이 아닌경우
 	            	session.setAttribute("m", user);
-	            	 /*로그아웃 처리 시, 사용할 토큰 값*/
 	            	return "redirect:/";
 	            }
-			}	
+			}
+			
+			
+		//네이버 로그아웃하기
+		@GetMapping("/removeNaver.do") //token = access_token임
+		public String remove(@RequestParam String token, HttpSession session, HttpServletRequest request, Model model ) {
+				
+			String apiUrl = "https://nid.naver.com/oauth2.0/token?grant_type=delete&client_id="+NaverLoginBO.CLIENT_ID+
+			"&client_secret="+NaverLoginBO.CLIENT_SECRET+"&access_token="+token.replaceAll("'", "")+"&service_provider=NAVER";
+				
+				System.out.println("aa" + apiUrl);
+				try {
+					String res = requestToServer(apiUrl);
+					model.addAttribute("res", res); //결과값 찍어주는용
+					session.invalidate();
+				} catch (IOException e) {
+					// TODO Auto-generated catch block
+					e.printStackTrace();
+				}
+					
+				return "redirect:/";
+			}
+		private String requestToServer(String apiURL) throws IOException {
+		    return requestToServer(apiURL, null);
+		}
+		
+		private String requestToServer(String apiURL, String headerStr) throws IOException {
+		    URL url = new URL(apiURL);
+		    HttpURLConnection con = (HttpURLConnection)url.openConnection();
+		    con.setRequestMethod("GET");
+		    System.out.println("header Str: " + headerStr);
+		    if(headerStr != null && !headerStr.equals("") ) {
+		      con.setRequestProperty("Authorization", headerStr);
+		    }
+		    int responseCode = con.getResponseCode();
+		    BufferedReader br;
+		    System.out.println("responseCode="+responseCode);
+		    if(responseCode == 200) { // 정상 호출
+		      br = new BufferedReader(new InputStreamReader(con.getInputStream()));
+		    } else {  // 에러 발생
+		      br = new BufferedReader(new InputStreamReader(con.getErrorStream()));
+		    }
+		    String inputLine;
+		    StringBuffer res = new StringBuffer();
+		    while ((inputLine = br.readLine()) != null) {
+		      res.append(inputLine);
+		    }
+		    br.close();
+		    if(responseCode==200) {
+		    	String new_res=res.toString().replaceAll("&#39;", "");
+				 return new_res; 
+		    } else {
+		      return null;
+		    }
+		}
 }

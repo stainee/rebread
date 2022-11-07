@@ -178,6 +178,22 @@ public class MemberService {
 	public int insertProfileMember(Member m) {
 		return dao.insertProfileMember(m);
 	}
+	
+	public int insertProfileNaver(Member m) {
+		return dao.insertProfileNaver(m);
+	}
+	
+	public ArrayList<Member> memberSearch(String searchValue, String searchOption) {
+		Member m = new Member();
+		if(searchOption.equals("memberId")) {
+			m.setMemberId(searchValue);
+		}else if(searchOption.equals("memberName")) {
+			m.setMemberName(searchValue);
+		}
+		
+		ArrayList<Member> list = dao.memberSearch(m);
+		return list;
+	}
 
 }
 

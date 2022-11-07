@@ -135,7 +135,21 @@
 	  	0,
 	  	2
 	  )
- 	
+	 </insert>
+	  <!-- 네이버회원가입 -->
+  	<insert id="addProfileNaver" parameterType="m">
+ 	insert into member values (
+	  	member_seq.nextval,
+	  	#{memberId},
+	  	#{memberPw},
+	  	#{memberName},
+	  	#{memberAddr},
+	  	#{memberPhone},
+	  	#{memberMail},
+	  	#{memberGrade},
+	  	0,
+	  	3
+	  )
  	</insert>
  	<!-- 아이디 검색 -->
  	<select id="searchId" parameterType="m" resultType="m">
@@ -214,6 +228,30 @@
 	  		kakao
 	  	from member where member_id =#{memberId}
   </select>
+  
+  
+    <!-- 회원 검색 : name 또는 id -->
+  <select id="memberSearch" resultType="m" parameterType="m">
+  		select
+  			member_no as memberNo,
+	  		member_id as memberId,
+	  		member_pw as memberPw,
+	  		member_name as memberName,
+	  		member_addr as memberAddr,
+	  		member_phone as memberPhone,
+	  		member_mail as memberMail,
+	  		member_grade as memberGrade, 
+	  		member_mileage as memberMileage,
+	  		kakao
+	  	from member
+	  	<if test="memberId != null">
+	  		where member_Id LIKE '%'||#{memberId}||'%'
+	  	</if>
+	  	<if test="memberName != null">
+	  		where member_name LIKE '%'||#{memberName}||'%'
+	  	</if>
+  </select>
+  
 </mapper>
 
 

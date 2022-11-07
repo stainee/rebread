@@ -92,7 +92,7 @@ public class MemberController {
 	}
 	
 	
-	//joinStep이동
+	//joinStep이동f
 	@RequestMapping(value = "/joinStep.do")
 	public String joinStep() {
 		return "/member/joinStep";
@@ -235,52 +235,21 @@ public class MemberController {
 			return "redirect:/";
 		}
 	}
+	//네이버 로그아웃 2단계
+		@RequestMapping(value = "/addProfileNaver.do")
+		public String addProfileNaver(Member m, HttpSession session) {
+			int result = service.insertProfileNaver(m);
+			if(result >0) {
+				return "redirect:/loginFrm.do";
+			}else {
+				return "redirect:/";
+			}
+		}
 	//카카오로그아웃 choose
 		@RequestMapping(value = "/logoutChoose.do")
 		public String logoutChoose() {
 			return "member/logoutChoose";
 		}
-		
-		
-		
-		/*
-		//loginFrm이동
-		@RequestMapping(value = "/loginFrm.do")
-		public String loginFrm() {
-			return "member/loginFrm";
-		}
-		*/
-		
-		
-		
-		
-		
-		
-		
-		
-		
-		
-		
-		
-		
-		
-		
-		
-		
-		
-		
-		
-		
-		
-		
-		
-		
-		
-		
-		
-		
-		
-		
 		
 	// ceoMain 이동 (판매자 정보)
 	@RequestMapping(value="/ceoMain.do")
