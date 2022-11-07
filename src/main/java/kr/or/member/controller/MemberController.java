@@ -64,25 +64,35 @@ public class MemberController {
 	
 	// memberMain(마이페이지) 이동
 	@RequestMapping(value="/memberMain.do")
-	public String memberMain() {
+	public String memberMain(int memberNo, HttpSession session) {
+		// memberMileage 구하기
+		int memberMileage = service.selectMemberMileage(memberNo);
+		session.setAttribute("memberMileage", memberMileage);
 		return "member/memberMain";
 	}
 	
 	// memberOrderList 이동
 	@RequestMapping(value="/memberOrderList.do")
-	public String memberOrderList(int reqPage, int memberNo, Model model) {
+	public String memberOrderList(int reqPage, int memberNo, Model model, HttpSession session) {
 		OrderPageData opd = service.selectOrderList(reqPage, memberNo);
 		model.addAttribute("list", opd.getList());
 		model.addAttribute("pageNavi",opd.getPageNavi());
 		model.addAttribute("reqPage",opd.getReqPage());
 		model.addAttribute("numPerPage",opd.getNumPerPage());
 		model.addAttribute("memberNo",opd.getMemberNo());
+		
+		// memberMileage 구하기
+		int memberMileage = service.selectMemberMileage(memberNo);
+		session.setAttribute("memberMileage", memberMileage);
 		return "member/memberOrderList";
 	}
 	
 	// memberReview 이동
 	@RequestMapping(value="/memberReview.do")
-	public String memberReview() {
+	public String memberReview(int memberNo, HttpSession session) {
+		// memberMileage 구하기
+		int memberMileage = service.selectMemberMileage(memberNo);
+		session.setAttribute("memberMileage", memberMileage);
 		return "member/memberReview";
 	}
 	

@@ -17,13 +17,13 @@
             <div class="memberInfo">
                 <p>[고객]</p>
                 <p>${sessionScope.m.memberName }님</p>
-                <div class="member-point">내 마일리지 : ${sessionScope.m.memberMileage }원</div>
+                <div class="member-point">내 마일리지 : ${sessionScope.memberMileage }원</div>
             </div>
             <div class="selectList">
                 <ul>
-                	<a href="/memberMain.do"><li>내정보</li></a> 
-                    <a href="/memberOrderList.do?memberNo=${sessionScope.m.memberNo }&reqPage=1"><li>최근 주문 내역</li></a>
-                    <a href="/memberReview.do"><li>내 등록 리뷰</li></a>
+                	<li><a href="/memberMain.do?memberNo=${sessionScope.m.memberNo }">내정보</a></li>
+                    <li><a href="/memberOrderList.do?memberNo=${sessionScope.m.memberNo }&reqPage=1">최근 주문 내역</a></li>
+                    <li><a href="/memberReview.do?memberNo=${sessionScope.m.memberNo }">내 등록 리뷰</a></li>
                 </ul>
             </div>
         </div>
@@ -56,5 +56,15 @@
         </div>
 	</div>
 	<jsp:include page="/WEB-INF/views/common/footer.jsp"/>
+	<script>
+		index=2;
+		$(function(){
+			let total = $(".selectList a").length;
+			for(let i=0; i<total; i++){
+				$(".selectList a").eq(i).removeClass("index");
+			}
+			$(".selectList a").eq(index).addClass("index");
+		});
+	</script>
 </body>
 </html>

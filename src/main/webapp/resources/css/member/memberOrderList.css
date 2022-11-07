@@ -60,3 +60,12 @@ a:hover{
 	padding-bottom: 40px;
 	justify-content: center;
 }
+
+/* 페이징 */
+.order-page *{
+	padding: 0px 3px;
+	font-size: 1.3em;
+}
+.order-page span{
+	color: pink;
+}

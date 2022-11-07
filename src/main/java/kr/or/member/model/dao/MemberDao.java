@@ -98,11 +98,16 @@ public class MemberDao {
 		ArrayList<Member> mList = (ArrayList<Member>)list;
 		return mList;
 	}
-
+	
 	public int insertProfileNaver(Member m) {
 		return sqlSession.insert("member.addProfileNaver",m);
 	}
 	
+	
+	public int selectMemberMileage(int memberNo) {
+		return sqlSession.selectOne("member.selectMemberMileage",memberNo);
+	}
 
 
 }
+
