@@ -4,6 +4,7 @@
     list-style-type: none;
     text-decoration: none;
     box-sizing: border-box;
+    font-family: 'NanumSquareRound';
 }
 header {
     background-color: #fefaee;
@@ -26,25 +27,34 @@ header a {
 }
 .header-right ul {
     display: flex;
-    justify-content: right; /** 이거 있는데 굳이 왜 center를 또 박아서 귀찮게 그러냐 
-    참고로 left, right 사이드 margin 있는거 안하고 센터 컨테이너를 만들어서 보통 margin: 0 auto로 둠
-    그래야 사용자가 보기 편함
-    */
+    justify-content: right;
+  		/* 이거 있는데 굳이 왜 center를 또 박아서 귀찮게 그러냐 
+    	참고로 left, right 사이드 margin 있는거 안하고 센터 컨테이너를 만들어서 보통 margin: 0 auto로 둠
+    	그래야 사용자가 보기 편함
+    	*/
     margin-right: 80px;
 }
+/*
 .header-mid {
     display: flex;
     justify-content: center;
-    min-width: 780px; /* 이 값은 알아서 정하시고 ~*/
+    min-width: 780px;
     position: absolute;
     left: 50%;
     top:40px;
     transform: translate(-50%, -50%);
 }
+*/
+.header-mid{
+	text-align: center;
+	position: relative;
+}
 .header-mid img {
     width: 200px;
     height: 60px;
-    margin-top: 10px;
+    position: absolute;
+    left: 52px;
+    top: 10px;
 }
 .header-left {
     display: flex;
@@ -77,6 +87,13 @@ header a {
     justify-content: center;
     position: relative;
 }
+
+
+
+
+
+
+
 .header-wrap2 {
     position: sticky;
     z-index: 999;

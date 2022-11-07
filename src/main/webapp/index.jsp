@@ -18,6 +18,7 @@
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Montserrat+Alternates:wght@100&family=Montserrat:wght@300&display=swap" rel="stylesheet">
 <link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://hangeul.pstatic.net/hangeul_static/css/nanum-square-round.css" rel="stylesheet">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link
 	href="https://fonts.googleapis.com/css2?family=Noto+Serif+KR:wght@200&display=swap"
@@ -114,13 +115,15 @@
 		<div class="main-search">
 			<div class="search-bar">
 				<form action="#" method="post">
-					<input id="searchText" type="text" name="searchText"> <span><img
+					<input id="searchText" type="text" name="searchText" placeholder="원하는 빵을 입력해보세요"> <span><img
 						src="/resources/img/main/loupe.png"></span>
 				</form>
 			</div>
 			<div id="frequent-word">
-				<a href="#">#케이크</a> <a href="#">#소금빵</a> <a href="#">#로스빵</a> <a
-					href="#">#최대 할인율</a>
+				<a href="#">#케이크</a> 
+				<a href="#">#소금빵</a> 
+				<a href="#">#로스빵</a> 
+				<a href="#">#마늘바게트</a>
 			</div>
 		</div>
 
@@ -135,7 +138,7 @@
 				<a href="#"><img src="/resources/img/main/mdi2.jpg" data-aos="fade-down"
 					data-aos-duration="1500" data-aos-offset="500"></a>
 				<p class="mid-title">비건 헬스</p>
-				<p>비건과 함께 하는 헬스문환</p>
+				<p>비건과 함께 하는 헬스문화</p>
 			</div>
 			<div class="mid-pic">
 				<a href="#"><img src="/resources/img/main/mid3.jpg" data-aos="fade-up"

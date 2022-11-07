@@ -13,7 +13,8 @@
 			#{productDate},
 			#{productImg},
 			#{productSale},
-			#{productType}
+			#{productType},
+			0
 		)
 	</insert>
 	
@@ -28,7 +29,8 @@
 			product_date as productDate,
 			product_img as productImg,
 			product_sale as productSale,
-			product_type as productType
+			product_type as productType,
+			product_count as productCount
 		from product
 		where store_no= #{_parameter} and product_type = 0
 	</select>
@@ -43,7 +45,8 @@
 			product_date as productDate,
 			product_img as productImg,
 			product_sale as productSale,
-			product_type as productType
+			product_type as productType,
+			product_count as productCount
 		from product
 		where store_no= #{_parameter} and product_type = 1
 	</select>

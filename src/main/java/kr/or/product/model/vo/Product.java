@@ -18,4 +18,5 @@ public class Product {
 	private String productImg;
 	private int productSale;
 	private int productType;
+	private int productCount;
 }

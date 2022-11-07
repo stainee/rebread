@@ -1,4 +1,7 @@
 @charset "UTF-8";
+*{
+	font-family: 'NanumSquareRound';
+}
 input:focus{
     outline: none;
 }
@@ -37,7 +40,9 @@ input:focus{
     height: 30px;
     position: relative;
     border: none;
-    border-bottom: 1px solid #785c37;
+    border-bottom: 2px solid darkgrey;
+    padding-left: 20px;
+    font-size: 15px;
 }
 #frequent-word{
     width: 300px;
