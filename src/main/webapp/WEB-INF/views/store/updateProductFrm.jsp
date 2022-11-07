@@ -31,7 +31,7 @@
 					<table border="1">
 						<tr>
 							<th>상품명</th>
-							<td><input type="text" name="productName" value="${ }"></td>
+							<td><input type="text" name="productName" value=""></td>
 						</tr>
 						<tr>
 							<th>판매가격</th>

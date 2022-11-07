@@ -18,13 +18,13 @@
 	            <div class="memberInfo">
 	                <p>[고객]</p>
 	                <p>${sessionScope.m.memberName }님</p>
-	                <div class="member-point">내 마일리지 : ${sessionScope.m.memberMileage }원</div>
+	                <div class="member-point">내 마일리지 : ${sessionScope.memberMileage }원</div>
 	            </div>
 	            <div class="selectList">
 	                <ul>
-	                	<li><a href="/memberMain.do">내정보</a></li>
-	                    <li><a href=/memberOrderList.do?memberNo=${sessionScope.m.memberNo }&reqPage=1>최근 주문 내역</a></li>
-	                    <li><a href="/memberReview.do">내 등록 리뷰</a></li>
+	                	<li><a href="/memberMain.do?memberNo=${sessionScope.m.memberNo }">내정보</a></li>
+	                    <li><a href="/memberOrderList.do?memberNo=${sessionScope.m.memberNo }&reqPage=1">최근 주문 내역</a></li>
+	                    <li><a href="/memberReview.do?memberNo=${sessionScope.m.memberNo }">내 등록 리뷰</a></li>
 	                </ul>
 	            </div>
 	        </div>
@@ -32,7 +32,7 @@
 	        <div class="right_container" style="min-height: 260px;">
 	            <div class="content_container">
 	            	<c:forEach items="${list }" var="o">
-	           		<a href="/orderDetail.do?orderNo=${o.orderNo }">
+	           		<a href="/orderDetail.do?orderNo=${o.orderNo }&reqPage=${reqPage}">
 						<div class="content-box">
 		            		<div class="content-img"><img src="/resources/img/common/logo.png"></div>
 		            		<c:choose>
@@ -68,7 +68,14 @@
 	</div>
 	<jsp:include page="/WEB-INF/views/common/footer.jsp"/>
 	<script>
-	
+		index=1;
+		$(function(){
+			let total = $(".selectList a").length;
+			for(let i=0; i<total; i++){
+				$(".selectList a").eq(i).removeClass("index");
+			}
+			$(".selectList a").eq(index).addClass("index");
+		});
 	</script>
 </body>
 </html>

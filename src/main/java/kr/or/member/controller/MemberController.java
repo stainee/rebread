@@ -17,6 +17,8 @@ import com.google.gson.Gson;
 import kr.or.member.model.service.MemberService;
 import kr.or.member.model.vo.Member;
 import kr.or.order.model.vo.OrderPageData;
+import kr.or.store.model.vo.Store;
+import kr.or.store.model.vo.StorePageData;
 import lombok.AllArgsConstructor;
 
 @Controller
@@ -58,25 +60,35 @@ public class MemberController {
 	
 	// memberMain(마이페이지) 이동
 	@RequestMapping(value="/memberMain.do")
-	public String memberMain() {
+	public String memberMain(int memberNo, HttpSession session) {
+		// memberMileage 구하기
+		int memberMileage = service.selectMemberMileage(memberNo);
+		session.setAttribute("memberMileage", memberMileage);
 		return "member/memberMain";
 	}
 	
 	// memberOrderList 이동
 	@RequestMapping(value="/memberOrderList.do")
-	public String memberOrderList(int reqPage, int memberNo, Model model) {
+	public String memberOrderList(int reqPage, int memberNo, Model model, HttpSession session) {
 		OrderPageData opd = service.selectOrderList(reqPage, memberNo);
 		model.addAttribute("list", opd.getList());
 		model.addAttribute("pageNavi",opd.getPageNavi());
 		model.addAttribute("reqPage",opd.getReqPage());
 		model.addAttribute("numPerPage",opd.getNumPerPage());
 		model.addAttribute("memberNo",opd.getMemberNo());
+		
+		// memberMileage 구하기
+		int memberMileage = service.selectMemberMileage(memberNo);
+		session.setAttribute("memberMileage", memberMileage);
 		return "member/memberOrderList";
 	}
 	
 	// memberReview 이동
 	@RequestMapping(value="/memberReview.do")
-	public String memberReview() {
+	public String memberReview(int memberNo, HttpSession session) {
+		// memberMileage 구하기
+		int memberMileage = service.selectMemberMileage(memberNo);
+		session.setAttribute("memberMileage", memberMileage);
 		return "member/memberReview";
 	}
 	
@@ -86,7 +98,7 @@ public class MemberController {
 	}
 	
 	
-	//joinStep이동
+	//joinStep이동f
 	@RequestMapping(value = "/joinStep.do")
 	public String joinStep() {
 		return "/member/joinStep";
@@ -96,16 +108,6 @@ public class MemberController {
 	public String joinFrm() {
 		return "member/joinFrm";
 	}
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
 	
 	//login
 	@RequestMapping(value = "/login.do")
@@ -152,6 +154,7 @@ public class MemberController {
 			return "redirect:/";
 		}
 	}
+	
 	//전화번호 문자인증
 	@RequestMapping(value = "/phoneCheck.do", method = RequestMethod.GET)
 	@ResponseBody
@@ -229,6 +232,16 @@ public class MemberController {
 			return "redirect:/";
 		}
 	}
+	//네이버 로그아웃 2단계
+		@RequestMapping(value = "/addProfileNaver.do")
+		public String addProfileNaver(Member m, HttpSession session) {
+			int result = service.insertProfileNaver(m);
+			if(result >0) {
+				return "redirect:/loginFrm.do";
+			}else {
+				return "redirect:/";
+			}
+		}
 	//카카오로그아웃 choose
 	@RequestMapping(value = "/logoutChoose.do")
 	public String logoutChoose() {
@@ -247,7 +260,6 @@ public class MemberController {
 	// ceoMain 이동 (판매자 정보)
 	@RequestMapping(value="/ceoMain.do")
 	public String ceoMain() {
-		
 		return "member/ceoMain";
 	}
 	// 판매자 정보 수정

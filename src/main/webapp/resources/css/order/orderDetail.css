@@ -25,7 +25,17 @@
 	display: flex;
 	justify-content: space-between;
 	border-bottom: 2px solid rgba(0, 0, 0, 0.1);
-	padding: 20px;
+	padding: 0px 10px;
+	font-size: 1.1em;
+}
+.content-title-state{
+	display: flex;
+}
+.content-title-state>div:last-of-type{
+	line-height: 52px;
+}
+.content-box1 .content-title-date{
+	line-height: 52px;
 }
 .content_container .content-box2{
 	padding: 20px;

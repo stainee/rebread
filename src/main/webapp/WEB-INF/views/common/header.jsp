@@ -54,7 +54,7 @@
 		                <c:if test="${sessionScope.m.memberGrade eq 1 }">
 							<div class="header-right">
 			                    <ul>
-			                        <li><a href="/memberMain.do">마이페이지</a></li>
+			                        <li><a href="/memberMain.do?memberNo=${sessionScope.m.memberNo }">마이페이지</a></li>
 			                        <c:choose>
 			                        	<c:when test="${sessionScope.m.kakao == 1}">
 			                        		<li><a href="/logout.do">로그아웃</a></li>
@@ -114,6 +114,7 @@
 			</c:choose>
         </div>
     </nav>
+    <!-- 카카오톡 로그아웃 -->
 	<div class="logmodal">
 		<div class="logmodal-wrap">
 			<div class="modal-title">
@@ -125,7 +126,20 @@
 				<div id="log2">카카오톡 로그아웃</div>
 			</div>
 		</div>
-	</div>    
+	</div>
+	<!-- 네이버로그아웃 -->
+	<div class="Nlogmodal">
+		<div class="Nlogmodal-wrap">
+			<div class="Nmodal-title">
+				<h2>REBREAD LOGOUT</h2>
+				<span>X</span>
+			</div>
+			<div class="Nmodal-content">
+				<div id="Nlog1">리브레드 로그아웃</div>
+				<div id="Nlog2">네이버 로그아웃</div>
+			</div>
+		</div>
+	</div>     
 
 <script src="/resources/js/common/header.js"></script>
 <script>
@@ -138,12 +152,34 @@ $(".modal-title>span").on("click",function(){
 	$(".logmodal-wrap").fadeOut(300);
 });
 $("#log1").on("click",function(){
-	alert("로그아웃 되었습니다.");
+	alert("'리브레드'에서 로그아웃 되었습니다.");
 	location.href="/logout.do";
 });
 $("#log2").on("click",function(){
 	alert("카카오톡계정에서 로그아웃되었습니다");
 	location.href="/kakaologout.do";
+});
+$("#1logout").on("click",function(){
+	alert("'리브레드'에서 로그아웃되었습니다.")
+});
+
+
+
+$("#Nlogout").on("click",function(){
+	$(".Nlogmodal").fadeIn(300);
+	$(".Nlogmodal-wrap").fadeIn(300);
+});
+$(".Nmodal-title>span").on("click",function(){
+	$(".Nlogmodal").fadeOut(300);
+	$(".Nlogmodal-wrap").fadeOut(300);
+});
+$("#Nlog1").on("click",function(){
+	alert("'리브레드'에서 로그아웃 되었습니다.");
+	location.href="/logout.do";
+});
+$("#Nlog2").on("click",function(){
+	alert("네이버에서 로그아웃되었습니다");
+	location.href="/removeNaver.do?token=${sessionScope.access_token}";
 });
 </script>
 

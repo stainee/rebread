@@ -4,7 +4,7 @@
 <html>
 <head>
 <meta charset="UTF-8">
-<title>Insert title here</title>
+<title>리브레드</title>
 <link rel="icon" href="/resources/img/common/">
 <link rel="stylesheet" href="/resources/css/common/main.css">
 <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>

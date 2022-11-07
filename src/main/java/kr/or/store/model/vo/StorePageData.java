@@ -7,9 +7,9 @@ import lombok.Data;
 import lombok.NoArgsConstructor;
 
 @Data
-@AllArgsConstructor
 @NoArgsConstructor
-public class StorePageData {	
+@AllArgsConstructor
+public class StorePageData {
 	private ArrayList<Store> list;
 	private String pageNavi;
 	private int reqPage;

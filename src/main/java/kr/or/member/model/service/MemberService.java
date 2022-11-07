@@ -10,10 +10,12 @@ import org.springframework.transaction.annotation.Transactional;
 
 import kr.or.member.model.dao.MemberDao;
 import kr.or.member.model.vo.Member;
+import kr.or.store.model.vo.StorePageData;
 import kr.or.order.model.vo.Order;
 import kr.or.order.model.vo.OrderPageData;
 import net.nurigo.java_sdk.api.Message;
 import net.nurigo.java_sdk.exceptions.CoolsmsException;
+
 
 @Service
 public class MemberService {
@@ -68,6 +70,8 @@ public class MemberService {
 	public int insertMember(Member m) {
 		return dao.insertMember(m);
 	}
+
+	
 	//문자인증
 	public void certifiedPhoneNumber(String userPhoneNumber, int randomNumber) {
 		String api_key = "NCSYOLUKOEOQOVTE";	
@@ -129,7 +133,7 @@ public class MemberService {
 		// 페이지 네비 길이
 		int pageNaviSize = 5;
 		
-		int pageNo = 1;
+		int pageNo = ((reqPage-1)/pageNaviSize)*pageNaviSize + 1;
 		if(reqPage>3) {
 			pageNo = reqPage-2;
 		}
@@ -138,7 +142,7 @@ public class MemberService {
 		
 		// 이전버튼
 		if(pageNo != 1) {
-			pageNavi += "<a href='/memberOrderList.do?memberNo="+memberNo+"&reqPage="+(pageNo-1)+"'>[이전]</a>";
+			pageNavi += "<a href='/memberOrderList.do?memberNo="+memberNo+"&reqPage="+(pageNo-1)+"'><</a>";
 		}
 		
 		// 페이지 숫자 생성
@@ -154,7 +158,7 @@ public class MemberService {
 			}
 		}
 		if(pageNo<=totalPage) {
-			pageNavi += "<a href='/memberOrderList.do?memberNo="+memberNo+"&reqPage="+pageNo+"'>[다음]</a>";
+			pageNavi += "<a href='/memberOrderList.do?memberNo="+memberNo+"&reqPage="+pageNo+"'>></a>";
 		}
 		OrderPageData opd = new OrderPageData(list, pageNavi, reqPage, numPerPage, memberNo);
 		return opd;
@@ -173,11 +177,14 @@ public class MemberService {
 		Member m = dao.searchId(memberId);
 		return m;
 	}
-
 	public int insertProfileMember(Member m) {
 		return dao.insertProfileMember(m);
 	}
-
+	
+	public int insertProfileNaver(Member m) {
+		return dao.insertProfileNaver(m);
+	}
+	
 	public ArrayList<Member> memberSearch(String searchValue, String searchOption) {
 		Member m = new Member();
 		if(searchOption.equals("memberId")) {
@@ -189,6 +196,15 @@ public class MemberService {
 		ArrayList<Member> list = dao.memberSearch(m);
 		return list;
 	}
+	
+	
+	
+	// 주문완료 후 memberMileage 가져오기
+	public int selectMemberMileage(int memberNo) {
+		return dao.selectMemberMileage(memberNo);
+	}
+
+
 
 }
 
