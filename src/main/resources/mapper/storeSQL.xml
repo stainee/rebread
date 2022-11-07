@@ -191,5 +191,14 @@
 	from store s
 	where store_no = #{_parameter}
    </select>
-   
+   <select id="searchStore" resultType="s" parameterType="string">
+   		select
+   			store_no as storeNo,
+   			store_name as storeName,
+   			store_addr as storeAddr,
+   			store_regist_num as storeRegistNum,
+   			store_account as storeAccount
+   		from store
+   		where store_name LIKE '%'||#{storeName}||'%'
+   </select>
 </mapper>

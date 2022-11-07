@@ -83,6 +83,11 @@ public class StoreDao {
 		return sqlSession.selectOne("store.selectOneStore2",storeNo);
 	}
 
+	public ArrayList<Store> searchStore(String storeName) {
+		List list = sqlSession.selectList("store.searchStore", storeName);
+		return (ArrayList<Store>)list;
+	}
+
 
 
 }
