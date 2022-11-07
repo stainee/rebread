@@ -118,7 +118,7 @@
 
 	
 		// 가격
-		
+		const orderMileage = $("#product-mileage").text();
 		
 		// 결제 api
     	var clientKey = 'test_ck_YPBal2vxj81njJPnPLe35RQgOAND'
@@ -160,13 +160,14 @@
     				  	memberNo:memberNo,
     					orderName:orderName,
     					orderAddr:orderAddr,
-    					orderPhone:orderPhone
+    					orderPhone:orderPhone,
+    					orderMileage:20000
     					
     			  	},
     			  success: function(){
 				    	tossPayments.requestPayment('카드', { // 결제 수단 파라미터
 				    		  // 결제 정보 파라미터
-				    		  amount: 111,
+				    		  amount: 222,
 				    		  orderId: memberId+'-'+todayString,
 				    		  orderName: '토스 티셔츠 외 2건',
 				    		  customerName: '박토스',

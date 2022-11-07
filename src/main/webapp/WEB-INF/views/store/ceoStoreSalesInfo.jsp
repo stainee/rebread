@@ -8,8 +8,8 @@
 </head>
 <link rel="stylesheet" href="resources/css/font/font.css">
 <link rel="stylesheet" href="/resources/css/common/managetemplate.css">
-<link rel="stylesheet" href="/resources/css/member/ceoStoreInfo.css">
-<link rel="stylesheet" href="/resources/css/member/ceoStoreSalesInfo.css">
+<link rel="stylesheet" href="/resources/css/store/ceoStoreInfo.css">
+<link rel="stylesheet" href="/resources/css/store/ceoStoreSalesInfo.css">
 
 <script src="https://code.jquery.com/jquery-3.6.0.js"></script>
 <body>
@@ -17,8 +17,8 @@
 <div class="total_wrapper">
         <div class="left_container">
             <div class="memberInfo">
-                <p>[사장]</p>
-                <p>${sessionScope.m.memberName }<p>님</p></p>
+                <p>[판매자]</p>
+                <p>${sessionScope.m.memberName }님</p>
             </div>
             <div class="selectList">
                 <ul>
@@ -33,11 +33,11 @@
             <div class="content_container">
                 <div class="navi_box">상품 판매 정보
                     <select class="sales_info">
-                        <option value="">배송 준비</option>
-                        <option value="">배송 중</option>
-                        <option value="">배송 완료</option>
-                        <option value="">픽업 준비</option>
-                        <option value="">픽업 완료</option>
+                        <option value="delivery_processed">배송 준비</option>
+                        <option value="delivery">배송 중</option>
+                        <option value="delivery_complete">배송 완료</option>
+                        <option value="pickup_processed">픽업 준비</option>
+                        <option value="pickup_complete">픽업 완료</option>
                     </select>
                 </div>
                 <div class="store_info_wrapper">
@@ -52,11 +52,11 @@
                             <div class="product_info_form">
                                 <div class="store_info_status">
                                     <select class="store_sales_info">
-                                        <option value="">배송 준비</option>
-                                        <option value="">배송 중</option>
-                                        <option value="">배송 완료</option>
-                                        <option value="">픽업 준비</option>
-                                        <option value="">픽업 완료</option>
+                                        <option value="delivery_processed">배송 준비</option>
+				                        <option value="delivery">배송 중</option>
+				                        <option value="delivery_complete">배송 완료</option>
+				                        <option value="pickup_processed">픽업 준비</option>
+				                        <option value="pickup_complete">픽업 완료</option>
                                     </select>
                                 </div>
                                 <div class="store_info_status_btn_box">
@@ -144,8 +144,6 @@
                         </div>
                     </div>
                 </div>
-                
-
 
                 <div class="navi_box_footer">
                     <ul class="pagination">
@@ -170,13 +168,17 @@
     <jsp:include page="/WEB-INF/views/common/footer.jsp"/>
 </body>
 <script>
-	let index=2;
-	$(function(){
-		let total = $(".selectList a").length;
-		for(let i=0; i<total; i++){
-			$(".selectList a").eq(i).removeClass("index");
-		}
-		$(".selectList a").eq(index).addClass("index");
-	})
+	const selectList = $(".selectList li");
+	selectList.on("click",function(e){
+		selectList.css("background-color","#f5f2f3").css("color","gray");
+		$(this).css("background-color","lightgray").css("color","black");
+		
+		const index = selectList.index(this);
+		
+		$(".content_container").hide();
+		$(".content_container").eq(index).fadeIn(0.6*1000);
+		e.stopPropagation();
+	});
+	$(this).eq(2).click();
 </script>
 </html>

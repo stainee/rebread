@@ -23,6 +23,8 @@ import kr.or.member.model.vo.Member;
 import kr.or.member.model.vo.NaverLoginBO;
 import kr.or.order.model.vo.OrderPageData;
 import kr.or.store.model.service.StoreService;
+import kr.or.store.model.vo.Store;
+import kr.or.store.model.vo.StorePageData;
 import lombok.AllArgsConstructor;
 
 @Controller
@@ -64,25 +66,35 @@ public class MemberController {
 	
 	// memberMain(마이페이지) 이동
 	@RequestMapping(value="/memberMain.do")
-	public String memberMain() {
+	public String memberMain(int memberNo, HttpSession session) {
+		// memberMileage 구하기
+		int memberMileage = service.selectMemberMileage(memberNo);
+		session.setAttribute("memberMileage", memberMileage);
 		return "member/memberMain";
 	}
 	
 	// memberOrderList 이동
 	@RequestMapping(value="/memberOrderList.do")
-	public String memberOrderList(int reqPage, int memberNo, Model model) {
+	public String memberOrderList(int reqPage, int memberNo, Model model, HttpSession session) {
 		OrderPageData opd = service.selectOrderList(reqPage, memberNo);
 		model.addAttribute("list", opd.getList());
 		model.addAttribute("pageNavi",opd.getPageNavi());
 		model.addAttribute("reqPage",opd.getReqPage());
 		model.addAttribute("numPerPage",opd.getNumPerPage());
 		model.addAttribute("memberNo",opd.getMemberNo());
+		
+		// memberMileage 구하기
+		int memberMileage = service.selectMemberMileage(memberNo);
+		session.setAttribute("memberMileage", memberMileage);
 		return "member/memberOrderList";
 	}
 	
 	// memberReview 이동
 	@RequestMapping(value="/memberReview.do")
-	public String memberReview() {
+	public String memberReview(int memberNo, HttpSession session) {
+		// memberMileage 구하기
+		int memberMileage = service.selectMemberMileage(memberNo);
+		session.setAttribute("memberMileage", memberMileage);
 		return "member/memberReview";
 	}
 	
@@ -158,6 +170,7 @@ public class MemberController {
 			return "redirect:/";
 		}
 	}
+	
 	//전화번호 문자인증
 	@RequestMapping(value = "/phoneCheck.do", method = RequestMethod.GET)
 	@ResponseBody
@@ -254,7 +267,6 @@ public class MemberController {
 	// ceoMain 이동 (판매자 정보)
 	@RequestMapping(value="/ceoMain.do")
 	public String ceoMain() {
-		
 		return "member/ceoMain";
 	}
 	// 판매자 정보 수정

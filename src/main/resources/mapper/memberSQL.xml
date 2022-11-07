@@ -211,10 +211,10 @@
 	  		kakao
 	  	from member 
 		where member_id = #{memberId} and member_pw = #{memberPw}	  	
-  </select>
+	</select>
   
-  <!-- 카카오톡 로그인 -->
-  <select id="kakaoSearchId" resultType="m" parameterType="string">
+  	<!-- 카카오톡 로그인 -->
+  	<select id="kakaoSearchId" resultType="m" parameterType="string">
   		select
 	  		member_no as memberNo,
 	  		member_id as memberId,
@@ -227,8 +227,22 @@
 	  		member_mileage as memberMileage,
 	  		kakao
 	  	from member where member_id =#{memberId}
-  </select>
-  
+	</select>
+	
+	<!-- 주문 성공 마일리지 적립 -->
+	<update id="orderMemberMileage" parameterType="o">
+		update member set member_mileage = member_mileage + #{orderMileage} where member_no = #{memberNo}
+	</update>
+	
+	<!-- 주문 취소 마일리지 차감 -->
+	<update id="cancelMemberMileage" parameterType="o">
+		update member set member_mileage = member_mileage - #{orderMileage} where member_no = #{memberNo}
+	</update>
+	
+	<!-- 세션에 memberMileage 저장 -->
+	<select id="selectMemberMileage" parameterType="_int" resultType="_int">
+		select member_mileage from member where member_no = #{memberNo}
+	</select>
   
     <!-- 회원 검색 : name 또는 id -->
   <select id="memberSearch" resultType="m" parameterType="m">

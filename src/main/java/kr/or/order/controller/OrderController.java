@@ -13,6 +13,8 @@ import java.util.HashMap;
 import java.util.Map;
 
 import javax.annotation.PostConstruct;
+import javax.servlet.http.HttpSession;
+import javax.servlet.http.HttpSessionEvent;
 
 import org.json.simple.JSONObject;
 import org.json.simple.parser.JSONParser;
@@ -39,6 +41,7 @@ import kr.or.order.model.vo.Order;
 
 @Controller
 public class OrderController {
+
 	@Autowired
 	private OrderService service;
 	
@@ -70,9 +73,14 @@ public class OrderController {
 	
 	// 주문상세페이지 이동
 	@RequestMapping("/orderDetail.do")
-	public String orderDetail(int orderNo, Model model) {
+	public String orderDetail(int orderNo, int reqPage, Model model, HttpSession session) {
 		Order o = service.selectOneOrder(orderNo);
 		model.addAttribute("o",o);
+		model.addAttribute("reqPage",reqPage);
+		
+		// memberMileage 구하기
+		int memberMileage = service.selectMemberMileage(o.getMemberNo());
+		session.setAttribute("memberMileage", memberMileage);
 		return "order/orderDetail";
 	}
 	
@@ -82,7 +90,6 @@ public class OrderController {
 	public String insertOrder(Order o) {
 		int result = service.insertOrder(o);
 		return "1";
-		
 	}
 	
 	// 주문 api
@@ -133,7 +140,7 @@ public class OrderController {
 	
 	// 주문 취소 api
 	@RequestMapping("/orderCancel.do")
-	public String orderCancel(int orderNo, Model model) throws Exception {
+	public String orderCancel(int orderNo, Model model, HttpSession session) throws Exception {
 		String paymentKey = service.selectPaymentKey(orderNo);
 		String cancelReason = "고객변심";
 		
@@ -167,11 +174,19 @@ public class OrderController {
 		JSONObject jsonObject = (JSONObject) parser.parse(reader);
 		responseStream.close();
 		if(isSuccess) {
+			// 주문이 취소되면 주문상태, 회원 마일리지 수정
 			service.updateOrderState(orderNo);
-			return "order/orderSuccess";
+			
+			Order o = service.selectOneOrder(orderNo);
+			model.addAttribute("o",o);
+			
+			// memberMileage 구하기
+			int memberMileage = service.selectMemberMileage(o.getMemberNo());
+			session.setAttribute("memberMileage", memberMileage);
+			return "order/orderDetail";
 		}
 		else {
-			return "order/orderFail";
+			return "redirect:/";
 		}
 	}
 	

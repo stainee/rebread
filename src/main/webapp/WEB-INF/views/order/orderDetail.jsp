@@ -17,13 +17,13 @@
 	            <div class="memberInfo">
 	                <p>[고객]</p>
 	                <p>${sessionScope.m.memberName }님</p>
-	                <div class="member-point">내 마일리지 : ${sessionScope.m.memberMileage }원</div>
+	                <div class="member-point">내 마일리지 : ${sessionScope.memberMileage }원</div>
 	            </div>
 	            <div class="selectList">
 	                <ul>
-	                	<a href="/memberMain.do"><li>내정보</li></a> 
-	                    <a href="/memberOrderList.do?memberNo=${sessionScope.m.memberNo }&reqPage=1"><li>최근 주문 내역</li></a>
-	                    <a href="/memberReview.do"><li>내 등록 리뷰</li></a>
+						<li><a href="/memberMain.do?memberNo=${sessionScope.m.memberNo }">내정보</a></li>
+	                    <li><a href="/memberOrderList.do?memberNo=${sessionScope.m.memberNo }&reqPage=1">최근 주문 내역</a></li>
+	                    <li><a href="/memberReview.do?memberNo=${sessionScope.m.memberNo }">내 등록 리뷰</a></li>
 	                </ul>
 	            </div>
 	        </div>
@@ -31,7 +31,16 @@
 	        <div class="right_container" style="min-height: 357px;">
 	        	<div class="content_container">
 	        		<div class="content-box1">
-	        			<div class="content-title-comment">← ${o.orderState }</div>
+	        			<div class="content-title-comment">
+	        				<div class="content-title-state">
+	        					<div>
+	        						<a href="/memberOrderList.do?memberNo=${sessionScope.m.memberNo }&reqPage=${reqPage}"><img src="/resources/img/order/화살표.svg"></a>
+	        					</div>
+	        					<div>
+	        						${o.orderState }
+	        					</div>
+	        				</div>
+	        			</div>
 	        			<div class="content-title-date">${o.orderDate }</div>
 	        		</div>
 	        		<div class="content-box2">
@@ -92,7 +101,7 @@
 									<a style="cursor: pointer;" onclick="orderCancel(${o.orderNo })">
 		        						<div>주문 취소</div>
 			        				</a>
-								</c:otherwise>        						
+								</c:otherwise>
         					</c:choose>
 	        			</div>
 	        		</div>
@@ -101,11 +110,14 @@
 	</div>
 	<jsp:include page="/WEB-INF/views/common/footer.jsp"/>
 	<script>
-		const selectList = $(".selectList li");
-		selectList.on("click",function(){
-			selectList.css("background-color","#f5f2f3").css("color","gray");
-			$(this).css("background-color","lightgray").css("color","black");
-		});
+		index=1;
+		$(function(){
+			let total = $(".selectList a").length;
+			for(let i=0; i<total; i++){
+				$(".selectList a").eq(i).removeClass("index");
+			}
+			$(".selectList a").eq(index).addClass("index");
+		})	
 		
 		function orderCancel(orderNo){
 			if(confirm("주문을 취소하시겠습니까?")){
