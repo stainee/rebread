@@ -9,7 +9,11 @@
 	<typeAlias type="kr.or.member.model.vo.Member" alias="m"></typeAlias>
 	<typeAlias type="kr.or.store.model.vo.Store" alias="s"></typeAlias>
 	<typeAlias type="kr.or.store.model.vo.StoreDetail" alias="sd"></typeAlias>
+
+	<typeAlias type="kr.or.store.model.vo.StorePageData" alias="spd"></typeAlias>
+
 	<typeAlias type="kr.or.store.model.vo.StoreListDetail" alias="sld"></typeAlias>
+
 	<typeAlias type="kr.or.cs.model.vo.CS" alias="cs"></typeAlias>
 	<typeAlias type="kr.or.account.model.vo.Account" alias="a"></typeAlias>
 	<typeAlias type="kr.or.product.model.vo.Product" alias="p"></typeAlias>

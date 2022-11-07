@@ -8,6 +8,7 @@ import org.mybatis.spring.SqlSessionTemplate;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
 
+import kr.or.member.model.vo.Member;
 import kr.or.store.model.vo.Store;
 import kr.or.store.model.vo.StoreDetail;
 import kr.or.store.model.vo.StoreListDetail;
@@ -27,10 +28,12 @@ public class StoreDao {
 		return sd;
 	}
 
+
 	public StoreListDetail selectOneStoreDetail(int storeNo) {
 		StoreListDetail sld = sqlSession.selectOne("store.selectOneStoreDetail",storeNo);
 		return sld;
 	}
+
 	public int updateStoreDetail(Store s) {
 		int result = sqlSession.update("store.updateStoreDetail", s);
 		return result;
@@ -47,12 +50,33 @@ public class StoreDao {
 	}
 
 	public ArrayList<Store> selectStoreList(HashMap<String, Object> map) {
-		List list = sqlSession.selectList("store.allStoreList",map);
-		return (ArrayList<Store>)list;
+		List list = sqlSession.selectList("store.selectStoreList",map);
+		return (ArrayList<Store>) list;
 	}
 
 	public int selectStoreCount() {
-		return sqlSession.selectOne("store.totalCount");
+		int totalCount = sqlSession.selectOne("store.totalCount");
+		return totalCount;
+	}
+
+	public ArrayList<Store> selectMemberStore(Member member) {
+		List list = sqlSession.selectList("store.selectMemberStore", member);
+		return (ArrayList<Store>) list;
+	}
+
+	public int storeInsert(Store s) {
+		int result = sqlSession.insert("store.insertStore",s);
+		return result;
+	}
+
+	public Store selectOneStore1(Store store) {
+		Store s = sqlSession.selectOne("store.selectOneStore1", store);
+		return s;
+	}
+
+	public int updateStore(Store s) {
+		int result = sqlSession.update("store.updateStore",s);
+		return result;
 	}
 
 	public Store selectOneStore2(int storeNo) {
@@ -62,3 +86,4 @@ public class StoreDao {
 
 
 }
+

@@ -23,6 +23,8 @@ import kr.or.member.model.vo.Member;
 import kr.or.member.model.vo.NaverLoginBO;
 import kr.or.order.model.vo.OrderPageData;
 import kr.or.store.model.service.StoreService;
+import kr.or.store.model.vo.Store;
+import kr.or.store.model.vo.StorePageData;
 import lombok.AllArgsConstructor;
 
 @Controller
@@ -168,6 +170,7 @@ public class MemberController {
 			return "redirect:/";
 		}
 	}
+	
 	//전화번호 문자인증
 	@RequestMapping(value = "/phoneCheck.do", method = RequestMethod.GET)
 	@ResponseBody
@@ -264,7 +267,6 @@ public class MemberController {
 	// ceoMain 이동 (판매자 정보)
 	@RequestMapping(value="/ceoMain.do")
 	public String ceoMain() {
-		
 		return "member/ceoMain";
 	}
 	// 판매자 정보 수정

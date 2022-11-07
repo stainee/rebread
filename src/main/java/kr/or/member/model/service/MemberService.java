@@ -10,10 +10,12 @@ import org.springframework.transaction.annotation.Transactional;
 
 import kr.or.member.model.dao.MemberDao;
 import kr.or.member.model.vo.Member;
+import kr.or.store.model.vo.StorePageData;
 import kr.or.order.model.vo.Order;
 import kr.or.order.model.vo.OrderPageData;
 import net.nurigo.java_sdk.api.Message;
 import net.nurigo.java_sdk.exceptions.CoolsmsException;
+
 
 @Service
 public class MemberService {
@@ -68,6 +70,8 @@ public class MemberService {
 	public int insertMember(Member m) {
 		return dao.insertMember(m);
 	}
+
+	
 	//문자인증
 	public void certifiedPhoneNumber(String userPhoneNumber, int randomNumber) {
 		String api_key = "NCSYOLUKOEOQOVTE";	
@@ -199,6 +203,7 @@ public class MemberService {
 	public int selectMemberMileage(int memberNo) {
 		return dao.selectMemberMileage(memberNo);
 	}
+
 
 
 }
