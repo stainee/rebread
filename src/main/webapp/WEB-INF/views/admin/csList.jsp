@@ -30,23 +30,33 @@
         </div>
 
         <div class="right_container">
+        	<div class="search_wrap">
+        		<select id ="search_option">
+        			<option value="memberId">아이디</option>
+        			<option value="memberName">이름</option>
+        		</select>
+        		<input type="text" id="search_value">
+        		<button onclick="search();" id="searchBtn">검색</button>
+        	</div>
             <div class="content_container">
 				<table class="cstbl">
 					<tr>
 						<th>상담번호</th>
+						<th>아이디</th>
+						<th>이름</th>
 						<th>상담종류</th>
-						<th>상담내용</th>
-						<th>회원정보</th>
+						<th>상담정보</th>
 						<th>관리</th>
 					</tr>
 					
 					<c:forEach items="${list}" var="cs">
 						<tr>
 							<td>${cs.csNo}</td>
+							<td>${cs.memberId}</td>
+							<td>${cs.memberName}</td>
 							<td>${cs.csCategory}</td>
-							<td>${cs.csContent}</td>
 							<td>
-								<button class="detail" onclick="viewMemberDetail(${cs.memberNo})">정보</button>
+								<button class="detail" onclick="viewCSDetail(${cs.csNo})">정보</button>
 							</td>
 							<td id="checkTd">
 							<c:if test="${cs.csCheck eq 1}">
@@ -74,9 +84,10 @@
 		$(".selectList a").eq(index).addClass("index");
 	})
 	
-	function viewMemberDetail(memberNo){
-		window.open("/memberDetail.do?memberNo="+memberNo+"", "회원정보", "width=800px, height=600px, top=100px, left=250px");
+	function viewCSDetail(csNo){
+		window.open("/CSDetail.do?csNo="+csNo+"", "회원정보", "width=800px, height=600px, top=100px, left=250px");
 	}
+	
 	
 	function csCheck(obj, csNo, csCheck){
 		$.ajax({
@@ -101,5 +112,59 @@
 			}
 		})
 	}
+	
+	function search(){
+		searchValue = $("#search_value").val();
+		searchOption = $("#search_option").val();
+		if(searchValue != ""){
+			$.ajax({
+				url:"/csSearch.do",
+				data:{searchValue: searchValue,
+					  searchOption : searchOption
+				},
+				dataType: "json",
+				success:function(list){
+					convert(list);
+				}
+			})
+		}
+	}
+	
+	function convert(data){
+		const list = $(".cstbl tr");
+		//리스트의 내용을 지운다.
+		for(let i=1; i<list.length; i++){
+			list.eq(i).remove();
+		}
+		//리스트의 내용을 넣는다
+		const tbl = $(".cstbl");
+		
+		for(let k=0; k<data.length; k++){
+			const tr = $("<tr>");
+			tr.append("<td>"+data[k].csNo+"</td>");
+			tr.append("<td>"+data[k].memberId+"</td>");
+			tr.append("<td>"+data[k].memberName+"</td>");
+			tr.append("<td>"+data[k].csCategory+"</td>");
+			const btnTd =$("<td>");
+			
+			btnTd.append("<button class='detail' onclick='viewCSDetail("+data[k].csNo+")'>정보</button>");
+			tr.append(btnTd);
+			const btnTd2 = $("<td>")
+			btnTd2.attr('id', 'checkTd');
+			if(data[k].csCheck == 1){
+				btnTd2.append("<button class='check cancel' onclick='csCheck(this, ${cs.csNo},${cs.csCheck})'>취소</button>")		
+			}else if(data[k].csCheck == 0){
+				btnTd2.append("<button class='check complete' onclick='csCheck(this, ${cs.csNo},${cs.csCheck})'>완료</button>")	
+			}
+			tr.append(btnTd2);
+			tbl.append(tr);
+		}
+	}
+	
+	$("#search_value").on("keyup", function(key){
+		if(key.keyCode == 13){
+			search();
+		}
+	});
 </script>
 </html>

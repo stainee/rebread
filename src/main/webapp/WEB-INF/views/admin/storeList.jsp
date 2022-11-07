@@ -31,11 +31,15 @@
         </div>
 
         <div class="right_container">
+        	<div class="search_wrap">
+        		<input type="text" id="storeName" placeholder="검색할 상호명을 입력해주세요">
+        		<button onclick="search();" id="searchBtn">검색</button>
+        	</div>
             <div class="content_container">
 				<table class="sellertbl">
 					<tr>
 						<th>판매자번호</th>
-						<th>가게이름</th>
+						<th>상호명</th>
 						<th>사업자등록번호</th>
 						<th>계좌번호</th>
 						<th>관리</th>
@@ -81,5 +85,50 @@
 			url:"/testCallAPI.do"
 		})
 	}
+	
+	
+	function search(){
+		storeName = $("#storeName").val();
+		if(storeName != ""){
+			$.ajax({
+				url:"/storeSearch.do",
+				data:{storeName : storeName
+				},
+				dataType: "json",
+				success:function(list){
+					convert(list);
+				}
+			})
+		}
+	}
+	
+	function convert(data){
+		const list = $(".sellertbl tr");
+		//리스트의 내용을 지운다.
+		for(let i=1; i<list.length; i++){
+			list.eq(i).remove();
+		}
+		//리스트의 내용을 넣는다
+		const tbl = $(".sellertbl");
+		
+		for(let k=0; k<data.length; k++){
+			const tr = $("<tr>");
+			tr.append("<td>"+data[k].storeNo+"</td>");
+			tr.append("<td>"+data[k].storeName+"</td>");
+			tr.append("<td>"+data[k].storeRegistNum+"</td>");
+			tr.append("<td>"+data[k].storeAccount+"</td>");
+			const btnTd =$("<td>");
+			btnTd.append("<button class='info' onclick='viewStoreInfo("+data[k].storeNo+")' style='margin-right:4px;'>정보</button>");
+			btnTd.append("<button class='account' onclick='viewAccountInfo("+data[k].storeNo+")'>정산</button>");
+			tr.append(btnTd);
+			tbl.append(tr);
+		}
+	}
+	
+	$("#storeName").on("keyup", function(key){
+		if(key.keyCode == 13){
+			search();
+		}
+	});
 </script>
 </html>

@@ -1,12 +1,18 @@
 package kr.or.cs.controller;
 
+import java.util.ArrayList;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
+import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.ResponseBody;
 
+import com.google.gson.Gson;
+
 import kr.or.cs.model.service.CSService;
 import kr.or.cs.model.vo.CS;
+import kr.or.cs.model.vo.CSList;
 
 @Controller
 public class CSController {
@@ -31,4 +37,12 @@ public class CSController {
 	public void insertCS(CS cs) {
 		int result = service.insertCS(cs);
 	}
+	
+	@ResponseBody
+	@RequestMapping(value="/csSearch.do", produces ="application/json;charset=utf-8")
+	public String searchCS(String searchValue, String searchOption) {
+		ArrayList<CSList> list = service.searchCS(searchValue, searchOption);
+		return new Gson().toJson(list);
+	}
+	
 }

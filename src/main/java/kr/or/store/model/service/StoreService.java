@@ -103,4 +103,8 @@ public class StoreService {
 		return spd;
 	}
 
+	public ArrayList<Store> searchStore(String storeName) {
+		return dao.searchStore(storeName);
+	}
+
 }

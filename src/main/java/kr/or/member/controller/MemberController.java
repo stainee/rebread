@@ -1,13 +1,9 @@
 package kr.or.member.controller;
 
-import java.io.IOException;
 import java.util.ArrayList;
 
 import javax.servlet.http.HttpSession;
 
-import org.json.simple.JSONObject;
-import org.json.simple.parser.JSONParser;
-import org.json.simple.parser.ParseException;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -16,13 +12,11 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
 
-import com.github.scribejava.core.model.OAuth2AccessToken;
+import com.google.gson.Gson;
 
 import kr.or.member.model.service.MemberService;
 import kr.or.member.model.vo.Member;
-import kr.or.member.model.vo.NaverLoginBO;
 import kr.or.order.model.vo.OrderPageData;
-import kr.or.store.model.service.StoreService;
 import lombok.AllArgsConstructor;
 
 @Controller
@@ -236,50 +230,18 @@ public class MemberController {
 		}
 	}
 	//카카오로그아웃 choose
-		@RequestMapping(value = "/logoutChoose.do")
-		public String logoutChoose() {
-			return "member/logoutChoose";
-		}
+	@RequestMapping(value = "/logoutChoose.do")
+	public String logoutChoose() {
+		return "member/logoutChoose";
+	}
 		
 		
-		
-		/*
-		//loginFrm이동
-		@RequestMapping(value = "/loginFrm.do")
-		public String loginFrm() {
-			return "member/loginFrm";
-		}
-		*/
-		
-		
-		
-		
-		
-		
-		
-		
-		
-		
-		
-		
-		
-		
-		
-		
-		
-		
-		
-		
-		
-		
-		
-		
-		
-		
-		
-		
-		
-		
+	@ResponseBody
+	@RequestMapping(value="/memberSearch.do", produces = "application/json;charset=utf-8")
+	public String memberSearch(String searchValue, String searchOption) {
+		ArrayList<Member> list = service.memberSearch(searchValue, searchOption);
+		return new Gson().toJson(list);
+	}
 		
 		
 	// ceoMain 이동 (판매자 정보)

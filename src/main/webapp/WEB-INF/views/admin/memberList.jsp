@@ -1,9 +1,10 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
-     <script src="https://code.jquery.com/jquery-3.6.1.js"></script>
+
      <%@taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
 <!DOCTYPE html>
 <html>
+<script src="https://code.jquery.com/jquery-3.6.1.js"></script>
 <head>
 <meta charset="UTF-8">
 <title>Insert title here</title>
@@ -129,5 +130,11 @@
 			tbl.append(tr);
 		}
 	}
+	
+	$("#search_value").on("keyup", function(key){
+		if(key.keyCode == 13){
+			search();
+		}
+	});
 </script>
 </html>

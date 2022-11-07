@@ -9,6 +9,8 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
 
 import kr.or.cs.model.vo.CS;
+import kr.or.cs.model.vo.CSDetail;
+import kr.or.cs.model.vo.CSList;
 
 @Repository
 public class CSDao {
@@ -16,9 +18,9 @@ public class CSDao {
 	@Autowired
 	private SqlSessionTemplate sqlSession;
 
-	public ArrayList<CS> selectAllCS() {
+	public ArrayList<CSList> selectAllCS() {
 		List list = sqlSession.selectList("cs.selectAllCS");
-		return (ArrayList<CS>)list;
+		return (ArrayList<CSList>)list;
 	}
 
 	public int updateCheck(int csNo, int i) {
@@ -35,5 +37,15 @@ public class CSDao {
 
 	public int insertCS(CS cs) {
 		return sqlSession.insert("cs.insertCS", cs);
+	}
+
+	public ArrayList<CSList> searchCS(CSList cs) {
+		List list = sqlSession.selectList("cs.searchCS", cs); 
+		return (ArrayList<CSList>)list;
+	}
+
+	public CSDetail selectOneCS(int csNo) {
+		CSDetail cs = sqlSession.selectOne("cs.selectOneCS", csNo);
+		return cs;
 	}
 }

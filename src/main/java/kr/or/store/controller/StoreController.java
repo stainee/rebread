@@ -1,10 +1,14 @@
 package kr.or.store.controller;
 
+import java.util.ArrayList;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.ResponseBody;
+
+import com.google.gson.Gson;
 
 import kr.or.store.model.service.StoreService;
 import kr.or.store.model.vo.Store;
@@ -44,4 +48,10 @@ public class StoreController {
 		return "store/detailStore";
 	}
 	
+	@ResponseBody 
+	@RequestMapping(value="/storeSearch.do", produces = "application/json;charset=utf-8")
+	public String storeSearch(String storeName) {
+		ArrayList<Store> list = sservice.searchStore(storeName);
+		return new Gson().toJson(list);
+	}
 }
