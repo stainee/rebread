@@ -138,9 +138,7 @@
    		from store
    		where member_no = #{memberNo}
    </select>
-   <select id="totalCount" resultType="int">
-		select count(*) from board
-	</select>
+
 	<insert id="insertStore" parameterType="s">
 		insert into store values(store_seq.nextval,#{memberNo},#{storeName},#{storeContent},#{storeAddr},#{storeRegistNum},#{storeAccount},#{openTime},#{closeTime},#{storePhone},#{storeImg})
 	</insert>
