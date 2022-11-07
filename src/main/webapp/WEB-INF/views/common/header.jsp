@@ -54,7 +54,7 @@
 		                <c:if test="${sessionScope.m.memberGrade eq 1 }">
 							<div class="header-right">
 			                    <ul>
-			                        <li><a href="/memberMain.do">마이페이지</a></li>
+			                        <li><a href="/memberMain.do?memberNo=${sessionScope.m.memberNo }">마이페이지</a></li>
 			                        <c:choose>
 			                        	<c:when test="${sessionScope.m.kakao == 1}">
 			                        		<li><a href="/logout.do">로그아웃</a></li>

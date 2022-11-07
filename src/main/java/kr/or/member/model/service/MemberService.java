@@ -157,7 +157,6 @@ public class MemberService {
 			pageNavi += "<a href='/memberOrderList.do?memberNo="+memberNo+"&reqPage="+pageNo+"'>></a>";
 		}
 		OrderPageData opd = new OrderPageData(list, pageNavi, reqPage, numPerPage, memberNo);
-		System.out.println("numPerPage : "+numPerPage);
 		return opd;
 	}
 
