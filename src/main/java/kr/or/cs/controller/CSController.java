@@ -6,6 +6,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.ResponseBody;
 
 import kr.or.cs.model.service.CSService;
+import kr.or.cs.model.vo.CS;
 
 @Controller
 public class CSController {
@@ -23,5 +24,11 @@ public class CSController {
 		}
 		int check = service.selectOneCheck(csNo);
 		return check;
+	}
+	
+	@ResponseBody
+	@RequestMapping(value="/insertCS.do", produces = "application/json;charset=utf-8")
+	public void insertCS(CS cs) {
+		int result = service.insertCS(cs);
 	}
 }

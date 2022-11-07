@@ -11,7 +11,8 @@
 	  		member_phone as memberPhone,
 	  		member_mail as memberMail,
 	  		member_grade as memberGrade, 
-	  		member_mileage as memberMileage
+	  		member_mileage as memberMileage,
+	  		kakao
 	  	from member
   </select>
   <select id="selectOneMember" resultType="m" parameterType="Integer">
@@ -23,7 +24,8 @@
 	  		member_phone as memberPhone,
 	  		member_mail as memberMail,
 	  		member_grade as memberGrade, 
-	  		member_mileage as memberMileage
+	  		member_mileage as memberMileage,
+	  		kakao
 	  	from member where member_no= #{_parameter}
   </select>
   <update id="updateOneMember" parameterType="m">
@@ -54,7 +56,8 @@
 	  		member_phone as memberPhone,
 	  		member_mail as memberMail,
 	  		member_grade as memberGrade, 
-	  		member_mileage as memberMileage
+	  		member_mileage as memberMileage,
+	  		kakao
 	  	from member where member_id = #{memberId} and member_pw =#{memberPw}
   </select>
   <select id="selectOneCeo" resultType="m" parameterType="_int">
@@ -67,7 +70,8 @@
 	  		member_phone as memberPhone,
 	  		member_mail as memberMail,
 	  		member_grade as memberGrade, 
-	  		member_mileage as memberMileage
+	  		member_mileage as memberMileage,
+	  		kakao
 	  	from member where member_no = #{memberNo}
   </select>
   <update id="updateCeo" parameterType="m">
@@ -79,7 +83,7 @@
   	where member_no = #{memberNo}
   </update>
   
-  <!-- 아이디체크 -->
+  <!-- 아이디체크 / 비밀번호 체크-->
     <select id="idCheck" parameterType="m" resultType="m">
   		select
 	  		member_no as memberNo,
@@ -90,8 +94,15 @@
 	  		member_phone as memberPhone,
 	  		member_mail as memberMail,
 	  		member_grade as memberGrade, 
-	  		member_mileage as memberMileage
-	  	from member where member_id = #{memberId}
+	  		member_mileage as memberMileage,
+	  		kakao
+	  	from member 
+	  	<if test="memberId != null">
+		  	where member_id = #{memberId}
+	  	</if>
+	  	<if test="memberPw != null">
+			where member_pw = #{memberPw}	  	
+	  	</if>
   </select>
   
   <!-- 회원가입 -->
@@ -105,10 +116,156 @@
 	  	#{memberPhone},
 	  	#{memberMail},
 	  	#{memberGrade},
-	  	0
+	  	0,
+	  	1
 	  )
- 	
  	</insert>
+ 	
+ 	<!-- 카카오회원가입 -->
+ 	<insert id="addProfile" parameterType="m">
+ 	insert into member values (
+	  	member_seq.nextval,
+	  	#{memberId},
+	  	#{memberPw},
+	  	#{memberName},
+	  	#{memberAddr},
+	  	#{memberPhone},
+	  	#{memberMail},
+	  	#{memberGrade},
+	  	0,
+	  	2
+	  )
+	 </insert>
+	  <!-- 네이버회원가입 -->
+  	<insert id="addProfileNaver" parameterType="m">
+ 	insert into member values (
+	  	member_seq.nextval,
+	  	#{memberId},
+	  	#{memberPw},
+	  	#{memberName},
+	  	#{memberAddr},
+	  	#{memberPhone},
+	  	#{memberMail},
+	  	#{memberGrade},
+	  	0,
+	  	3
+	  )
+ 	</insert>
+ 	<!-- 아이디 검색 -->
+ 	<select id="searchId" parameterType="m" resultType="m">
+ 		select
+	  		member_no as memberNo,
+	  		member_id as memberId,
+	  		member_pw as memberPw,
+	  		member_name as memberName,
+	  		member_addr as memberAddr,
+	  		member_phone as memberPhone,
+	  		member_mail as memberMail,
+	  		member_grade as memberGrade, 
+	  		member_mileage as memberMileage,
+	  		kakao
+	  	from member where member_name = #{memberName} and member_grade = #{memberGrade}
+	  	<if test="memberMail != null">
+	  		and member_mail = #{memberMail}
+	  	</if>
+	  	<if test="memberPhone != null">
+	  		and member_phone = #{memberPhone}
+	  	</if>
+ 	</select>
+ 	
+ 	<!-- 비밀번호 검색 -->
+ 	 	<select id="searchPw" parameterType="m" resultType="m">
+ 		select
+	  		member_no as memberNo,
+	  		member_id as memberId,
+	  		member_pw as memberPw,
+	  		member_name as memberName,
+	  		member_addr as memberAddr,
+	  		member_phone as memberPhone,
+	  		member_mail as memberMail,
+	  		member_grade as memberGrade, 
+	  		member_mileage as memberMileage,
+	  		kakao
+	  	from member where member_id = #{memberId} and member_grade = #{memberGrade} and member_phone =#{memberPhone}
+ 	</select>
+ 	
+ 	<!-- 비밀번호 업데이트 -->
+ 	<update id="updatePw" parameterType="m">
+		update member
+		set member_pw = #{memberPw}
+		where member_id = #{memberId} 	
+ 	</update>
+ 	
+ 	<!-- 비밀번호 체크-->
+    <select id="pwCheck" parameterType="m" resultType="m">
+  		select
+	  		member_no as memberNo,
+	  		member_id as memberId,
+	  		member_pw as memberPw,
+	  		member_name as memberName,
+	  		member_addr as memberAddr,
+	  		member_phone as memberPhone,
+	  		member_mail as memberMail,
+	  		member_grade as memberGrade, 
+	  		member_mileage as memberMileage,
+	  		kakao
+	  	from member 
+		where member_id = #{memberId} and member_pw = #{memberPw}	  	
+	</select>
+  
+  	<!-- 카카오톡 로그인 -->
+  	<select id="kakaoSearchId" resultType="m" parameterType="string">
+  		select
+	  		member_no as memberNo,
+	  		member_id as memberId,
+	  		member_pw as memberPw,
+	  		member_name as memberName,
+	  		member_addr as memberAddr,
+	  		member_phone as memberPhone,
+	  		member_mail as memberMail,
+	  		member_grade as memberGrade, 
+	  		member_mileage as memberMileage,
+	  		kakao
+	  	from member where member_id =#{memberId}
+	</select>
+	
+	<!-- 주문 성공 마일리지 적립 -->
+	<update id="orderMemberMileage" parameterType="o">
+		update member set member_mileage = member_mileage + #{orderMileage} where member_no = #{memberNo}
+	</update>
+	
+	<!-- 주문 취소 마일리지 차감 -->
+	<update id="cancelMemberMileage" parameterType="o">
+		update member set member_mileage = member_mileage - #{orderMileage} where member_no = #{memberNo}
+	</update>
+	
+	<!-- 세션에 memberMileage 저장 -->
+	<select id="selectMemberMileage" parameterType="_int" resultType="_int">
+		select member_mileage from member where member_no = #{memberNo}
+	</select>
+  
+    <!-- 회원 검색 : name 또는 id -->
+  <select id="memberSearch" resultType="m" parameterType="m">
+  		select
+  			member_no as memberNo,
+	  		member_id as memberId,
+	  		member_pw as memberPw,
+	  		member_name as memberName,
+	  		member_addr as memberAddr,
+	  		member_phone as memberPhone,
+	  		member_mail as memberMail,
+	  		member_grade as memberGrade, 
+	  		member_mileage as memberMileage,
+	  		kakao
+	  	from member
+	  	<if test="memberId != null">
+	  		where member_Id LIKE '%'||#{memberId}||'%'
+	  	</if>
+	  	<if test="memberName != null">
+	  		where member_name LIKE '%'||#{memberName}||'%'
+	  	</if>
+  </select>
+
 </mapper>
 
 

@@ -6,7 +6,6 @@ import lombok.Data;
 import lombok.NoArgsConstructor;
 
 @Data
-@Builder
 @NoArgsConstructor
 @AllArgsConstructor
 public class Order {
@@ -17,10 +16,9 @@ public class Order {
 	private String orderDate;
 	private int orderTotalQuan;
 	private int orderPrice;
-	private String orderId;
-	private String ordererName;
-	private String ordererAddr;
-	private String ordererPhone;
-	private int ordererMileage;
+	private String orderName;
+	private String orderAddr;
+	private String orderPhone;
+	private int orderMileage;
 	private String paymentKey;
 }

@@ -16,6 +16,7 @@ import kr.or.member.model.vo.Member;
 import kr.or.store.model.service.StoreService;
 import kr.or.store.model.vo.Store;
 import kr.or.store.model.vo.StoreDetail;
+import kr.or.store.model.vo.StoreListDetail;
 
 @Controller
 public class AdminController {
@@ -77,6 +78,13 @@ public class AdminController {
 		return "/admin/storeDetail";
 	}
 	
+	@RequestMapping(value="/storeListDetail.do")
+	public String storeListDetail(int storeNo, Model model) {
+		StoreListDetail sld = storeService.selectOneStoreDetail(storeNo);
+		model.addAttribute("sd", sld);
+		return "/admin/storeDetail";
+	}
+	
 	@RequestMapping(value="/storeAccount.do")
 	public String storeAccount(int storeNo, Model model) {
 		ArrayList<Account> list = accountService.selectAccountList(storeNo);
@@ -87,5 +95,10 @@ public class AdminController {
 	@RequestMapping(value = "/donateDetail.do")
 	public String donateDetail() {
 		return "/admin/donateDetail";
+	}
+	
+	@RequestMapping(value="/testCallAPI.do")
+	public void testCall() {
+		accountService.depositToSeller();
 	}
 }

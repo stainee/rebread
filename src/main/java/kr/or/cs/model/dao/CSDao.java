@@ -32,4 +32,8 @@ public class CSDao {
 	public int selectOneCheck(int csNo) {
 		return sqlSession.selectOne("cs.selectOneCheck", csNo);
 	}
+
+	public int insertCS(CS cs) {
+		return sqlSession.insert("cs.insertCS", cs);
+	}
 }
