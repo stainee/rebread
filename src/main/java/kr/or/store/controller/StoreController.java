@@ -91,15 +91,15 @@ public class StoreController {
 	// 가게 정보 수정창으로 이동
 	@RequestMapping(value = "/storeInfoUpdate.do")
 	public String storeInfoUpdate(Store s, Model model) {
-		Store store = sservice.updateStore(s);
-		model.addAttribute("s",store);		
+		Store store = sservice.selectOneStore1(s);
+		model.addAttribute("s",store);
 		return "store/storeInfoUpdate";
 	}
 	
-	@RequestMapping(value = "/storeInfoUpdateSuccess")
+	@RequestMapping(value = "/storeInfoUpdateSuccess.do")
 	public String storeInfoUpdateSuccess(Store s) {
 		Store store = sservice.updateStore(s);
-		return "store/storeInfoUpdate";
+		return "redirect:/ceoStoreInfo.do";
 	}
 	
 	

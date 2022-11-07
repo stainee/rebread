@@ -17,7 +17,7 @@
     align-items: center;
     border-bottom: 1px solid lightgray;
 }
-.memberInfo>p{
+.memberInfo p{
 	display: inline-block;
 }
 

@@ -5,6 +5,7 @@ import java.util.HashMap;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Transactional;
 
 import kr.or.member.model.vo.Member;
 import kr.or.store.model.dao.StoreDao;
@@ -41,10 +42,17 @@ public class StoreService {
 		return dao.selectOneStore1(s);
 	}
 
+	@Transactional
 	public Store updateStore(Store s) {
-		Store store = dao.selectOneStore1(s);
-		return store;
+		int result = dao.updateStore(s);
+		if(result>0) {
+			Store store = dao.selectOneStore1(s);
+			return store;
+		}else {
+			return null;
+		}
 	}
+
 	
 	
 //	// 판매자 가게 정보 페이징 처리

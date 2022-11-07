@@ -17,8 +17,8 @@
 <div class="total_wrapper">
         <div class="left_container">
             <div class="memberInfo">
-                <p>[사장]</p>
-                <p>${sessionScope.m.memberName }<p>님</p></p>
+                <p>[판매자]</p>
+                <p>${sessionScope.m.memberName }님</p>
             </div>
             <div class="selectList">
                 <ul>

@@ -16,8 +16,8 @@
 <div class="total_wrapper">
         <div class="left_container">
             <div class="memberInfo">
-                <p>[사장]</p>
-                <p>${sessionScope.m.memberName }<p>님</p></p>
+                <p>[판매자]</p>
+                <p>${sessionScope.m.memberName }님</p>
             </div>
             <div class="selectList">
                 <ul>
@@ -33,12 +33,13 @@
                 <div class="navi_box">가게 정보 수정</div>
                 <!-- 가게 수정창을 띄우는 div -->
                 <div class="store_update_wrapper">
-	                <form action="/storeInfoUpdate.do" method="post">
+	                <form action="/storeInfoUpdateSuccess.do" method="post">
                 	<div class="store_update_form">
                 		<div class="store_update_title">매장명</div>
                 		<div class="store_update_input">
                 			<input type="text" name="storeName" value="${s.storeName }">
                 		</div>
+	                <input type="hidden" name="storeNo" value="${s.storeNo }">
 	                <input type="hidden" name="memberNo" value="${sessionScope.m.memberNo }">
                 	</div>
                 	<div class="store_update_form">
@@ -56,7 +57,7 @@
                 	<div class="store_update_form">
                 		<div class="store_update_title">매장 이미지</div>
                 		<div class="store_update_input">
-                			<input type="file" name="storeImg" multiple value="${s.storeImg }">
+                			<input type="text" name="storeImg" value="${s.storeImg }">
                 		</div>
                 	</div>
                 	<div class="store_update_form">

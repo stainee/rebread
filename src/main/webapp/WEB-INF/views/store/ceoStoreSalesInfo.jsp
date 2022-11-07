@@ -17,8 +17,8 @@
 <div class="total_wrapper">
         <div class="left_container">
             <div class="memberInfo">
-                <p>[사장]</p>
-                <p>${sessionScope.m.memberName }<p>님</p></p>
+                <p>[판매자]</p>
+                <p>${sessionScope.m.memberName }님</p>
             </div>
             <div class="selectList">
                 <ul>
@@ -179,6 +179,6 @@
 		$(".content_container").eq(index).fadeIn(0.6*1000);
 		e.stopPropagation();
 	});
-	selectList.eq(0).click();
+	$(this).eq(2).click();
 </script>
 </html>
