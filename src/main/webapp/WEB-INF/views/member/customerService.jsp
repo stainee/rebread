@@ -76,7 +76,7 @@
 					<div id="btn_chat"><a href="/chatting.do">채팅상담</a></div>
 				</c:when>
 				<c:otherwise>
-					<div id="btn_chat"><a>채팅상담</a></div>
+					<div id="btn_chat" class="btn_not"><a>채팅상담</a></div>
 				</c:otherwise>
 			</c:choose>
 			
@@ -92,7 +92,7 @@ $(".qna_wrapper .quest").on("click", function(){
 	console.log($(this));
 })
 
-$("#btn_chat").on("click",function(){
+$("#btn_not").on("click",function(){
 	alert("로그인이 필요한 서비스입니다");
 })
 </script>

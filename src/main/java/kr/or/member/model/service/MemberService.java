@@ -8,7 +8,6 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
-
 import kr.or.member.model.dao.MemberDao;
 import kr.or.member.model.vo.Member;
 import kr.or.order.model.vo.Order;
@@ -183,6 +182,18 @@ public class MemberService {
 		return dao.insertProfileNaver(m);
 	}
 	
+	public ArrayList<Member> memberSearch(String searchValue, String searchOption) {
+		Member m = new Member();
+		if(searchOption.equals("memberId")) {
+			m.setMemberId(searchValue);
+		}else if(searchOption.equals("memberName")) {
+			m.setMemberName(searchValue);
+		}
+		
+		ArrayList<Member> list = dao.memberSearch(m);
+		return list;
+	}
+
 	public ArrayList<Member> memberSearch(String searchValue, String searchOption) {
 		Member m = new Member();
 		if(searchOption.equals("memberId")) {

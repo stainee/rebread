@@ -17,7 +17,7 @@
         <div class="left_container">
             <div class="memberInfo">
                 <p>[관리자]</p>
-                <p>박예진님</p>
+                <p>${sessionScope.m.memberName}님</p>
                 <!-- <button onclick="callAPI()">임시API호출버튼</button> -->
             </div>
             <div class="selectList">
@@ -70,7 +70,7 @@
 	})
 	
 	function viewStoreInfo(storeNo){
-		window.open("/storeDetail.do?storeNo="+storeNo+"", "가게정보", "width=800px, height=600px, top=100px, left=250px");
+		window.open("/storeListDetail.do?storeNo="+storeNo+"", "가게정보", "width=800px, height=600px, top=100px, left=250px");
 	}
 	function viewAccountInfo(storeNo){
 		window.open("/storeAccount.do?storeNo="+storeNo+"", "가게정보", "width=800px, height=600px, top=100px, left=250px");

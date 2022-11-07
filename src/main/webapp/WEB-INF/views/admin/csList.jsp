@@ -17,7 +17,7 @@
         <div class="left_container">
             <div class="memberInfo">
                 <p>[관리자]</p>
-                <p>박예진님</p>
+                <p>${sessionScope.m.memberName}님</p>
             </div>
             <div class="selectList">
                 <ul>

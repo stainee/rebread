@@ -17,7 +17,7 @@
         <div class="left_container">
             <div class="memberInfo">
                 <p>[관리자]</p>
-                <p>박예진님</p>
+                <p>${sessionScope.m.memberName}님</p>
             </div>
             <div class="selectList">
                 <ul>
@@ -30,6 +30,14 @@
         </div>
 
         <div class="right_container">
+        	<div class="search_wrap">
+        		<select id ="search_option">
+        			<option value="memberId">아이디</option>
+        			<option value="memberName">이름</option>
+        		</select>
+        		<input type="text" id="search_value">
+        		<button onclick="search();" id="searchBtn">검색</button>
+        	</div>
             <div class="content_container">
 				<table class="membertbl">
 					<tr>
@@ -80,6 +88,46 @@
 			}
 			
 		})
+	}
+	
+	function search(){
+		searchValue = $("#search_value").val();
+		searchOption = $("#search_option").val();
+		if(searchValue != ""){
+			$.ajax({
+				url:"/memberSearch.do",
+				data:{searchValue: searchValue,
+					  searchOption : searchOption
+				},
+				dataType: "json",
+				success:function(list){
+					convert(list);
+				}
+			})
+		}
+	}
+	
+	function convert(data){
+		const list = $(".membertbl tr");
+		//리스트의 내용을 지운다.
+		for(let i=1; i<list.length; i++){
+			list.eq(i).remove();
+		}
+		//리스트의 내용을 넣는다
+		const tbl = $(".membertbl");
+		
+		for(let k=0; k<data.length; k++){
+			const tr = $("<tr>");
+			tr.append("<td>"+data[k].memberNo+"</td>");
+			tr.append("<td>"+data[k].memberId+"</td>");
+			tr.append("<td>"+data[k].memberName+"</td>");
+			tr.append("<td>"+data[k].memberPhone+"</td>");
+			const btnTd =$("<td>");
+			btnTd.append("<button class='info' onclick='viewMemberDetail("+data[k].memberNo+")' style='margin-right:4px;'>정보</button>");
+			btnTd.append("<button class='remove' onclick='deleteMember("+data[k].memberNo+")'>삭제</button>");
+			tr.append(btnTd);
+			tbl.append(tr);
+		}
 	}
 </script>
 </html>

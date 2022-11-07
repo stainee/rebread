@@ -92,6 +92,12 @@ public class MemberDao {
 	public int insertProfileMember(Member m) {
 		return sqlSession.insert("member.addProfile", m);
 	}
+	
+	public ArrayList<Member> memberSearch(Member m) {
+		List list = sqlSession.selectList("member.memberSearch", m);
+		ArrayList<Member> mList = (ArrayList<Member>)list;
+		return mList;
+	}
 
 	public int insertProfileNaver(Member m) {
 		return sqlSession.insert("member.addProfileNaver",m);

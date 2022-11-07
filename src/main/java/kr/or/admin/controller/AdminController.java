@@ -16,6 +16,7 @@ import kr.or.member.model.vo.Member;
 import kr.or.store.model.service.StoreService;
 import kr.or.store.model.vo.Store;
 import kr.or.store.model.vo.StoreDetail;
+import kr.or.store.model.vo.StoreListDetail;
 
 @Controller
 public class AdminController {
@@ -74,6 +75,13 @@ public class AdminController {
 	public String storeDetail(int storeNo, Model model) {
 		StoreDetail sd = storeService.selectOneStore(storeNo);
 		model.addAttribute("sd", sd);
+		return "/admin/storeDetail";
+	}
+	
+	@RequestMapping(value="/storeListDetail.do")
+	public String storeListDetail(int storeNo, Model model) {
+		StoreListDetail sld = storeService.selectOneStoreDetail(storeNo);
+		model.addAttribute("sd", sld);
 		return "/admin/storeDetail";
 	}
 	

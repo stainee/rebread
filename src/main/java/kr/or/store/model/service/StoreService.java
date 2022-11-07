@@ -11,6 +11,7 @@ import kr.or.product.model.vo.Product;
 import kr.or.store.model.dao.StoreDao;
 import kr.or.store.model.vo.Store;
 import kr.or.store.model.vo.StoreDetail;
+import kr.or.store.model.vo.StoreListDetail;
 import kr.or.store.model.vo.StorePageData;
 
 @Service
@@ -26,6 +27,10 @@ public class StoreService {
 
 	public StoreDetail selectOneStore(int storeNo) {
 		return dao.selectOneStore(storeNo);
+	}
+	
+	public StoreListDetail selectOneStoreDetail(int storeNo) {
+		return dao.selectOneStoreDetail(storeNo);
 	}
 	
 	public int updateStoreDetail(Store s) {
