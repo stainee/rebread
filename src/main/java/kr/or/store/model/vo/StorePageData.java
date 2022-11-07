@@ -14,4 +14,5 @@ public class StorePageData {
 	private String pageNavi;
 	private int reqPage;
 	private int numPerPage;
+
 }

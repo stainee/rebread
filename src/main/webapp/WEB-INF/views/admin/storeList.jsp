@@ -1,23 +1,24 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
-     <script src="https://code.jquery.com/jquery-3.6.1.js"></script>
 <%@taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
 <!DOCTYPE html>
 <html>
-
+<script src="https://code.jquery.com/jquery-3.6.1.js"></script>
 <head>
 <meta charset="UTF-8">
 <title>Insert title here</title>
 </head>
-<link href="https://hangeul.pstatic.net/hangeul_static/css/nanum-square-round.css" rel="stylesheet">
-<link rel="stylesheet" href="/resources/css/common/managetemplate.css">
+<link rel="stylesheet" href="/resources/css/font/font.css">
+<link rel="stylesheet" href="/resources/css/common/admin.css">
 <link rel="stylesheet" href="/resources/css/admin/storeList.css">
 <body>
+<jsp:include page="/WEB-INF/views/common/header.jsp" />
 <div class="total_wrapper">
         <div class="left_container">
             <div class="memberInfo">
                 <p>[관리자]</p>
-                <p>박예진님</p>
+                <p>${sessionScope.m.memberName}님</p>
+                <!-- <button onclick="callAPI()">임시API호출버튼</button> -->
             </div>
             <div class="selectList">
                 <ul>
@@ -56,6 +57,7 @@
          </div>
       
 </div>
+<jsp:include page="/WEB-INF/views/common/footer.jsp" />	
 </body>
 <script>
 	let index=1;
@@ -68,10 +70,16 @@
 	})
 	
 	function viewStoreInfo(storeNo){
-		window.open("/storeDetail.do?storeNo="+storeNo+"", "가게정보", "width=800px, height=600px, top=100px, left=250px");
+		window.open("/storeListDetail.do?storeNo="+storeNo+"", "가게정보", "width=800px, height=600px, top=100px, left=250px");
 	}
 	function viewAccountInfo(storeNo){
 		window.open("/storeAccount.do?storeNo="+storeNo+"", "가게정보", "width=800px, height=600px, top=100px, left=250px");
+	}
+	//이체 API 테스트 메소드
+	function callAPI(){
+		$.ajax({
+			url:"/testCallAPI.do"
+		})
 	}
 </script>
 </html>

@@ -1,5 +1,7 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
+    
+<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
 <!DOCTYPE html>
 <html>
 <script src="https://code.jquery.com/jquery-3.6.1.js"></script>
@@ -64,11 +66,23 @@
 			</div>
 			<div class="text_wrapper">
 			<p>물품에 대한 문제가 생겼거나 판매절차에서 문제가 생겼을시 전화 문의 및 채팅 문의가 가능합니다.<br>
+			채팅문의의 경우 문의 사항을 남겨주실 시 이메일로 빠른 답변을 남겨드립니다.<br>
 			영업시간 : 9:30 ~ 18:00 (토,일,공휴일 제외)</p>
 			</div>
-			<div id="btn_chat"><a href="/chatting.do">채팅상담</a></div>
+			<div class="text_wrapper"><p>전화문의 : 00-0000-0000</p></div>
+			<div class="text_wrapper"><p>채팅문의:</div>
+			<c:choose>
+				<c:when test="${not empty sessionScope.m.memberNo}">
+					<div id="btn_chat"><a href="/chatting.do">채팅상담</a></div>
+				</c:when>
+				<c:otherwise>
+					<div id="btn_chat" class="btn_not"><a>채팅상담</a></div>
+				</c:otherwise>
+			</c:choose>
+			
 		</div>
 	</div>
+	<jsp:include page="/WEB-INF/views/common/footer.jsp" />	
 	
 </body>
 
@@ -78,5 +92,8 @@ $(".qna_wrapper .quest").on("click", function(){
 	console.log($(this));
 })
 
+$("#btn_not").on("click",function(){
+	alert("로그인이 필요한 서비스입니다");
+})
 </script>
 </html>

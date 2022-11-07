@@ -50,7 +50,7 @@
 					<div class="plus">
 						<img src="/resources/img/member/plus.png">
 					</div>
-					<div class="mem pp">
+					<div class="mem pp" style="width: 225px;">
 						<div class="memBox">
 							<p style="margin-top: 8px;">회원</p>
 							<p style="margin-top: -8px;">특가</p>
@@ -61,11 +61,7 @@
 				</div>
 			</div>
 			<div class="signBtn">
-				<a href="/joinFrm.do"><button>리얼브레드 회원가입</button></a>
-			</div>
-			<div class="signKaKao">
-				<span><img src="/resources/img/member/icon-itg-kakao.svg"></span> 
-				<span>카카오톡으로 회원가입</span>
+				<a href="/joinFrm.do"><button>리브레드 회원가입</button></a>
 			</div>
 		</div>
 	</div>

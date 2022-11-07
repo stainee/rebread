@@ -12,15 +12,11 @@
 <div class="total_wrapper">
         <div class="left_container">
             <div class="memberInfo">
-                <p>[관리자]</p>
-                <p>박예진님</p>
+                <p>[${storeName }]</p>
             </div>
             <div class="selectList">
                 <ul>
-                	<li><a href="#">내정보</a></li> 
-                    <li><a href="#">판매자관리</a></li>
-                    <li><a href="/memberList.do">회원관리</a></li>
-                    <li><a href="#">문의관리</a></li>
+                	<li><a href="/detailStore.do?storeNo=${storeNo}">${storeAddr}</a></li> 
                 </ul>
             </div>
         </div>

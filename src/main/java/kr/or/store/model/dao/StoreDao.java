@@ -11,6 +11,7 @@ import org.springframework.stereotype.Repository;
 import kr.or.member.model.vo.Member;
 import kr.or.store.model.vo.Store;
 import kr.or.store.model.vo.StoreDetail;
+import kr.or.store.model.vo.StoreListDetail;
 
 @Repository
 public class StoreDao {
@@ -26,7 +27,13 @@ public class StoreDao {
 		StoreDetail sd = sqlSession.selectOne("store.selectOneStore",storeNo);
 		return sd;
 	}
-	
+
+
+	public StoreListDetail selectOneStoreDetail(int storeNo) {
+		StoreListDetail sld = sqlSession.selectOne("store.selectOneStoreDetail",storeNo);
+		return sld;
+	}
+
 	public int updateStoreDetail(Store s) {
 		int result = sqlSession.update("store.updateStoreDetail", s);
 		return result;
@@ -72,5 +79,11 @@ public class StoreDao {
 		return result;
 	}
 
+	public Store selectOneStore2(int storeNo) {
+		return sqlSession.selectOne("store.selectOneStore2",storeNo);
+	}
+
+
 
 }
+

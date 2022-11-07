@@ -2,6 +2,15 @@
 
 *{
 	font-family: 'nsr-r';
+	box-sizing: border-box;
+}
+a{
+	text-decoration: none;
+	color: black;
+}
+a:hover{
+	color: pink;
+	
 }
 .member-point{
 	padding-top: 35px;
@@ -32,6 +41,7 @@
 	border-bottom: 2px solid rgba(0, 0, 0, 0.1);
 	cursor: pointer;
 }
+
 .content-img img{
 	width: 70px;
 	height: 70px;
@@ -43,4 +53,19 @@
 }
 .content-status-date span{
 	align-items: center;
+}
+
+.order-page-wrap{
+	display: flex;
+	padding-bottom: 40px;
+	justify-content: center;
+}
+
+/* 페이징 */
+.order-page *{
+	padding: 0px 3px;
+	font-size: 1.3em;
+}
+.order-page span{
+	color: pink;
 }
