@@ -230,7 +230,6 @@
   </select>
   
   
-<<<<<<< HEAD
     <!-- 회원 검색 : name 또는 id -->
   <select id="memberSearch" resultType="m" parameterType="m">
   		select
