@@ -31,23 +31,62 @@
 		                    </ul>
 		                </div>
 					</c:when>
-					<c:otherwise>
-						<div class="header-right">
-		                    <ul>
-		                        <li><a href="/memberMain.do">마이페이지</a></li>
-		                        <c:choose>
-		                        	<c:when test="${sessionScope.m.kakao == 1}">
-		                        		<li><a href="/logout.do">로그아웃</a></li>
-			                        </c:when>
-			                        <c:otherwise>
-			                        	<li><a style="cursor: pointer;" id="klogout">로그아웃</a></li>
-			                        </c:otherwise>
-		                        </c:choose>
-		                        <li><a href="/memberOrderList.do?memberNo=${sessionScope.m.memberNo }&reqPage=1">주문내역</a></li>
-		                        <li><a href="#">회원해택</a></li>
-		                    </ul>
-		                </div>
-					</c:otherwise>
+					<c:when test="${not empty sessionScope.m }">
+						<!-- 관리자 -->
+		                <c:if test="${sessionScope.m.memberGrade eq 0 }">
+							<div class="header-right">
+			                    <ul>
+			                        <li><a href="/adminMain.do">마이페이지</a></li>
+			                        <c:choose>
+			                        	<c:when test="${sessionScope.m.kakao == 1}">
+			                        		<li><a href="/logout.do">로그아웃</a></li>
+				                        </c:when>
+				                        <c:otherwise>
+				                        	<li><a style="cursor: pointer;" id="klogout">로그아웃</a></li>
+				                        </c:otherwise>
+			                        </c:choose>
+			                        <li><a href="/memberOrderList.do?memberNo=${sessionScope.m.memberNo }&reqPage=1">주문내역</a></li>
+			                        <li><a href="#">회원해택</a></li>
+			                    </ul>
+			                </div>
+		                </c:if>
+		                <!-- 일반회원 -->
+		                <c:if test="${sessionScope.m.memberGrade eq 1 }">
+							<div class="header-right">
+			                    <ul>
+			                        <li><a href="/memberMain.do">마이페이지</a></li>
+			                        <c:choose>
+			                        	<c:when test="${sessionScope.m.kakao == 1}">
+			                        		<li><a href="/logout.do">로그아웃</a></li>
+				                        </c:when>
+				                        <c:otherwise>
+				                        	<li><a style="cursor: pointer;" id="klogout">로그아웃</a></li>
+				                        </c:otherwise>
+			                        </c:choose>
+			                        <li><a href="/memberOrderList.do?memberNo=${sessionScope.m.memberNo }&reqPage=1">주문내역</a></li>
+			                        <li><a href="#">회원해택</a></li>
+			                    </ul>
+			                </div>
+		                </c:if>
+		                <!-- 판매자 -->
+		                <c:if test="${sessionScope.m.memberGrade eq 2 }">
+							<div class="header-right">
+			                    <ul>
+			                        <li><a href="/ceoMain.do">마이페이지</a></li>
+			                        <c:choose>
+			                        	<c:when test="${sessionScope.m.kakao == 1}">
+			                        		<li><a href="/logout.do">로그아웃</a></li>
+				                        </c:when>
+				                        <c:otherwise>
+				                        	<li><a style="cursor: pointer;" id="klogout">로그아웃</a></li>
+				                        </c:otherwise>
+			                        </c:choose>
+			                        <li><a href="/memberOrderList.do?memberNo=${sessionScope.m.memberNo }&reqPage=1">주문내역</a></li>
+			                        <li><a href="#">회원해택</a></li>
+			                    </ul>
+			                </div>
+		                </c:if>
+					</c:when>
 				</c:choose>
             </div>
         </div>
