@@ -1,5 +1,7 @@
 package kr.or.product.model.service;
 
+import java.util.ArrayList;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -13,5 +15,9 @@ public class ProductService {
 
 	public int insertProduct(Product p) {
 		return dao.insertProduct(p);
+	}
+
+	public ArrayList<Product> mainProductList() {
+		return dao.mainProductList();
 	}
 }

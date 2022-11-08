@@ -138,7 +138,6 @@
    		from store
    		where member_no = #{memberNo}
    </select>
-
 	<insert id="insertStore" parameterType="s">
 		insert into store values(store_seq.nextval,#{memberNo},#{storeName},#{storeContent},#{storeAddr},#{storeRegistNum},#{storeAccount},#{openTime},#{closeTime},#{storePhone},#{storeImg})
 	</insert>

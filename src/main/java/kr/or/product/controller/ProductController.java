@@ -9,15 +9,20 @@ import java.util.ArrayList;
 
 import javax.mail.Store;
 import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpSession;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
+import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.multipart.MultipartFile;
 import org.springframework.web.multipart.MultipartRequest;
 import org.springframework.web.multipart.MultipartResolver;
 
+import com.google.gson.Gson;
 
 import common.FileRename;
 import kr.or.product.model.service.ProductService;
@@ -89,6 +94,15 @@ public class ProductController {
 		return "store/updateProductFrm";
 	}
 	*/
+	
+	//메인에서 불러오는 product리스트
+	@ResponseBody
+	@RequestMapping(value="/productList.do", produces = "application/json;charset=utf-8;")
+	public String mainProductList(Model model) {
+		ArrayList<Product> list = service.mainProductList();
+		model.addAttribute("list",list);
+		return "";
+	}
 	
 	
 }
