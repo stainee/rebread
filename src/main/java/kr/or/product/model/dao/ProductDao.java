@@ -27,5 +27,11 @@ public class ProductDao {
 		List nomalList = sqlSession.selectList("product.selectNomalList",storeNo);
 		return (ArrayList<Product>)nomalList;
 	}
+
+	public ArrayList<Product> mainProductList() {
+		List mainProductList = sqlSession.selectList("product.selectMainList");
+		System.out.println(mainProductList);
+		return (ArrayList<Product>)mainProductList;
+	}
 	
 }

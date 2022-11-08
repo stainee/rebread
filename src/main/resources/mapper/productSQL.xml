@@ -50,4 +50,19 @@
 		from product
 		where store_no= #{_parameter} and product_type = 1
 	</select>
+	
+	<select id="selectMainList" resultType="p">
+		select 
+			product_name as productName,
+			product_price as productPrice,
+			product_img as productImg,
+			product_count as productCount
+		from 
+		(select 
+			product_name as productName,
+			product_price as productPrice,
+			product_img as productImg,
+			product_count as productCount
+		from product order by product_count desc) where rownum &lt; 4 
+	</select>
 </mapper>
