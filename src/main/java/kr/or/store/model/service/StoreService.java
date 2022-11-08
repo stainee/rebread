@@ -110,6 +110,9 @@ public class StoreService {
 		return spd;
 	}
 
+	public ArrayList<Store> searchStore(String storeName) {
+		return dao.searchStore(storeName);
+	}
 	public ArrayList<Store> selectMemberStore(Member member) {
 		return dao.selectMemberStore(member);
 	}
@@ -191,7 +194,4 @@ public class StoreService {
 //				
 //				return spd;
 //	}
-
-	
-
 }

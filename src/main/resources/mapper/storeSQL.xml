@@ -138,7 +138,11 @@
    		from store
    		where member_no = #{memberNo}
    </select>
+<<<<<<< HEAD
 	
+=======
+
+>>>>>>> refs/remotes/origin/master
 	<insert id="insertStore" parameterType="s">
 		insert into store values(store_seq.nextval,#{memberNo},#{storeName},#{storeContent},#{storeAddr},#{storeRegistNum},#{storeAccount},#{openTime},#{closeTime},#{storePhone},#{storeImg})
 	</insert>
@@ -189,5 +193,14 @@
 	from store s
 	where store_no = #{_parameter}
    </select>
-   
+   <select id="searchStore" resultType="s" parameterType="string">
+   		select
+   			store_no as storeNo,
+   			store_name as storeName,
+   			store_addr as storeAddr,
+   			store_regist_num as storeRegistNum,
+   			store_account as storeAccount
+   		from store
+   		where store_name LIKE '%'||#{storeName}||'%'
+   </select>
 </mapper>

@@ -10,7 +10,8 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import kr.or.account.model.service.AccountService;
 import kr.or.account.model.vo.Account;
 import kr.or.cs.model.service.CSService;
-import kr.or.cs.model.vo.CS;
+import kr.or.cs.model.vo.CSDetail;
+import kr.or.cs.model.vo.CSList;
 import kr.or.member.model.service.MemberService;
 import kr.or.member.model.vo.Member;
 import kr.or.store.model.service.StoreService;
@@ -51,7 +52,7 @@ public class AdminController {
 	
 	@RequestMapping(value="/csList.do")
 	public String csList(Model model) {
-		ArrayList<CS> list = csService.selectAllCS();
+		ArrayList<CSList> list = csService.selectAllCS();
 		model.addAttribute("list",list);
 		return "/admin/csList";
 	}
@@ -69,6 +70,13 @@ public class AdminController {
 		Member m = memberService.selectOneMember(memberNo);
 		model.addAttribute("m",m);
 		return "/admin/memberDetail";
+	}
+	
+	@RequestMapping(value="/CSDetail.do")
+	public String csDetail(int csNo, Model model) {
+		CSDetail cs = csService.selectOneCS(csNo);
+		model.addAttribute("cs", cs);
+		return "/admin/csDetail";
 	}
 	
 	@RequestMapping(value="/storeDetail.do")
