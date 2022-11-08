@@ -100,19 +100,9 @@
 <!-- //AOS 스크립트 초기화 -->
 <div aos="fade-up" data-aos-offset="200" data-aos-easing="ease-out-cubic" data-aos-duration="500">
 <script>
-//카카오톡 로그인
-
-
-
-
-
-
-
-
 
 
 $(document).ready(function(){
-	// 저장된 쿠키값을 가져와서 ID 칸에 넣어준다. 없으면 공백으로 들어감.
 	var key = getCookie("key");
     $("#id").val(key); 
      

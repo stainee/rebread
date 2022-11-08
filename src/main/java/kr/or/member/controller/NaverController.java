@@ -121,7 +121,6 @@ public class NaverController {
 			String apiUrl = "https://nid.naver.com/oauth2.0/token?grant_type=delete&client_id="+NaverLoginBO.CLIENT_ID+
 			"&client_secret="+NaverLoginBO.CLIENT_SECRET+"&access_token="+token.replaceAll("'", "")+"&service_provider=NAVER";
 				
-				System.out.println("aa" + apiUrl);
 				try {
 					String res = requestToServer(apiUrl);
 					model.addAttribute("res", res); //결과값 찍어주는용

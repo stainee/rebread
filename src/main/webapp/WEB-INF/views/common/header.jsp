@@ -27,7 +27,7 @@
 		                        <li><a href="/loginFrm.do">로그인</a></li>
 		                        <li><a href="/joinStep.do">회원가입</a></li>
 		                        <li><a href="/loginFrm.do">주문내역</a></li>
-		                        <li><a href="#">회원해택</a></li>
+		                        <li><a href="#">기부하기</a></li>
 		                    </ul>
 		                </div>
 					</c:when>
@@ -41,8 +41,11 @@
 			                        	<c:when test="${sessionScope.m.kakao == 1}">
 			                        		<li><a href="/logout.do">로그아웃</a></li>
 				                        </c:when>
-				                        <c:otherwise>
+				                        <c:when test="${sessionScope.m.kakao == 2 }">
 				                        	<li><a style="cursor: pointer;" id="klogout">로그아웃</a></li>
+				                        </c:when>
+				                        <c:otherwise>
+				                        	<li><a style="cursor: pointer;" id="Nlogout">로그아웃</a></li>
 				                        </c:otherwise>
 			                        </c:choose>
 			                        <li><a href="/memberOrderList.do?memberNo=${sessionScope.m.memberNo }&reqPage=1">주문내역</a></li>
@@ -59,8 +62,11 @@
 			                        	<c:when test="${sessionScope.m.kakao == 1}">
 			                        		<li><a href="/logout.do">로그아웃</a></li>
 				                        </c:when>
-				                        <c:otherwise>
+				                        <c:when test="${sessionScope.m.kakao == 2 }">
 				                        	<li><a style="cursor: pointer;" id="klogout">로그아웃</a></li>
+				                        </c:when>
+				                        <c:otherwise>
+				                        	<li><a style="cursor: pointer;" id="Nlogout">로그아웃</a></li>
 				                        </c:otherwise>
 			                        </c:choose>
 			                        <li><a href="/memberOrderList.do?memberNo=${sessionScope.m.memberNo }&reqPage=1">주문내역</a></li>
@@ -77,8 +83,11 @@
 			                        	<c:when test="${sessionScope.m.kakao == 1}">
 			                        		<li><a href="/logout.do">로그아웃</a></li>
 				                        </c:when>
-				                        <c:otherwise>
+				                        <c:when test="${sessionScope.m.kakao == 2 }">
 				                        	<li><a style="cursor: pointer;" id="klogout">로그아웃</a></li>
+				                        </c:when>
+				                        <c:otherwise>
+				                        	<li><a style="cursor: pointer;" id="Nlogout">로그아웃</a></li>
 				                        </c:otherwise>
 			                        </c:choose>
 			                        <li><a href="/memberOrderList.do?memberNo=${sessionScope.m.memberNo }&reqPage=1">주문내역</a></li>
