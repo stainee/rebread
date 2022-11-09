@@ -27,5 +27,17 @@ public class ProductDao {
 		List nomalList = sqlSession.selectList("product.selectNomalList",storeNo);
 		return (ArrayList<Product>)nomalList;
 	}
+
+	public Product selectOneProduct(int productNo) {
+		return sqlSession.selectOne("product.selectOneProduct",productNo);
+	}
+
+	public int updateProduct(Product p) {
+		return sqlSession.update("product.updateProduct",p);
+	}
+
+	public int deleteProduct(int productNo) {
+		return sqlSession.delete("product.deleteProduct",productNo);
+	}
 	
 }

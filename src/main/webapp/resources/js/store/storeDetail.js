@@ -29,6 +29,7 @@ $(".menu-box").on("click",function(){
 //플러스 마이너스 버튼 누를 시 수량 변경
 $("[name=plus]").on("click",function(){
     let amount = $("[name=amount]").val();
+
     amount++;
     $("[name=amount]").attr("value",amount);
 
@@ -76,4 +77,6 @@ function addComma(value){
     value = value.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ',');
     return value; 
 };
+
+
 

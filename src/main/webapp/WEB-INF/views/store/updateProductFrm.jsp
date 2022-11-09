@@ -1,5 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
+     <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
 <!DOCTYPE html>
 <html>
 <head>
@@ -24,36 +25,50 @@
 		<div class="right_container">
 			<div class="content-top"><h2>상품 수정</h3></div>
 			<div class="content_container">
-				<form action="/insertProduct.do" method="post" enctype="multipart/form-data">
+				<form action="/updateProduct.do" method="post" enctype="multipart/form-data">
 					<div id="product-viewer">
-						<img id="img-view" width="350px">
+						<img id="img-view" width="350px" src="/resources/upload/product/${p.productImg }">
 					</div>
 					<table border="1">
 						<tr>
 							<th>상품명</th>
-							<td><input type="text" name="productName" value="${ }"></td>
+							<td><input type="text" name="productName" value="${p.productName}" ></td>
 						</tr>
 						<tr>
 							<th>판매가격</th>
-							<td><input type="text" name="productPrice"></td>
+							<td><input type="text" name="productPrice" value="${p.productPrice }"></td>
 						</tr>
 						<tr>
 							<th>수량</th>	
-							<td><input type="text" name="productStock"></td>
+							<td><input type="text" name="productStock" value="${p.productStock }"></td>
 						</tr>
 						
 						<tr>
 							<th>유통기한</th>
-							<td><input type="date" name="productDate"></td>	
+							<td><input type="date" name="productDate" value="${p.productDate }"></td>	
 						</tr>
-						
 						<tr>
 							<th>상품이미지</th>
-							<td><input type="file" name="upFile" accept="image/*" onchange="loadImg(this);"></td>
+							<td>
+								<input type="hidden" name="productNo" value="${p.productNo }">
+								<input type="hidden" name="status" value="stay">
+								<input type="hidden" name="storeNo" value="${storeNo }">
+								<c:choose>
+								<c:when test="${not empty p.productImg }">
+									<span class="delFile">${p.productImg }</span><button type="button" class="btn bc4 delFile">삭제</button>
+									<input type="file" name="upFile" accept="image/*" onchange="loadImg(this);" style="display:none;">
+									<input type="hidden" name="oldImg" value="${p.productImg }">							
+								</c:when>
+								<c:otherwise>
+									<input type="file" name="upFile" accept="image/*" onchange="loadImg(this);" value="${p.productImg }">
+								</c:otherwise>
+							
+								</c:choose>
+							</td>
 						</tr>
 						<tr>
 							<th>할인율</th>
-							<td><input type="text" name="productSale"></td>
+							<td><input type="text" name="productSale" value="${p.productSale }"></td>
 						</tr>
 						<tr>
 							<th>빵종류</th>
@@ -62,17 +77,16 @@
 									<option value="0">로스빵</option>
 									<option value="1">일반빵</option>
 								</select>
-								<input type="hidden" name="storeNo" value="${storeNo}">
 							</td>
 						</tr>	
 						<tr>
 							<th>상품정보</th>
-							<td><textarea name="productContent" style="resize: none;"></textarea></td>
+							<td><textarea name="productContent" style="resize: none;">${p.productContent }</textarea></td>
 						</tr>
 						<tr>
 							<th colspan="2">
-								<input type="submit" class="btn bc4 bs3" value="빵등록하기">
-								<!-- <a href="/detailStore.do?storeNo=${storeNo}" class="btn bc4 bs3">취소하기</a> -->
+								<input type="submit" class="btn bc4 bs3" value="수정하기">
+								<a href="/detailStore.do?storeNo=${storeNo}" class="btn bc4 bs3">취소하기</a>
 							</th>
 							
 						</tr>
@@ -97,6 +111,14 @@
 	        $("#img-view").attr("src","");
 	    }
 	}
+	
+	$("button.delFile").on("click",function(){
+			$(".delFile").hide();
+			$("#img-view").attr("src","");
+			$(this).next().show();
+			$("[name=status]").val("delete");
+	});
+		
 	</script>
 </body>
 	

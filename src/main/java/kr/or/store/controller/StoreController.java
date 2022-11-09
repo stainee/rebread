@@ -24,13 +24,14 @@ public class StoreController {
 	}
 	
 	@RequestMapping(value="/allStoreList.do")
-	public String allStoreList(int reqPage,Model model) {
-		StorePageData spd = sservice.selectStoreList(reqPage);
+	public String allStoreList(int reqPage,Model model,String storeName) {
+		StorePageData spd = sservice.selectStoreList(reqPage,storeName);
 		//System.out.println(spd);
 		model.addAttribute("list",spd.getList());
 		model.addAttribute("pageNavi",spd.getPageNavi());
 		model.addAttribute("reqPage",spd.getReqPage());
 		model.addAttribute("numPerPage", spd.getNumPerPage());
+		model.addAttribute("storeName",storeName);
 		return "store/storeList";
 	}
 	@RequestMapping(value="/detailStore.do")
@@ -39,9 +40,9 @@ public class StoreController {
 		//System.out.println(s);
 		//model.addAttribute("s",s);
 		StoreDetail sd = sservice.selectOneStore2(storeNo);
-		System.out.println(sd);
+		//System.out.println(sd);
 		model.addAttribute("sd",sd);
 		return "store/detailStore";
 	}
-	
+
 }

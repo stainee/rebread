@@ -55,6 +55,11 @@ public class StoreDao {
 		return sqlSession.selectOne("store.selectOneStore2",storeNo);
 	}
 
+//	public ArrayList<Store> searchStoreList(HashMap<String, Object> map) {
+//		List list =sqlSession.selectList("store.searchStoreList",map);
+//		return (ArrayList<Store>)list;
+//	}
+
 
 
 }

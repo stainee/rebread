@@ -13,7 +13,8 @@
 			#{productDate},
 			#{productImg},
 			#{productSale},
-			#{productType}
+			#{productType},
+			0
 		)
 	</insert>
 	
@@ -47,4 +48,38 @@
 		from product
 		where store_no= #{_parameter} and product_type = 1
 	</select>
+
+	<select id="selectOneProduct" parameterType="_int" resultType="p">
+		select 
+			product_no as productNo,
+			store_no as storeNo,
+			product_name as productName,
+			product_content as productContent,
+			product_price as productPrice,
+			product_stock as productStock,
+			product_date as productDate,
+			product_img as productImg,
+			product_sale as productSale,
+			product_type as productType
+		from product
+		where product_no = #{_parameter}
+	</select>
+	
+	<update id="updateProduct" parameterType="p">
+		update product
+		set 
+			product_name = #{productName},
+			product_content = #{productContent},
+			product_price = #{productPrice},
+			product_stock = #{productStock},
+			product_date = #{productDate},
+			product_img = #{productImg},
+			product_sale = #{productSale},
+			product_type = #{productType}
+		where product_no = #{productNo}
+	</update>
+	<delete id="deleteProduct" parameterType="_int">
+		delete product
+		where product_no= #{parameter}
+	</delete>
 </mapper>
